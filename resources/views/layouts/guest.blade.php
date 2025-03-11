@@ -20,9 +20,9 @@
             <div class="logo">
                 <img src="{{asset('img/Logo_solo.png')}}" alt= "logo">
 
-                <a href="/">
+                {{-- <a href="/">
                     <x-application-logo class="w-20 h-20 text-gray-500 fill-current" />
-                </a>
+                </a> --}}
 
             </div>
             <h1 class="font-bold">Selamat Datang di UKM KSR POLIJE</h1>
