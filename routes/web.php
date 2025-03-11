@@ -2,13 +2,25 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+
+// Route::get('/dashboard', function () {
+//     return view('admin.beranda.index');
+// })->middleware(['auth', 'verified']);
+
+
+// Route::get('/admin/beranda', function () {
+//     return view('admin.beranda.index');
+// })->middleware(['auth']);
+
 Route::get('/dashboard', function () {
-    return view('dashboard'); })->middleware(['auth', 'verified'])->name('dashboard');
+    return view('dashboard');
+ })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -24,8 +36,6 @@ Route::get('/sejarah', function () {
 
 Route::get('/ddl', function () {
     return view('ddl'); })->name('ddl');
-
-
 
 
 
