@@ -3,10 +3,12 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TentangkamiController;
+
+
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('welcome'); })->name('welcome');
 
 
 // Route::get('/dashboard', function () {
@@ -28,11 +30,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/tentang-kami', function () {
-    return view('tentang-kami'); })->name('tentang-kami');
+Route::get('/Tentangkami', [TentangkamiController::class ,'tentangme'])->name('tentangme');
+Route::get('/sejarah', [TentangkamiController::class, 'sejarah'])->name('sejarah');
+Route::get('/LambangPmi', [TentangkamiController::class, 'lambang'])->name('lambang');
 
-Route::get('/sejarah', function () {
-    return view('sejarah'); })->name('sejarah');
+
+
+// Route::get('/sejarah', function () {
+//     return view('sejarah'); })->name('sejarah');
 
 Route::get('/ddl', function () {
     return view('ddl'); })->name('ddl');

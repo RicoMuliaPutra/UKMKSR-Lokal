@@ -22,4 +22,7 @@ export default {
         forms,
         require('flowbite/plugin')
     ],
+    // tailwind.config.js
+
+
 };
