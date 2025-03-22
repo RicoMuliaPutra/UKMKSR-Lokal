@@ -15,10 +15,10 @@
     @include('partials.navbar')
     <section class="relative flex items-center justify-center w-full h-screen text-white">
         <img class="absolute top-0 left-0 object-cover w-full h-full filter "
-             src="{{ asset('img/kegiatan1.png') }}"alt="Kegiatan 1">
+             src="{{ asset('img/layananpage.png') }}"alt="layanan">
         <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
         <div class="relative z-10 text-center">
-            <h1 class="font-bold text-white text-7xl" style="font-family: 'Kanit', sans-serif;">SEJARAH</h1>
+            <h1 class="font-bold text-white text-7xl" style="font-family: 'Kanit', sans-serif;">LAYANAN</h1>
             <hr class="w-1/2 mx-auto my-4 border-t-2 border-white opacity-80">
             <p class="mt-4 text-lg text-white">Unit Kegiatan Mahasiswa Korps Sukarela Palang Merah Indonesia Unit Politeknik Negeri Jember</p>
         </div>
@@ -28,28 +28,14 @@
         <section class="p-6 bg-white rounded-lg shadow-md">
             <div class="flex-grow">
                 <div class="px-3 py-8 mt-1 text-center">
-                    <h1 class="mt-1 mb-2 text-4xl font-bold" style="font-family: sans-serif;">SEJARAH</h1>
+                    <h1 class="mt-1 mb-2 text-4xl font-bold" style="font-family: sans-serif;">Layanan Kami</h1>
 
                     <div class="flex flex-col items-center mt-3">
-                        <img src="{{ asset('img/Lambang.png') }}" alt="lambang" class="w-40 h-30">
-                        <h1 class="mt-2 text-xl font-bold" style="font-family: sans-serif;">
-                            UKM KSR POLITEKNIK NEGERI JEMBER
-                        </h1>
+                        
                     </div>
                     <hr class="w-1/2 mx-auto mt-2 mb-2 border-t-2 border-black opacity-50">
                 </div>
 
-                <section class="px-8 py-4 border-b fade-in">
-                    <div class="container max-w-3xl mx-auto">
-                        <div class="w-full p-4 rounded-lg">
-                            <p class="ml-4 text-lg leading-relaxed text-left text-justify" style="font-family: 'Kanit', sans-serif;">
-                                UKM KSR PMI Politeknik Negeri Jember didirikan pada tanggal 04 April 2009 di Politeknik
-                                Negeri Jember.UKM KSR PMI ini bertempat di Politeknik Negeri Jember sebagai salah satu Unit Kegiatan
-Mahasiswa.UKM KSR PMI Politeknik Negeri Jember ini berasaskan Pancasila, Tri Dharma Perguruan Tinggi dan Prinsip Dasar Gerakan Internasional Palang Merah dan Bulan Sabit Merah sebagai suatu organisasi kemanusiaan. UKM KSR PMI Politeknik Negeri Jember berfungsi sebagai salah satu wadah untuk merencanakan, melaksanakan dan mengembangkan kapasitas anggota melalui kegiatan kepalangmerahan dan pengabdian kepada masyarakat
-                            </p>
-                        </div>
-                    </div>
-                </section>
             </div>
         </section>
     </main>

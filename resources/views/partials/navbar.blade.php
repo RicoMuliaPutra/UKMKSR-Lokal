@@ -23,7 +23,7 @@
             <li class="relative group">
                 <a href="#" class="font-bold hover:text-gray-300">Layanan</a>
                 <ul class="absolute left-0 hidden w-40 text-gray-700 bg-white shadow-lg group-hover:block">
-                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Tim Siaga Kesehatan</a></li>
+                    <li><a href="{{route('layanan')}}" class="block px-4 py-2 hover:bg-gray-200">Tim Kesehatan</a></li>
                     <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Pemateri dan/ Fasilitator</a></li>
                 </ul>
             </li>
@@ -76,7 +76,7 @@
                 </svg>
             </button>
             <ul class="hidden pl-4 space-y-2 overflow-hidden transition-all duration-300 ease-in-out opacity-0 max-h-0 dropdown-content">
-                <li><a href="#" class="block hover:text-gray-300">Tim Siaga Kesehatan</a></li>
+                <li><a href="{{route('layanan')}}" class="block hover:text-gray-300">Tim Kesehatan</a></li>
                 <li><a href="#" class="block hover:text-gray-300">Fasilitator dan Pemateri</a></li>
             </ul>
         </li>

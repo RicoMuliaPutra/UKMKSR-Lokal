@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TentangkamiController;
+use App\Http\Controllers\LayananPageController;
+
 
 
 
@@ -33,6 +35,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/Tentangkami', [TentangkamiController::class ,'tentangme'])->name('tentangme');
 Route::get('/sejarah', [TentangkamiController::class, 'sejarah'])->name('sejarah');
 Route::get('/LambangPmi', [TentangkamiController::class, 'lambang'])->name('lambang');
+Route::get('/LayananKamu', [LayananPageController::class, 'layananPage'])->name('layanan');
 
 
 
