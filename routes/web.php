@@ -38,6 +38,7 @@ Route::get('/dashboard', function () {
  Route::get('/blog', [NavigateController::class, 'blog'])->name('blog');
  Route::get('/galeri', [NavigateController::class, 'galeri'])->name('galeri');
 
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -47,11 +48,11 @@ Route::middleware('auth')->group(function () {
 Route::get('/Tentangkami', [TentangkamiController::class ,'tentangme'])->name('tentangme');
 Route::get('/sejarah', [TentangkamiController::class, 'sejarah'])->name('sejarah');
 Route::get('/LambangPmi', [TentangkamiController::class, 'lambang'])->name('lambang');
-Route::get('/LayananKami', [LayananPageController::class, 'layananPage'])->name('layanan');
+Route::get('/LayananKami', [LayananPageController::class, 'layananPage'])->name('layananksr');
 Route::get('/TimKesehatan', [LayananPageController::class, 'layananSiaga'])->name('timkesehatan');
 Route::get('/Fasilitator', [LayananPageController::class, 'layananFacilitator'])->name('fasilitator');
 
-Route::get('/Blog', [BlogController::class, 'Blogging'])->name('blog');
+Route::get('/Blog', [BlogController::class, 'Blogging'])->name('bloging');
 
 
 

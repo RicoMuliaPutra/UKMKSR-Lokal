@@ -21,7 +21,7 @@
                 </ul>
             </li>
             <li class="relative group">
-                <a href="{{route('layanan')}}" class="font-bold hover:text-gray-300">Layanan</a>
+                <a href="{{route('layananksr')}}" class="font-bold hover:text-gray-300">Layanan</a>
                 <ul class="absolute left-0 hidden w-40 text-gray-700 bg-white shadow-lg group-hover:block">
                     <li><a href="{{route('timkesehatan')}}" class="block px-4 py-2 hover:bg-gray-200">Tim Kesehatan</a></li>
                     <li><a href="{{route('fasilitator')}}" class="block px-4 py-2 hover:bg-gray-200">Pemateri dan/ Fasilitator</a></li>
@@ -39,7 +39,7 @@
 
                 </ul>
             </li>
-            <li><a href="{{route('blog')}}" class="font-bold hover:text-gray-300">Blog</a></li>
+            <li><a href="{{route('bloging')}}" class="font-bold hover:text-gray-300">Blog</a></li>
         </ul>
     </div>
 </nav>
@@ -96,7 +96,7 @@
         </li>
             </ul>
         </li>
-        <li><a href="{{route('blog')}}" class="block hover:text-gray-300">BLOG</a></li>
+        <li><a href="{{route('bloging')}}" class="block hover:text-gray-300">BLOG</a></li>
         <button id="navAction" type="button" class="px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"  onclick="window.location='{{ url('login') }}'">
             Login
         </button>
