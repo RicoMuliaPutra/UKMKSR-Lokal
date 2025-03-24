@@ -45,7 +45,7 @@
                     <section class="px-8 py-4 border-b fade-in">
                         <div class="container max-w-3xl mx-auto">
                             <div class="w-full p-4 rounded-lg">
-                                <p class="ml-4 text-lg leading-relaxed text-left text-justify" style="font-family: 'Kanit', sans-serif;">
+                                <p class="ml-4 text-lg leading-relaxed text-justify" style="font-family: 'Kanit', sans-serif;">
                                     Lambang UKM KSR PMI Politeknik Negeri Jember sebagai relawan PMI adalah berbentuk
 perisai dengan delapan sudut lancip yang berlandasan prinsip dasar pertama kali yang
 dicetuskan di Indonesia, serta prinsip tambahan yang dimaksud yaitu Ketuhanan.
@@ -71,26 +71,4 @@ Negeri Jember.
 
 
 
-    {{-- <div class="flex-grow">
-        <div class="px-3 py-8 mt-1 text-center">
-            <h1 class="mt-1 mb-2 text-4xl font-bold" style="font-family: sans-serif;">Makna Lambang</h1>
 
-            <div class="flex flex-col items-center mt-3">
-                <img src="{{ asset('img/Lambang.png') }}" alt="lambang" class="w-40 h-30">
-                <h1 class="mt-2 text-xl font-bold" style="font-family: sans-serif;">
-                    UKM KSR POLITEKNIK NEGERI JEMBER
-                </h1>
-            </div>
-            <hr class="w-1/2 mx-auto mt-2 mb-2 border-t-2 border-black opacity-50">
-        </div>
-
-        <section class="px-8 py-4 border-b fade-in">
-            <div class="container max-w-3xl mx-auto">
-                <div class="w-full p-4 rounded-lg">
-                    <p class="ml-4 text-lg leading-relaxed text-left text-justify" style="font-family: 'Kanit', sans-serif;">
-
-                    </p>
-                </div>
-            </div>
-        </section>
-    </div> --}}

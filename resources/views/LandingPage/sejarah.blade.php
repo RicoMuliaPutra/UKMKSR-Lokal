@@ -42,7 +42,7 @@
                 <section class="px-8 py-4 border-b fade-in">
                     <div class="container max-w-3xl mx-auto">
                         <div class="w-full p-4 rounded-lg">
-                            <p class="ml-4 text-lg leading-relaxed text-left text-justify" style="font-family: 'Kanit', sans-serif;">
+                            <p class="ml-4 text-lg leading-relaxed text-justify" style="font-family: 'Kanit', sans-serif;">
                                 UKM KSR PMI Politeknik Negeri Jember didirikan pada tanggal 04 April 2009 di Politeknik
                                 Negeri Jember.UKM KSR PMI ini bertempat di Politeknik Negeri Jember sebagai salah satu Unit Kegiatan
 Mahasiswa.UKM KSR PMI Politeknik Negeri Jember ini berasaskan Pancasila, Tri Dharma Perguruan Tinggi dan Prinsip Dasar Gerakan Internasional Palang Merah dan Bulan Sabit Merah sebagai suatu organisasi kemanusiaan. UKM KSR PMI Politeknik Negeri Jember berfungsi sebagai salah satu wadah untuk merencanakan, melaksanakan dan mengembangkan kapasitas anggota melalui kegiatan kepalangmerahan dan pengabdian kepada masyarakat
