@@ -59,12 +59,6 @@ Route::get('/Blog', [BlogController::class, 'Blogging'])->name('bloging');
 
 
 
-// Route::get('/sejarah', function () {
-//     return view('sejarah'); })->name('sejarah');
-
-Route::get('/ddl', function () {
-    return view('ddl'); })->name('ddl');
-
 
 
 

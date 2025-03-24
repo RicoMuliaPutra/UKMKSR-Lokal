@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->String('role')->nullable();
+            $table->enum('role', ['humas_polije', 'humas_ksr', 'user'])->default('user');
             $table->timestamps();
         });
 
@@ -41,7 +41,7 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    
+
     public function down(): void
     {
         Schema::dropIfExists('users');
