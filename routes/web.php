@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NavigateController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -23,8 +24,18 @@ Route::get('/', function () {
 // })->middleware(['auth']);
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('admin.dashboard');
  })->middleware(['auth', 'verified'])->name('dashboard');
+
+ Route::get('/akun', [NavigateController::class, 'akun'])->middleware(['auth', 'verified'])->name('akun');
+ Route::get('/anggota', [NavigateController::class, 'anggota'])->name('anggota');
+ Route::get('/nilai', [NavigateController::class, 'nilai'])->name('nilai');
+ Route::get('/clustering', [NavigateController::class, 'clustering'])->name('clustering');
+ Route::get('/tentang', [NavigateController::class, 'tentang'])->name('tentang');
+ Route::get('/kegiatan', [NavigateController::class, 'kegiatan'])->name('kegiatan');
+ Route::get('/layanan', [NavigateController::class, 'layanan'])->name('layanan');
+ Route::get('/blog', [NavigateController::class, 'blog'])->name('blog');
+ Route::get('/galeri', [NavigateController::class, 'galeri'])->name('galeri');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
