@@ -49,7 +49,7 @@
             <img src="/img/icon/layanan.png" alt="Layanan Icon" class="w-6 h-6">
             <span class="ml-2 text-xs sidebar-text">Layanan</span>
         </a>
-        <a href="{{ route('blog') }}" class="flex items-center p-2 rounded-md hover:bg-gray-100">
+        <a href="{{ route('blogadmin.index') }}" class="flex items-center p-2 rounded-md hover:bg-gray-100">
             <img src="/img/icon/blog.png" alt="Blog Icon" class="w-6 h-6">
             <span class="ml-2 text-xs sidebar-text">Blog</span>
         </a>

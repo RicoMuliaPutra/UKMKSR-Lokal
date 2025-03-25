@@ -25,7 +25,7 @@
                 </a> --}}
 
             </div>
-            <h1 class="font-bold">Selamat Datang di UKM KSR POLIJE</h1>
+            <h1 class="font-bold text-black">Selamat Datang di UKM KSR POLIJE</h1>
 
             <div class="w-full px-6 py-4 mt-6 overflow-hidden bg-red-600 shadow-lg sm:max-w-md sm:rounded-lg">
                 {{ $slot }}

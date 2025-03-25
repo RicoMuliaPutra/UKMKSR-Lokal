@@ -41,10 +41,10 @@ class NavigateController extends Controller
         return view('admin.layanan');
     }
 
-    public function blog()
-    {
-        return view('admin.blog');
-    }
+    // public function blog()
+    // {
+    //     return view('admin.blog.index');
+    // }
 
     public function galeri()
     {

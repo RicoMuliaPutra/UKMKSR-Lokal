@@ -13,6 +13,11 @@ class Blog extends Model
         "title",
         "description",
         "images",
-        "create_at"
+        'created_at',
     ];
+    protected $casts = [
+        'created_at' => 'datetime:Y-m-d',
+    ];
+    // public $timestamps = false;
+    public $timestamps = false;
 }

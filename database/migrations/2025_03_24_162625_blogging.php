@@ -9,13 +9,14 @@ return new class extends Migration
 
     public function up(): void
     {
-        Schema::create('blogs', function(Blueprint $table){
+        Schema::create('blogs', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
             $table->longText('description')->nullable();
             $table->string('images')->nullable();
-            $table->timestamps();
+            $table->date('created_at');
         });
+
     }
 
 

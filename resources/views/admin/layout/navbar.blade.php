@@ -11,17 +11,17 @@
 <body>
     <div class="flex flex-col h-screen">
         <!-- Navbar -->
-        <header class="bg-white shadow-md px-4 flex items-center justify-between sticky top-0 z-50 h-32">
+        <header class="sticky top-0 z-50 flex items-center justify-between h-32 px-4 bg-white shadow-md">
             <div class="flex items-center space-x-32" style="margin-left: 5.2rem;">
                 <!-- Logo -->
-                <img src="/img/Logo_solo.png" alt="Logo Humas Polije" class="h-16 w-auto object-contain" />
+                <img src="/img/Logo_solo.png" alt="Logo Humas Polije" class="object-contain w-auto h-16" />
                 <!-- Hamburger button -->
-                <button id="toggleSidebar" class="text-gray-700 text-4xl focus:outline-none">
+                <button id="toggleSidebar" class="text-4xl text-gray-700 focus:outline-none">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
-            <div class="flex items-center space-x-3 mr-5">
-                <a href="#" class="text-red-600 text-4xl">
+            <div class="flex items-center mr-5 space-x-3">
+                <a href="{{ route('profile.edit') }}" class="text-4xl text-red-600">
                     <i class="fas fa-user-circle"></i>
                 </a>
             </div>
@@ -29,9 +29,10 @@
 
         <div class="flex flex-grow">
             <!-- Sidebar -->
-            <aside id="sidebar" class="w-64 bg-white shadow-md flex flex-col overflow-hidden transition-all duration-300 h-screen sticky top-20 z-40">
+            <aside id="sidebar" class="sticky z-40 flex flex-col w-64 h-screen overflow-hidden transition-all duration-300 bg-white shadow-md top-20">
                 @include('admin.layout.sidebar')
             </aside>
+            @stack('scripts')
 
             <!-- Main Content -->
             <main class="flex-grow p-8 overflow-auto">

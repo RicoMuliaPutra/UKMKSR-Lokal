@@ -35,9 +35,10 @@ Route::get('/dashboard', function () {
  Route::get('/tentang', [NavigateController::class, 'tentang'])->name('tentang');
  Route::get('/kegiatan', [NavigateController::class, 'kegiatan'])->name('kegiatan');
  Route::get('/layanan', [NavigateController::class, 'layanan'])->name('layanan');
- Route::get('/blog', [NavigateController::class, 'blog'])->name('blog');
+//  Route::get('/blog', [NavigateController::class, 'blog'])->name('blog');
  Route::get('/galeri', [NavigateController::class, 'galeri'])->name('galeri');
 
+ Route::resource('/blogadmin', BlogController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -53,6 +54,9 @@ Route::get('/TimKesehatan', [LayananPageController::class, 'layananSiaga'])->nam
 Route::get('/Fasilitator', [LayananPageController::class, 'layananFacilitator'])->name('fasilitator');
 
 Route::get('/Blog', [BlogController::class, 'Blogging'])->name('bloging');
+Route::get('/blog{id}', [BlogController::class, 'detail'])->name('blog.show');
+Route::get('/blog/search', [BlogController::class, 'search'])->name('blog.search');
+
 
 
 

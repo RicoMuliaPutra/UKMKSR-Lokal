@@ -22,22 +22,45 @@
                     <div class="w-64 h-1 mx-auto mt-4 bg-red-600 rounded-t bg-gradient-to-r from-orange-500 opacity-60"></div>
                 </div>
 
-                <div class="flex items-start justify-start mb-8">
-                  <input
-                      type="text"
-                      placeholder="Cari artikel..."
-                      class="px-4 py-2 text-gray-800 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
-                      style="font-family: 'Kanit', sans-serif;" >
-                  <button
-                      class="px-4 py-2 ml-2 font-bold text-white transition duration-300 ease-in-out bg-red-600 rounded-lg hover:bg-orange-600"
-                      style="font-family: 'Kanit', sans-serif;" >
-                      Cari
-                  </button>
-                </div>
+                <form action="{{ route('blog.search') }}" method="GET" class="flex items-start justify-start mb-8">
+                    <input
+                        type="text"
+                        name="query"
+                        placeholder="Cari artikel..."
+                        class="px-4 py-2 text-gray-800 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                        style="font-family: 'Kanit', sans-serif;"
+                        value="{{ request('query') }}">
+                    
+                    <button
+                        type="submit"
+                        class="px-4 py-2 ml-2 font-bold text-white transition duration-300 ease-in-out bg-red-600 rounded-lg hover:bg-orange-600"
+                        style="font-family: 'Kanit', sans-serif;">
+                        Cari
+                    </button>
+                </form>
 
-                
+
+                <div class="grid gap-8 pb-8 mt-12 sm:grid-cols-2 lg:grid-cols-3">
+                    @foreach($data as $blog)
+                    <div class="overflow-hidden transition-shadow duration-300 bg-white border border-gray-200 rounded-lg shadow-lg hover:shadow-xl">
+                        <img src="{{ asset('storage/' . $blog->images) }}" alt="{{ $blog->title }}" class="object-cover w-full h-48">
+                        <div class="p-6">
+                            <p class="mb-2 text-xl font-bold text-black">
+                                {{ $blog->title }}
+                            </p>
+                            <p class="mb-4 text-gray-800">
+                                {!! $blog->description !!}
+                            </p>
+                            <a href="{{route('blog.show', $blog->id)}}" class="inline-flex items-center font-semibold text-green-600 hover:underline">
+                                Baca Selengkapnya <span class="ml-1">→</span>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+                </div>
             </div>
         </section>
+
     </main>
     @include('partials.footer')
 </body>
