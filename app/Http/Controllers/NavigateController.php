@@ -29,18 +29,13 @@ class NavigateController extends Controller
 
     public function kegiatan()
     {
-        return view('admin.kegiatan');
+        return view('admin.kegiatan.index');
     }
 
     public function layanan()
     {
         return view('admin.layanan');
     }
-
-    // public function blog()
-    // {
-    //     return view('admin.blog.index');
-    // }
 
     public function galeri()
     {
