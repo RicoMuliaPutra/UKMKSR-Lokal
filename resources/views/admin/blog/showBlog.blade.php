@@ -13,6 +13,7 @@
         <img src="{{ asset('storage/' . $blog->images) }}" alt="{{ $blog->title }}" class="w-full mb-6 rounded-lg">
         <div class="text-gray-700">{!! $blog->description !!}</div>
     </main>
+    <main class="p-6"></main>
 
     @include('partials.footer')
 </body>

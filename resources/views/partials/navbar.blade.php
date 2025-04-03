@@ -2,7 +2,7 @@
 <nav id="navbar" class="fixed top-0 left-0 z-50 w-full p-4 text-white transition-all duration-300 bg-black">
 
 <div class="container flex items-center justify-between mx-auto">
-        <img src="{{ asset('img/logo_utama.svg') }}" alt="Logo" class="h-14">
+        <img src="{{ asset('img/logo_utama.svg') }}" alt="Logo" class="h-14" href="{{route('welcome')}}">
         <button id="menuBtn" class="text-3xl text-white lg:hidden">&#9776;</button>
         <!-- Navbar Desktop -->
         <ul class="hidden space-x-6 lg:flex">
@@ -35,8 +35,6 @@
                     <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Dies Natalis</a></li>
                     <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Diklatsar dan Pelantikan Anggota</a></li>
                     <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Rencana Kerja Tindak Lanjut</a></li>
-
-
                 </ul>
             </li>
             <li><a href="{{route('bloging')}}" class="font-bold hover:text-gray-300">Blog</a></li>
@@ -51,7 +49,7 @@
         <button id="closeSidebar" class="text-3xl text-gray-300 hover:text-red-500">&times;</button>
     </div>
     <ul class="p-5 space-y-4">
-        <li><a href="#" class="block font-bold text-green-400">BERANDA</a></li>
+        <li><a href="{{route('welcome')}}" class="block font-bold text-green-400">BERANDA</a></li>
 
         <!-- Dropdown Menu -->
         <li>
@@ -122,7 +120,6 @@
     {{-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> --}}
 </main>
 
-<!-- Script untuk Sidebar -->
 <script>
     document.getElementById("menuBtn").addEventListener("click", function() {
         document.getElementById("sidebar").classList.remove("translate-x-full");

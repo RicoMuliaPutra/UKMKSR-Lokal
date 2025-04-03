@@ -7,6 +7,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TentangkamiController;
 use App\Http\Controllers\LayananPageController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\AnggotaController;
+
 
 
 
@@ -29,7 +31,7 @@ Route::get('/dashboard', function () {
  })->middleware(['auth', 'verified'])->name('dashboard');
 
  Route::get('/akun', [NavigateController::class, 'akun'])->middleware(['auth', 'verified'])->name('akun');
- Route::get('/anggota', [NavigateController::class, 'anggota'])->name('anggota');
+//  Route::get('/anggota', [NavigateController::class, 'anggota'])->name('anggota');
  Route::get('/nilai', [NavigateController::class, 'nilai'])->name('nilai');
  Route::get('/clustering', [NavigateController::class, 'clustering'])->name('clustering');
  Route::get('/tentang', [NavigateController::class, 'tentang'])->name('tentang');
@@ -39,6 +41,7 @@ Route::get('/dashboard', function () {
  Route::get('/galeri', [NavigateController::class, 'galeri'])->name('galeri');
 
  Route::resource('/blogadmin', BlogController::class);
+ Route::resource('/anggota', AnggotaController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -21,7 +21,7 @@
             <img src="/img/icon/user.png" alt="Akun Icon" class="w-6 h-6">
             <span class="ml-2 text-xs sidebar-text">Akun</span>
         </a>
-        <a href="{{ route('anggota') }}" class="flex items-center p-3 rounded-md hover:bg-gray-100">
+        <a href="{{ route('anggota.index') }}" class="flex items-center p-3 rounded-md hover:bg-gray-100">
             <img src="/img/icon/multi.png" alt="Anggota Icon" class="w-5 h-5">
             <span class="ml-2 text-xs sidebar-text">Anggota</span>
         </a>

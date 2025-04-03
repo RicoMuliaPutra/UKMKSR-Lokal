@@ -30,7 +30,7 @@
                         class="px-4 py-2 text-gray-800 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                         style="font-family: 'Kanit', sans-serif;"
                         value="{{ request('query') }}">
-                    
+
                     <button
                         type="submit"
                         class="px-4 py-2 ml-2 font-bold text-white transition duration-300 ease-in-out bg-red-600 rounded-lg hover:bg-orange-600"
@@ -42,22 +42,27 @@
 
                 <div class="grid gap-8 pb-8 mt-12 sm:grid-cols-2 lg:grid-cols-3">
                     @foreach($data as $blog)
-                    <div class="overflow-hidden transition-shadow duration-300 bg-white border border-gray-200 rounded-lg shadow-lg hover:shadow-xl">
+                    <div class="transition-shadow duration-300 bg-white border border-gray-200 rounded-lg shadow-lg hover:shadow-xl">
                         <img src="{{ asset('storage/' . $blog->images) }}" alt="{{ $blog->title }}" class="object-cover w-full h-48">
-                        <div class="p-6">
+                        <div class="relative p-6"> <!-- Tambahkan relative -->
                             <p class="mb-2 text-xl font-bold text-black">
                                 {{ $blog->title }}
                             </p>
                             <p class="mb-4 text-gray-800">
                                 {!! $blog->description !!}
                             </p>
-                            <a href="{{route('blog.show', $blog->id)}}" class="inline-flex items-center font-semibold text-green-600 hover:underline">
-                                Baca Selengkapnya <span class="ml-1">→</span>
-                            </a>
+                            <div class="mt-4 text-center p-9">
+                                <a href="{{ route('blog.show', $blog->id) }}"
+                                    class="px-6 py-3 font-bold text-red-500 transition bg-transparent border-2 border-red-600 rounded-lg hover:bg-red-600 hover:text-white">
+                                     LEARN MORE
+                                 </a>
+
+                            </div>
                         </div>
                     </div>
-                @endforeach
+                    @endforeach
                 </div>
+
             </div>
         </section>
 

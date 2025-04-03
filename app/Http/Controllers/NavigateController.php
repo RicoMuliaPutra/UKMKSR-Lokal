@@ -11,10 +11,6 @@ class NavigateController extends Controller
         return view('admin.akun');
     }
 
-    public function anggota()
-    {
-        return view('admin.anggota');
-    }
 
     public function nilai()
     {
