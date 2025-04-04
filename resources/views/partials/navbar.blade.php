@@ -17,6 +17,8 @@
                     <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Program Kerja</a></li>
                     <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Kepengurusan</a></li>
                     <li><a href="{{route('lambang')}}" class="block px-4 py-2 hover:bg-gray-200">Lambang PMI</a></li>
+                    <li><a href="{{route('dataAnggota')}}" class="block px-4 py-2 hover:bg-gray-200">Anggota </a></li>
+
 
                 </ul>
             </li>
@@ -63,6 +65,7 @@
                 <li><a href="#" class="block hover:text-gray-300">Visi Misi</a></li>
                 <li><a href="#" class="block hover:text-gray-300">Program Kerja</a></li>
                 <li><a href="#" class="block hover:text-gray-300">Kepengurusan</a></li>
+                <li><a href="{{route('dataAnggota')}}" class="block hover:text-gray-300">Anggota</a></li>
                 <li><a href="{{route('lambang')}}" class="block hover:text-gray-300">Lambang PMI</a></li>
             </ul>
         </li>

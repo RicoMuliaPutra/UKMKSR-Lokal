@@ -24,16 +24,20 @@
                 {{ request()->is('akun') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Akun</span>
         </a>
-{{-- <<<<<<< HEAD
-        <a href="{{ route('anggota.index') }}" class="flex items-center p-3 rounded-md hover:bg-gray-100">
-            <img src="/img/icon/multi.png" alt="Anggota Icon" class="w-5 h-5">
-======= --}}
-        <a href="{{ route('anggota') }}" class="flex items-center p-3 rounded-md
+
+        <a href="{{ route('anggota.index') }}" class="flex items-center p-3 rounded-md
+         {{ request()->is('anggota') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
+         <img src="/img/icon/multi.png" alt="Anggota Icon" class="w-5 h-5
+         {{ request()->is('anggota') ? 'filter invert brightness-0' : '' }}">
+            <span class="ml-2 text-xs sidebar-text">Anggota</span>
+         </a>
+
+        {{-- <a href="{{ route('anggota.index') }}" class="flex items-center p-3 rounded-md
             {{ request()->is('anggota') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
             <img src="/img/icon/multi.png" alt="Anggota Icon" class="w-5 h-5
                 {{ request()->is('anggota') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Anggota</span>
-        </a>
+        </a> --}}
 
         <p class="text-gray-600 mt-3 text-[12px] font-semibold sidebar-text">Rekrutmen</p>
         <a href="{{ route('nilai') }}" class="flex items-center p-1 rounded-md

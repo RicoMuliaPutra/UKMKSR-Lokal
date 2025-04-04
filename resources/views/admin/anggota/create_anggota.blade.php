@@ -106,6 +106,18 @@
                 </div>
             </div>
             <div class="flex flex-col space-y-2">
+                <label for="status" class="font-medium text-gray-700">Status</label>
+                <select
+                    id="status"
+                    name="status"
+                    class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required>
+                    <option value="" disabled selected>Pilih status</option>
+                    <option value="Aktif">Aktif</option>
+                    <option value="Tidak Aktif">Tidak Aktif</option>
+                </select>
+            </div>
+            <div class="flex flex-col space-y-2">
                 <label for="alamat" class="font-medium text-gray-700">Alamat</label>
                 <input
                     type="text"

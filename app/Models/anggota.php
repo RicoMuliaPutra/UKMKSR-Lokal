@@ -17,6 +17,7 @@ class Anggota extends Model
         "alasan_join",
         "jurusan",
         "prodi",
+        "status",
         "tahun_masuk_kuliah",
         "jenis_kelamin",
         "foto",

@@ -20,6 +20,7 @@ return new class extends Migration
         $table->string('foto')->nullable();
         $table->string('jurusan')->nullable();
         $table->string('prodi')->nullable();
+        $table->enum('status', ['Aktif', 'Tidak Aktif']);
         $table->year('tahun_masuk_kuliah')->nullable();
         $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
         $table->timestamps();
