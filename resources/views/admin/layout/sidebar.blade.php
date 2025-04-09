@@ -26,19 +26,11 @@
         </a>
 
         <a href="{{ route('anggota.index') }}" class="flex items-center p-3 rounded-md
-         {{ request()->is('anggota') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
-         <img src="/img/icon/multi.png" alt="Anggota Icon" class="w-5 h-5
-         {{ request()->is('anggota') ? 'filter invert brightness-0' : '' }}">
-            <span class="ml-2 text-xs sidebar-text">Anggota</span>
-         </a>
-
-        {{-- <a href="{{ route('anggota.index') }}" class="flex items-center p-3 rounded-md
-            {{ request()->is('anggota') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
+         {{ request()->is('anggota*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
             <img src="/img/icon/multi.png" alt="Anggota Icon" class="w-5 h-5
-                {{ request()->is('anggota') ? 'filter invert brightness-0' : '' }}">
+         {{ request()->is('anggota*') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Anggota</span>
-        </a> --}}
-
+        </a>
         <p class="text-gray-600 mt-3 text-[12px] font-semibold sidebar-text">Rekrutmen</p>
         <a href="{{ route('nilai') }}" class="flex items-center p-1 rounded-md
             {{ request()->is('nilai') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
@@ -54,10 +46,10 @@
         </a>
 
         <p class="text-gray-600 mt-3 text-[12px] font-semibold sidebar-text">Landing Page</p>
-        <a href="{{ route('tentang') }}" class="flex items-center p-2 rounded-md
-            {{ request()->is('tentang') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
+        <a href="{{ route('tentang.index') }}" class="flex items-center p-2 rounded-md
+            {{ request()->is('tentang*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
             <img src="/img/icon/info.png" alt="Tentang Icon" class="w-6 h-6
-                {{ request()->is('tentang') ? 'filter invert brightness-0' : '' }}">
+                {{ request()->is('tentang*') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Tentang</span>
         </a>
         <a href="{{ route('kegiatan.index') }}" class="flex items-center p-2 rounded-md
@@ -66,10 +58,10 @@
             {{ request()->is('kegiatan*') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Kegiatan</span>
         </a>
-        <a href="{{ route('layanan') }}" class="flex items-center p-2 rounded-md
-            {{ request()->is('layanan') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
+        <a href="{{ route('layanan.index') }}" class="flex items-center p-2 rounded-md
+            {{ request()->is('layanan*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
             <img src="/img/icon/heart.png" alt="Layanan Icon" class="w-6 h-6
-                {{ request()->is('layanan') ? 'filter invert brightness-0' : '' }}">
+                {{ request()->is('layanan*') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Layanan</span>
         </a>
         <a href="{{ route('blogadmin.index') }}" class="flex items-center p-2 rounded-md
