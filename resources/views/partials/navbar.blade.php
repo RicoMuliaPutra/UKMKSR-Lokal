@@ -76,10 +76,10 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
             </button>
-            <ul class="hidden pl-4 space-y-2 overflow-hidden transition-all duration-300 ease-in-out opacity-0 max-h-0 dropdown-content">
+            {{-- <ul class="hidden pl-4 space-y-2 overflow-hidden transition-all duration-300 ease-in-out opacity-0 max-h-0 dropdown-content">
                 <li><a href="{{route('timkesehatan')}}" class="block hover:text-gray-300">Tim Kesehatan</a></li>
                 <li><a href="{{route('fasilitator')}}" class="block hover:text-gray-300">Fasilitator dan Pemateri</a></li>
-            </ul>
+            </ul> --}}
         </li>
         <li>
             <button class="flex items-center justify-between w-full text-left hover:text-gray-300 dropdown-btn">

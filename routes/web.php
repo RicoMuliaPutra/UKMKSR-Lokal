@@ -44,11 +44,10 @@ Route::get('/dashboard', function () {
  Route::resource('anggota', AnggotaController::class)->except(['show']);
  Route::get('/anggota/search', [AnggotaController::class, 'search'])->name('anggota.search');
  Route::resource('/kegiatan', KegiatanController::class);
- Route::resource('/service', LayananPageController::class);
-
-
-
  Route::resource('/tentang', TentangController::class);
+ Route::resource('/service', LayananPageController::class);
+ Route::post('/layanan/toggle/{id}', [LayananPageController::class, 'toggle'])->name('layanan.toggle');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -62,12 +61,9 @@ Route::get('/sejarah', [TentangkamiController::class, 'sejarah'])->name('sejarah
 Route::get('/LambangPmi', [TentangkamiController::class, 'lambang'])->name('lambang');
 Route::get('/LayananKami', [LayananPageController::class, 'layananPage'])->name('layananksr');
 
-Route::get('/TimKesehatan', [LayananPageController::class, 'layananSiaga'])->name('timkesehatan');
-Route::get('/Fasilitator', [LayananPageController::class, 'layananFacilitator'])->name('fasilitator');
 
 Route::get('/DataAnggota', [AnggotaController::class, 'dataAnggota'])->name('dataAnggota');
 Route::get('/DataAnggota/search', [AnggotaController::class, 'cari'])->name('anggota.cari');
-
 
 
 Route::get('/Blog', [BlogController::class, 'Blogging'])->name('bloging');
@@ -82,13 +78,7 @@ Route::put('/kegiatan/{id}', [KegiatanController::class, 'update'])->name('kegia
 Route::delete('/kegiatan/{id}', [KegiatanController::class, 'destroy'])->name('kegiatan.destroy');
 Route::post('/kegiatan/toggle/{id}', [KegiatanController::class, 'toggle'])->name('kegiatan.toggle');
 
-Route::get('/layanan', [LayananPageController::class, 'index'])->name('layanan.index');
-Route::get('/layanan/create', [LayananPageController::class, 'create'])->name('layanan.create');
-Route::post('/layanan', [LayananPageController::class, 'store'])->name('layanan.store');
-Route::get('/layanan/{id}/edit', [LayananPageController::class, 'edit'])->name('layanan.edit');
-Route::put('/layanan/{id}', [LayananPageController::class, 'update'])->name('layanan.update');
-Route::delete('/layanan/{id}', [LayananPageController::class, 'destroy'])->name('layanan.destroy');
-Route::post('/layanan/toggle/{id}', [LayananPageController::class, 'toggle'])->name('layanan.toggle');
+
 
 Route::get('/tentang', [TentangController::class, 'index'])->name('tentang.index');
 Route::get('/tentang/create', [TentangController::class, 'create'])->name('tentang.create');

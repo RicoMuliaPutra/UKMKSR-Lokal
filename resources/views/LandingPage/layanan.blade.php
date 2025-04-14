@@ -34,11 +34,11 @@
                     <div class="{{ count($layanans) <= 3 ? 'flex flex-wrap justify-center gap-6' : 'grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4' }}">
                         @foreach ($layanans as $layanan)
                         <div class="relative w-full overflow-hidden bg-center bg-cover md:h-[750px] aspect-[2/4] rounded-2xl max-w-sm"
-                             style="background-image: url('{{ asset($layanan->foto_layanan) }}');">
+                        style="background-image: url('{{ asset('storage/' . $layanan->foto_layanan) }}');">
                             <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-black bg-opacity-50">
                                 <h3 class="text-3xl font-bold text-white">{{ $layanan->nama_layanan }}</h3>
                                 <div class="text-white [&_p]:text-white [&_li]:text-white [&_span]:text-white">
-                                    {!! $layanan->deskripsi !!}
+                                    {!! $layanan->deskripsi_layanan !!}
                                 </div>
                             </div>
                             <div class="absolute p-8 transform -translate-x-1/2 bottom-4 left-1/2">

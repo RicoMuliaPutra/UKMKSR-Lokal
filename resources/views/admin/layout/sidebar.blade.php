@@ -59,11 +59,10 @@
             <span class="ml-2 text-xs sidebar-text">Kegiatan</span>
         </a>
 
-        <a href="{{ route('service.index') }}"
-        class="flex items-center p-2 rounded-md
-                {{ request()->is('Layanan') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
+        <a href="{{ route('service.index') }}" class="flex items-center p-2 rounded-md
+             {{ request()->is('service*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
             <img src="/img/icon/heart.png" alt="Layanan Icon" class="w-6 h-6
-                {{ request()->is('Layanan') ? 'filter invert brightness-0' : '' }}">
+            {{ request()->is('service*') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Layanan</span>
         </a>
 

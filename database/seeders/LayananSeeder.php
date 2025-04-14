@@ -11,24 +11,26 @@ class LayananSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
-    {
-        Layanan::create([
-            'nama_layanan'   => 'TIM KESEHATAN',
-            'deskripsi'      => 'Mendukung memenuhi kebutuhan tim kesehatan pada kegiatan terhadap sebuah insiden atau kecelakaan bagi instansi internal.',
-            'foto_layanan'   => 'img/delegai1.jpg',
-            'poster_layanan' => 'img/poster1.jpg',
-            'status'         => 'aktif',
-        ]);
+    public function run(): void {
+    Layanan::create([
+        'nama_layanan'   => 'TIM KESEHATAN',
+        'deskripsi_layanan' => 'Mendukung memenuhi kebutuhan tim kesehatan pada kegiatan terhadap sebuah insiden atau kecelakaan bagi instansi internal.',
+        'foto_layanan'   => 'layanan/delegai1.jpg',
+        'poster_layanan' => 'layanan/poster1.jpg',
+        'status'         => 'aktif',
+    ]);
 
-        Layanan::create([
-            'nama_layanan'   => 'FASILITATOR',
-            'deskripsi'      => 'Mendukung memenuhi kebutuhan pemateri pada kegiatan atau assesment yang berkaitan dengan materi kepalang merahan',
-            'foto_layanan'   => 'img/fasil1.jpg',
-            'poster_layanan' => 'img/poster.jpg',
-            'status'         => 'aktif',
-        ]);
-    }
+    Layanan::create([
+        'nama_layanan'   => 'FASILITATOR',
+        'deskripsi_layanan'  => 'Mendukung memenuhi kebutuhan pemateri pada kegiatan atau assesment yang berkaitan dengan materi kepalang merahan',
+        'foto_layanan'   => 'layanan/fasil1.jpg',
+        'poster_layanan' => 'layanan/poster.jpg',
+        'status'         => 'aktif',
+    ]);
+}
+
+
+
 }
 
 // use Illuminate\Database\Seeder;

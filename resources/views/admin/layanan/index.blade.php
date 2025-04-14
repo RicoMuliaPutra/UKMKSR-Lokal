@@ -17,41 +17,41 @@
     </style>
 </head>
 
-<body class="bg-gray-100 text-gray-800">
+<body class="text-gray-800 bg-gray-100">
     @extends('admin.layout.navbar')
 
     @section('content')
     <div class="container mx-auto">
-        <h1 class="text-2xl font-bold mb-4">Layanan</h1>
+        <h1 class="mb-4 text-2xl font-bold">Layanan</h1>
 
         <!-- Layanan Terkini -->
-        <div class="bg-white shadow-md rounded-lg p-4 mb-4">
-            <h2 class="text-lg font-semibold mb-2">Layanan Terkini</h2>
+        <div class="p-4 mb-4 bg-white rounded-lg shadow-md">
+            <h2 class="mb-2 text-lg font-semibold">Layanan Terkini</h2>
             <div class="overflow-x-auto">
-                <table class="w-full text-sm border-collapse border border-gray-300">
+                <table class="w-full text-sm border border-collapse border-gray-300">
                     <thead class="bg-gray-200">
                         <tr>
-                            <th class="border border-gray-300 p-2">No.</th>
-                            <th class="border border-gray-300 p-2">Nama Layanan</th>
-                            <th class="border border-gray-300 p-2">Tanggal Publikasi</th>
-                            <th class="border border-gray-300 p-2">Aksi</th>
+                            <th class="p-2 border border-gray-300">No.</th>
+                            <th class="p-2 border border-gray-300">Nama Layanan</th>
+                            <th class="p-2 border border-gray-300">Tanggal Publikasi</th>
+                            <th class="p-2 border border-gray-300">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                     @forelse ($layanan as $key => $item)
                         @if ($item->status === 'aktif')
                         <tr class="text-center bg-gray-50 hover:bg-gray-100">
-                            <td class="border border-gray-300 p-2">{{ $key+1 }}</td>
-                            <td class="border border-gray-300 p-2">{{ $item->nama_layanan }}</td>
-                            <td class="border border-gray-300 p-2">
+                            <td class="p-2 border border-gray-300">{{ $key+1 }}</td>
+                            <td class="p-2 border border-gray-300">{{ $item->nama_layanan }}</td>
+                            <td class="p-2 border border-gray-300">
                                 {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}
                             </td>
-                            <td class="border border-gray-300 p-2 flex justify-center gap-2">
-                                <a href="{{ route('layanan.show', $item->id_layanan) }}" class="text-blue-500 hover:text-blue-700"><i class="fas fa-info-circle"></i></a>
+                            <td class="flex justify-center gap-2 p-2 border border-gray-300">
+                                <a href="{{ route('service.show', $item->id_layanan) }}" class="text-blue-500 hover:text-blue-700"><i class="fas fa-info-circle"></i></a>
 
-                                <a href="{{ route('layanan.edit', $item->id_layanan) }}" class="text-yellow-500 hover:text-yellow-700"><i class="fas fa-edit"></i></a>
+                                <a href="{{ route('service.edit', $item->id_layanan) }}" class="text-yellow-500 hover:text-yellow-700"><i class="fas fa-edit"></i></a>
 
-                                <form action="{{ route('layanan.destroy', $item->id_layanan) }}" method="POST" style="display:inline;">
+                                <form action="{{ route('service.destroy', $item->id_layanan) }}" method="POST" style="display:inline;">
                                     @csrf @method('DELETE')
                                     <button type="submit" class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>
                                 </form>
@@ -65,7 +65,7 @@
                         @endif
                         @empty
                         <tr>
-                            <td colspan="4" class="border border-gray-300 p-4 text-center text-gray-500 italic">
+                            <td colspan="4" class="p-4 italic text-center text-gray-500 border border-gray-300">
                                 Tidak ada layanan terkini.
                             </td>
                         </tr>
@@ -76,39 +76,39 @@
         </div>
 
         <!-- Daftar Layanan -->
-        <div class="bg-white shadow-md rounded-lg p-4">
-            <div class="flex justify-between items-center mb-2">
+        <div class="p-4 bg-white rounded-lg shadow-md">
+            <div class="flex items-center justify-between mb-2">
                 <h2 class="text-lg font-semibold">Daftar Layanan</h2>
-                <a href="{{ route('layanan.create') }}"
-                    class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded transition text-sm">
+                <a href="{{ route('service.create') }}"
+                    class="px-3 py-1 text-sm text-white transition bg-blue-500 rounded hover:bg-blue-600">
                     + Tambah
                 </a>
             </div>
             <div class="overflow-x-auto">
-                <table class="w-full text-sm border-collapse border border-gray-300">
+                <table class="w-full text-sm border border-collapse border-gray-300">
                     <thead class="bg-gray-200">
                         <tr>
-                            <th class="border border-gray-300 p-2">No.</th>
-                            <th class="border border-gray-300 p-2">Nama Layanan</th>
-                            <th class="border border-gray-300 p-2">Tanggal Publikasi</th>
-                            <th class="border border-gray-300 p-2">Aksi</th>
+                            <th class="p-2 border border-gray-300">No.</th>
+                            <th class="p-2 border border-gray-300">Nama Layanan</th>
+                            <th class="p-2 border border-gray-300">Tanggal Publikasi</th>
+                            <th class="p-2 border border-gray-300">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse ($daftarLayanan as $key => $item)
                         @if ($item->status === 'tidak')
                         <tr class="text-center bg-gray-50 hover:bg-gray-100">
-                            <td class="border border-gray-300 p-2">{{ $key+1 }}</td>
-                            <td class="border border-gray-300 p-2">{{ $item->nama_layanan }}</td>
-                            <td class="border border-gray-300 p-2">
+                            <td class="p-2 border border-gray-300">{{ $key+1 }}</td>
+                            <td class="p-2 border border-gray-300">{{ $item->nama_layanan }}</td>
+                            <td class="p-2 border border-gray-300">
                                 {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}
                             </td>
-                            <td class="border border-gray-300 p-2 flex justify-center gap-2">
-                                <a href="{{ route('layanan.show', $item->id_layanan) }}" class="text-blue-500 hover:text-blue-700"><i class="fas fa-info-circle"></i></a>
+                            <td class="flex justify-center gap-2 p-2 border border-gray-300">
+                                <a href="{{ route('service.show', $item->id_layanan) }}" class="text-blue-500 hover:text-blue-700"><i class="fas fa-info-circle"></i></a>
 
-                                <a href="{{ route('layanan.edit', $item->id_layanan) }}" class="text-yellow-500 hover:text-yellow-700"><i class="fas fa-edit"></i></a>
+                                <a href="{{ route('service.edit', $item->id_layanan) }}" class="text-yellow-500 hover:text-yellow-700"><i class="fas fa-edit"></i></a>
 
-                                <form action="{{ route('layanan.destroy', $item->id_layanan) }}" method="POST" style="display:inline;">
+                                <form action="{{ route('service.destroy', $item->id_layanan) }}" method="POST" style="display:inline;">
                                     @csrf @method('DELETE')
                                     <button type="submit" class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>
                                 </form>
@@ -122,7 +122,7 @@
                         @endif
                         @empty
                         <tr>
-                            <td colspan="4" class="border border-gray-300 p-4 text-center text-gray-500 italic">
+                            <td colspan="4" class="p-4 italic text-center text-gray-500 border border-gray-300">
                                 Tidak ada daftar layanan.
                             </td>
                         </tr>
@@ -134,6 +134,17 @@
         </div>
     </div>
     @endsection
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        @if (session('success'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: '{{ session("success") }}',
+                confirmButtonText: 'OK'
+            });
+        @endif
+    </script>
 </body>
 
 </html>
