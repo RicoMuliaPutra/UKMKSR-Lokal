@@ -49,13 +49,13 @@ class KegiatanController extends Controller
 
         if ($request->hasFile('foto_kegiatan')) {
             $fotoFile = $request->file('foto_kegiatan');
-            $fotoNama = time() . '_' . $fotoFile->getClientOriginalName(); 
+            $fotoNama = time() . '_' . $fotoFile->getClientOriginalName();
             $fotoPath = $fotoFile->storeAs('kegiatan', $fotoNama, 'public');
         }
 
         if ($request->hasFile('poster_kegiatan')) {
             $posterFile = $request->file('poster_kegiatan');
-            $posterNama = time() . '_' . $posterFile->getClientOriginalName(); 
+            $posterNama = time() . '_' . $posterFile->getClientOriginalName();
             $posterPath = $posterFile->storeAs('kegiatan', $posterNama, 'public');
         }
 
@@ -88,7 +88,6 @@ class KegiatanController extends Controller
 
         $kegiatan->nama_kegiatan = $request->nama_kegiatan;
         $kegiatan->deskripsi_kegiatan = $request->deskripsi_kegiatan;
-
         if ($request->hasFile('foto_kegiatan')) {
 
             if ($kegiatan->foto_kegiatan) {

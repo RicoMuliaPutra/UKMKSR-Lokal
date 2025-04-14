@@ -25,50 +25,37 @@
     </section>
     <div class="w-full bg-red-600 h-7"></div>
     <main class="container flex-1 mx-auto">
-        <section class="p-5 bg-white rounded-lg ">{{-- //shadow-md// --}}
+        <section class="p-5 bg-white rounded-lg">
             <div class="flex flex-col items-center justify-center p-6 py-12">
                 <h2 class="text-3xl font-bold text-center">Layanan Kami</h2>
                 <hr class="w-1/5 mx-auto mt-2 mb-2 border-t-2 border-black opacity-50">
 
                 <div class="container px-4 py-6 mx-auto">
-                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2">
-                        <div class="relative w-full overflow-hidden bg-center bg-cover md:h-[750px] aspect-[2/4] rounded-2xl"
-                            style="background-image: url('{{ asset('img/delegai1.jpg')}}');">
+                    <div class="{{ count($layanans) <= 3 ? 'flex flex-wrap justify-center gap-6' : 'grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4' }}">
+                        @foreach ($layanans as $layanan)
+                        <div class="relative w-full overflow-hidden bg-center bg-cover md:h-[750px] aspect-[2/4] rounded-2xl max-w-sm"
+                             style="background-image: url('{{ asset($layanan->foto_layanan) }}');">
                             <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-black bg-opacity-50">
-                                <h3 class="text-3xl font-bold text-white ">TIM KESEHATAN</h3>
-                                <p class="mt-2 text-lg leading-relaxed text-white max-w-[90%] " style="font-family: 'Kanit', sans-serif;">
-                                    Mendukung memenuhi kebutuhan tim kesehatan pada kegiatan terhadap sebuah insiden atau kecelakaan bagi instansi internal.
-                                </p>
+                                <h3 class="text-3xl font-bold text-white">{{ $layanan->nama_layanan }}</h3>
+                                <div class="text-white [&_p]:text-white [&_li]:text-white [&_span]:text-white">
+                                    {!! $layanan->deskripsi !!}
+                                </div>
                             </div>
                             <div class="absolute p-8 transform -translate-x-1/2 bottom-4 left-1/2">
-                                <a href=""
-                                class="px-6 py-3 font-bold text-center text-white transition border border-red-600 rounded-lg hover:bg-red-600 hover:text-white whitespace-nowrap">
-                                    LEARN MORE
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="relative w-full overflow-hidden bg-center bg-cover md:h-[750px] aspect-[2/4] rounded-2xl"
-                            style="background-image: url('{{ asset('img/fasil1.jpg') }}');">
-                            <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-black bg-opacity-50">
-                                <h3 class="text-3xl font-bold text-white ">FASILITATOR</h3>
-                                <p class="mt-2 text-lg leading-relaxed text-white max-w-[90%] " style="font-family: 'Kanit', sans-serif;">
-                                    Mendukung memenuhi kebutuhan pemateri pada kegiatan atau assesment yang berkaitan dengan materi kepalang merahan
-                                </p>
-                            </div>
-
-                            <div class="absolute p-8 transform -translate-x-1/2 bottom-4 left-1/2">
-                                <a href=""
+                                <a href="#"
                                    class="px-6 py-3 font-bold text-center text-white transition border border-red-600 rounded-lg hover:bg-red-600 hover:text-white whitespace-nowrap">
                                     LEARN MORE
                                 </a>
                             </div>
                         </div>
+                    @endforeach
 
                     </div>
+
                 </div>
             </div>
         </section>
+
     </main>
     <div class="w-full bg-red-600 h-7"></div>
     @include('partials.footer')

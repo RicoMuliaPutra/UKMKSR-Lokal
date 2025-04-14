@@ -2,7 +2,6 @@
     <div class="container px-8 mx-auto">
         <div class="grid grid-cols-1 gap-8 py-6 md:grid-cols-3">
 
-            <!-- Google Maps -->
             <div class="text-center md:text-left">
                 <div class="w-full h-32 overflow-hidden rounded-lg md:h-48">
                     <iframe
@@ -12,8 +11,6 @@
                     </iframe>
                 </div>
             </div>
-
-            <!-- Tautan Langsung -->
             <div class="text-center">
                 <p class="mb-4 font-bold text-white uppercase">Tautan Langsung</p>
                 <ul class="list-reset">
@@ -32,7 +29,7 @@
                 </ul>
             </div>
 
-            <!-- Informasi Kontak -->
+
             <div class="text-center md:text-centar">
                 <p class="mb-4 font-bold text-white uppercase">Informasi Kontak</p>
                 <div class="flex justify-center space-x-4 md:justify-center">
@@ -42,10 +39,10 @@
                     <a href="#" class="text-white hover:text-pink-500">
                         <i class="fab fa-twitter fa-2x"></i>
                     </a>
-                    <a href="#" class="text-white hover:text-pink-500">
+                    <a href="https://www.instagram.com/ksrpmipolije?igsh=MW8yOHNvbnN1MjZxMg==" class="text-white hover:text-pink-500">
                         <i class="fab fa-instagram fa-2x"></i>
                     </a>
-                    <a href="#" class="text-white hover:text-pink-500">
+                    <a href="https://youtube.com/@ksrpmipolije?si=ykRgf84OOGtyxFMu" class="text-white hover:text-pink-500">
                         <i class="fab fa-youtube fa-2x"></i>
                     </a>
                 </div>

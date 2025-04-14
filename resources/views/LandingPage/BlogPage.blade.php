@@ -43,8 +43,8 @@
                 <div class="grid gap-8 pb-8 mt-12 sm:grid-cols-2 lg:grid-cols-3">
                     @foreach($data as $blog)
                     <div class="transition-shadow duration-300 bg-white border border-gray-200 rounded-lg shadow-lg hover:shadow-xl">
-                        <img src="{{ asset('storage/' . $blog->images) }}" alt="{{ $blog->title }}" class="object-cover w-full h-48">
-                        <div class="relative p-6"> <!-- Tambahkan relative -->
+                        <img src="{{ asset($blog->images) }}" alt="{{ $blog->title }}" class="object-cover w-full h-48">
+                        <div class="relative p-6">
                             <p class="mb-2 text-xl font-bold text-black">
                                 {{ $blog->title }}
                             </p>

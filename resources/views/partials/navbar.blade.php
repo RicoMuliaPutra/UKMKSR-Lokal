@@ -24,10 +24,10 @@
             </li>
             <li class="relative group">
                 <a href="{{route('layananksr')}}" class="font-bold hover:text-gray-300">Layanan</a>
-                <ul class="absolute left-0 hidden w-40 text-gray-700 bg-white shadow-lg group-hover:block">
+                {{-- <ul class="absolute left-0 hidden w-40 text-gray-700 bg-white shadow-lg group-hover:block">
                     <li><a href="{{route('timkesehatan')}}" class="block px-4 py-2 hover:bg-gray-200">Tim Kesehatan</a></li>
                     <li><a href="{{route('fasilitator')}}" class="block px-4 py-2 hover:bg-gray-200">Pemateri dan/ Fasilitator</a></li>
-                </ul>
+                </ul> --}}
             </li>
             <li class="relative group">
                 <a href="#" class="font-bold hover:text-gray-300">Kegiatan</a>

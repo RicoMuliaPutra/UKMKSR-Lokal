@@ -37,7 +37,6 @@ Route::get('/dashboard', function () {
  Route::get('/clustering', [NavigateController::class, 'clustering'])->name('clustering');
  Route::get('/tentang', [NavigateController::class, 'tentang'])->name('tentang');
  Route::get('/kegiatan', [NavigateController::class, 'kegiatan'])->name('kegiatan');
- Route::get('/layanan', [NavigateController::class, 'layanan'])->name('layanan');
  Route::get('/galeri', [NavigateController::class, 'galeri'])->name('galeri');
 
 
@@ -46,7 +45,7 @@ Route::get('/dashboard', function () {
  Route::resource('anggota', AnggotaController::class)->except(['show']);
  Route::get('/anggota/search', [AnggotaController::class, 'search'])->name('anggota.search');
  Route::resource('/kegiatan', KegiatanController::class);
-
+ Route::resource('/service', LayananPageController::class);
 
 
 
@@ -57,11 +56,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-//////landing Page////////////
+////////////landing Page////////////
 Route::get('/Tentangkami', [TentangkamiController::class, 'tentangme'])->name('tentangme');
 Route::get('/sejarah', [TentangkamiController::class, 'sejarah'])->name('sejarah');
 Route::get('/LambangPmi', [TentangkamiController::class, 'lambang'])->name('lambang');
 Route::get('/LayananKami', [LayananPageController::class, 'layananPage'])->name('layananksr');
+
 Route::get('/TimKesehatan', [LayananPageController::class, 'layananSiaga'])->name('timkesehatan');
 Route::get('/Fasilitator', [LayananPageController::class, 'layananFacilitator'])->name('fasilitator');
 
@@ -81,7 +81,6 @@ Route::get('/kegiatan/{id}/edit', [KegiatanController::class, 'edit'])->name('ke
 Route::put('/kegiatan/{id}', [KegiatanController::class, 'update'])->name('kegiatan.update');
 Route::delete('/kegiatan/{id}', [KegiatanController::class, 'destroy'])->name('kegiatan.destroy');
 Route::post('/kegiatan/toggle/{id}', [KegiatanController::class, 'toggle'])->name('kegiatan.toggle');
-
 
 
 

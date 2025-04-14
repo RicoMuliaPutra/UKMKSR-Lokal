@@ -123,6 +123,7 @@
                     <option value="" disabled {{ $anggota->status == null ? 'selected' : '' }}>Pilih status</option>
                     <option value="Aktif" {{ $anggota->status == 'Aktif' ? 'selected' : '' }}>Aktif</option>
                     <option value="Tidak Aktif" {{ $anggota->status == 'Tidak Aktif' ? 'selected' : '' }}>Tidak Aktif</option>
+                    <option value="Inaktif" {{ $anggota->status == 'Inaktif' ? 'selected' : '' }}>Inaktif</option>
                 </select>
             </div>
             <div class="flex flex-col space-y-2">
@@ -139,7 +140,7 @@
             <div class="flex flex-col space-y-2">
                 <label for="alasan_join" class="font-medium text-gray-700">Alasan Bergaabung</label>
                 <textarea
-                    id="alasan_join"
+                    id="summernote"
                     name="alasan_join"
                     rows="4"
                     class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -180,8 +181,30 @@
                 confirmButtonText: 'OK'
             });
         @endif
+
+
     </script>
     @endpush
+    @push('scripts')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote/dist/summernote-lite.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#summernote').summernote({
+                height: 200,
+                placeholder: 'Tulis deskripsi blog di sini...',
+                toolbar: [
+                    ['style', ['bold', 'italic', 'underline']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['insert', ['link', 'picture']],
+                    ['view', ['fullscreen', 'codeview']]
+                ]
+            });
+        });
+    </script>
+@endpush
+
 
 
 </body>

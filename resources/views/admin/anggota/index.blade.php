@@ -101,7 +101,7 @@
                         <td class="px-4 py-2 border-r">{{ $anggota->prodi }}</td>
                         <td class="px-4 py-2 border-r">{{ $anggota->status }}</td>
                         <td class="px-4 py-2 border-r">{{ $anggota->tahun_masuk_kuliah }}</td>
-                        <td class="px-4 py-2 border-r">{{ $anggota->alasan_join }}</td>
+                        <td class="px-4 py-2 border-r">{!! $anggota->alasan_join !!}</td>
                         <td class="px-4 py-2 text-center border-r">
                             @if ($anggota->foto)
                                 <img src="{{ asset('storage/' . $anggota->foto) }}"

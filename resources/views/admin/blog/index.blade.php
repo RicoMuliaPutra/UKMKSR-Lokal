@@ -51,11 +51,10 @@
                             <td class="px-4 py-2 border-r">{!! Str::limit(strip_tags($blog->description), 50, '...') !!}</td>
                             <td class="px-4 py-2 text-center border-r">
                                 @if ($blog->images)
-                                    <img src="{{ asset('storage/' . $blog->images) }}" alt="Gambar Blog" class="object-cover w-20 h-20 rounded">
+                                    <img src="{{ asset($blog->images) }}" alt="Gambar Blog" class="object-cover w-20 h-20 rounded">
                                 @else
                                     <span>-</span>
-                                @endif
-                            </td>
+                                @endif                            </td>
                             <td class="flex items-center justify-center px-4 py-2 space-x-2">
                                 <a href="{{ route('blogadmin.edit', $blog->id) }}" class="flex items-center px-2 py-1 text-white bg-yellow-400 rounded hover:bg-yellow-500">Edit</a>
                                 <form action="{{ route('blogadmin.destroy', $blog->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus blog ini?');">

@@ -4,6 +4,9 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Database\Seeders\BlogSeeder;
+use Database\Seeders\layananSeeder;
+use Database\Seeders\KegiatanSeeder;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -17,7 +20,13 @@ class DatabaseSeeder extends Seeder
             'name' => 'HUMAS KSR',
             'email' => 'admin123@gmail.com',
             'password' => Hash::make('admin123')
-            
+
+        ]);
+
+        $this->call([
+            BlogSeeder::class,
+            layananSeeder::class,
+            KegiatanSeeder::class,
         ]);
     }
 }

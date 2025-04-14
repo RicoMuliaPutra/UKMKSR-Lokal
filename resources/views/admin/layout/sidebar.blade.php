@@ -66,18 +66,24 @@
             {{ request()->is('kegiatan*') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Kegiatan</span>
         </a>
-        <a href="{{ route('layanan') }}" class="flex items-center p-2 rounded-md
-            {{ request()->is('layanan') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
+        <a href="{{ route('service.index') }}"
+        class="flex items-center p-2 rounded-md
+                {{ request()->is('Layanan') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
             <img src="/img/icon/heart.png" alt="Layanan Icon" class="w-6 h-6
-                {{ request()->is('layanan') ? 'filter invert brightness-0' : '' }}">
+                {{ request()->is('Layanan') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Layanan</span>
         </a>
+
+
+
         <a href="{{ route('blogadmin.index') }}" class="flex items-center p-2 rounded-md
-            {{ request()->is('blogadmin.index*') ? 'bg-black-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
+            {{ request()->is('blogadmin') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
             <img src="/img/icon/writing.png" alt="Galeri Blog" class="w-6 h-6
-            {{ request()->is('blogadmin.index*') ? 'filter invert brightness-0' : '' }}">
+                {{ request()->is('blogadmin') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Blog</span>
         </a>
+
+
         <a href="{{ route('galeri') }}" class="flex items-center p-1 rounded-md
             {{ request()->is('galeri') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
             <img src="/img/icon/image-galery.png" alt="Galeri Icon" class="w-7 h-7

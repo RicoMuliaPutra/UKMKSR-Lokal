@@ -95,6 +95,7 @@ class AnggotaController extends Controller
             'prodi' => 'required|string',
             'tahun_masuk_kuliah' => 'required',
             'jenis_kelamin' => 'required',
+            'status' => 'required',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'alamat' => 'required|string',
         ]);
@@ -116,6 +117,7 @@ class AnggotaController extends Controller
         $anggota->prodi = $request->input('prodi');
         $anggota->tahun_masuk_kuliah = $request->input('tahun_masuk_kuliah');
         $anggota->jenis_kelamin = $request->input('jenis_kelamin');
+        $anggota->status = $request ->input('status');
         $anggota->alamat = $request->input('alamat');
         $anggota->save();
 

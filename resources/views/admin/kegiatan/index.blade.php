@@ -17,36 +17,36 @@
     </style>
 </head>
 
-<body class="bg-gray-100 text-gray-800">
+<body class="text-gray-800 bg-gray-100">
     @extends('admin.layout.navbar')
 
     @section('content')
     <div class="container mx-auto">
-        <h1 class="text-2xl font-bold mb-4">Kegiatan</h1>
+        <h1 class="mb-4 text-2xl font-bold">Kegiatan</h1>
 
         <!-- Kegiatan Terkini (Hanya yang Aktif) -->
-        <div class="bg-white shadow-md rounded-lg p-4 mb-4">
-            <h2 class="text-lg font-semibold mb-2">Kegiatan Terkini</h2>
+        <div class="p-4 mb-4 bg-white rounded-lg shadow-md">
+            <h2 class="mb-2 text-lg font-semibold">Kegiatan Terkini</h2>
             <div class="overflow-x-auto">
-                <table class="w-full text-sm border-collapse border border-gray-300">
+                <table class="w-full text-sm border border-collapse border-gray-300">
                     <thead class="bg-gray-200">
                         <tr>
-                            <th class="border border-gray-300 p-2">No.</th>
-                            <th class="border border-gray-300 p-2">Nama Kegiatan</th>
-                            <th class="border border-gray-300 p-2">Tanggal Publikasi</th>
-                            <th class="border border-gray-300 p-2">Aksi</th>
+                            <th class="p-2 border border-gray-300">No.</th>
+                            <th class="p-2 border border-gray-300">Nama Kegiatan</th>
+                            <th class="p-2 border border-gray-300">Tanggal Publikasi</th>
+                            <th class="p-2 border border-gray-300">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($kegiatan as $key => $item)
                         @if ($item->status === 'aktif')
                         <tr class="text-center bg-gray-50 hover:bg-gray-100">
-                            <td class="border border-gray-300 p-2">{{ $key+1 }}</td>
-                            <td class="border border-gray-300 p-2">{{ $item->nama_kegiatan }}</td>
-                            <td class="border border-gray-300 p-2">
+                            <td class="p-2 border border-gray-300">{{ $key+1 }}</td>
+                            <td class="p-2 border border-gray-300">{{ $item->nama_kegiatan }}</td>
+                            <td class="p-2 border border-gray-300">
                                 {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}
                             </td>
-                            <td class="border border-gray-300 p-2 flex justify-center gap-2">
+                            <td class="flex justify-center gap-2 p-2 border border-gray-300">
                                 <!-- Tombol Lihat -->
                                 <a href="{{ route('kegiatan.show', $item->id_kegiatan) }}" class="text-blue-500 hover:text-blue-700"><i class="fas fa-info-circle"></i></a>
 
@@ -74,34 +74,34 @@
         </div>
 
         <!-- Daftar Kegiatan (Hanya yang Tidak Aktif) -->
-        <div class="bg-white shadow-md rounded-lg p-4">
-            <div class="flex justify-between items-center mb-2">
+        <div class="p-4 bg-white rounded-lg shadow-md">
+            <div class="flex items-center justify-between mb-2">
                 <h2 class="text-lg font-semibold">Daftar Kegiatan</h2>
                 <a href="{{ route('kegiatan.create') }}"
-                    class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded transition text-sm">
+                    class="px-3 py-1 text-sm text-white transition bg-blue-500 rounded hover:bg-blue-600">
                     + Tambah
                 </a>
             </div>
             <div class="overflow-x-auto">
-                <table class="w-full text-sm border-collapse border border-gray-300">
+                <table class="w-full text-sm border border-collapse border-gray-300">
                     <thead class="bg-gray-200">
                         <tr>
-                            <th class="border border-gray-300 p-2">No.</th>
-                            <th class="border border-gray-300 p-2">Nama Kegiatan</th>
-                            <th class="border border-gray-300 p-2">Tanggal Publikasi</th>
-                            <th class="border border-gray-300 p-2">Aksi</th>
+                            <th class="p-2 border border-gray-300">No.</th>
+                            <th class="p-2 border border-gray-300">Nama Kegiatan</th>
+                            <th class="p-2 border border-gray-300">Tanggal Publikasi</th>
+                            <th class="p-2 border border-gray-300">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($daftarKegiatan as $key => $item)
                         @if ($item->status === 'tidak')
                         <tr class="text-center bg-gray-50 hover:bg-gray-100">
-                            <td class="border border-gray-300 p-2">{{ $key+1 }}</td>
-                            <td class="border border-gray-300 p-2">{{ $item->nama_kegiatan }}</td>
-                            <td class="border border-gray-300 p-2">
+                            <td class="p-2 border border-gray-300">{{ $key+1 }}</td>
+                            <td class="p-2 border border-gray-300">{{ $item->nama_kegiatan }}</td>
+                            <td class="p-2 border border-gray-300">
                                 {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}
                             </td>
-                            <td class="border border-gray-300 p-2 flex justify-center gap-2">
+                            <td class="flex justify-center gap-2 p-2 border border-gray-300">
                                 <!-- Tombol Lihat -->
                                 <a href="{{ route('kegiatan.show', $item->id_kegiatan) }}" class="text-blue-500 hover:text-blue-700"><i class="fas fa-info-circle"></i></a>
 
@@ -133,3 +133,5 @@
 </body>
 
 </html>
+
+
