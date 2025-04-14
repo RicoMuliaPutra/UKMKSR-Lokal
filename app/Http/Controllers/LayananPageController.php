@@ -4,25 +4,154 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Layanan;
+
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\File;
+// use Illumuse Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
 class LayananPageController extends Controller
 {
+
     public function layananPage(){
         $layanans = Layanan::where('status', 'aktif')->get();
         return view('LandingPage.layanan', compact('layanans'));
-    }
 
-    public function layananSiaga(){
-        return view('LandingPage.layananSiaga');
     }
+//     public function layananPage()
+//     {
+//         return view("LandingPage.layanan");
+// >>>>>>> 61ee1446b781954143e04ffb3b86594187a2f447
+//     }
+
+    // public function layananSiaga()
+    // {
+    //     return view('LandingPage.layananSiaga');
+    // }
 
 
-    public function layananFacilitator(){
-        return view ("LandingPage.Facilitator");
-    }
+    // public function layananFacilitator()
+    // {
+    //     return view("LandingPage.Facilitator");
+    // }
+
+
+    // public function index()
+    // {
+    //     $layanan = Layanan::select('id_layanan', 'nama_layanan', 'created_at', 'status')
+    //         ->where('status', 'aktif')
+    //         ->latest()
+    //         ->get();
+
+    //     $daftarLayanan = Layanan::select('id_layanan', 'nama_layanan', 'created_at', 'status')
+    //         ->where('status', 'tidak')
+    //         ->orderBy('created_at', 'desc')
+    //         ->get();
+
+    //     return view('admin.layanan.index', compact('layanan', 'daftarLayanan'));
+    // }
+
+    // public function show($id)
+    // {
+    //     $layanan = Layanan::findOrFail($id);
+    //     return view('admin.layanan.show', compact('layanan'));
+    // }
+
+    // public function create()
+    // {
+    //     return view('admin.layanan.create');
+    // }
+
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'nama_layanan' => 'required|string|max:255',
+    //         'deskripsi_layanan' => 'nullable|string',
+    //         'foto_layanan' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
+    //         'poster_layanan' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
+    //     ]);
+
+    //     $fotoPath = null;
+    //     $posterPath = null;
+
+    //     if ($request->hasFile('foto_layanan')) {
+    //         $fotoFile = $request->file('foto_layanan');
+    //         $fotoNama = time() . '_' . $fotoFile->getClientOriginalName();
+    //         $fotoPath = $fotoFile->storeAs('layanan', $fotoNama, 'public');
+    //     }
+
+    //     if ($request->hasFile('poster_layanan')) {
+    //         $posterFile = $request->file('poster_layanan');
+    //         $posterNama = time() . '_' . $posterFile->getClientOriginalName();
+    //         $posterPath = $posterFile->storeAs('layanan', $posterNama, 'public');
+    //     }
+
+    //     Layanan::create([
+    //         'nama_layanan' => $request->nama_kegiatan,
+    //         'deskripsi_layanan' => $request->deskripsi_kegiatan,
+    //         'foto_layanan' => $fotoPath,
+    //         'poster_layanan' => $posterPath,
+    //     ]);
+
+    //     return redirect()->route('layanan.index')->with('success', 'Layanan berhasil ditambahkan.');
+    // }
+
+    // public function edit($id)
+    // {
+    //     $layanan = Layanan::findOrFail($id);
+    //     return view('admin.layanan.edit', compact('layanan'));
+    // }
+
+    // public function update(Request $request, $id)
+    // {
+    //     $layanan = Layanan::findOrFail($id);
+
+    //     $request->validate([
+    //         'nama_layanan' => 'required|string|max:255',
+    //         'deskripsi_layanan' => 'nullable|string',
+    //         'foto_layanan' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    //         'poster_layanan' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    //     ]);
+
+    //     $layanan->nama_layanan = $request->nama_layanan;
+    //     $layanan->deskripsi_layanan = $request->deskripsi_layanan;
+
+    //     if ($request->hasFile('foto_kegiatan')) {
+
+    //         if ($layanan->foto_layanan) {
+    //             Storage::delete('public/' . $layanan->foto_layanan);
+    //         }
+    //         $fotoPath = $request->file('foto_layanan')->store('layanan/foto', 'public');
+    //         $layanan->foto_layanan = $fotoPath;
+    //     }
+
+    //     if ($request->hasFile('poster_layanan')) {
+    //         if ($layanan->poster_kegiatan) {
+    //             Storage::delete('public/' . $layanan->poster_layanan);
+    //         }
+    //         $posterPath = $request->file('poster_layanan')->store('layanan/poster', 'public');
+    //         $layanan->poster_layanan = $posterPath;
+    //     }
+
+    //     $layanan->save();
+
+    //     return redirect()->route('layanan.index')->with('success', 'Layanan berhasil diperbarui.');
+    // }
+
+    // public function destroy($id)
+    // {
+    //     Layanan::destroy($id);
+    //     return redirect()->route('layanan.index')->with('success', 'Layanan berhasil dihapus!');
+    // }
+
+    // public function toggle($id)
+    // {
+    //     $layanan = Layanan::findOrFail($id);
+
+    //     $layanan->status = $layanan->status === 'aktif' ? 'tidak' : 'aktif';
+    //     $layanan->save();
+
+    //     return back()->with('success', 'Status layanan berhasil diperbarui.');
+    // }
 
     public function index() {
         $layanan = Layanan::latest()->get();
