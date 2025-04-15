@@ -70,23 +70,21 @@ Route::get('/Blog', [BlogController::class, 'Blogging'])->name('bloging');
 Route::get('/blog{id}', [BlogController::class, 'detail'])->name('blog.show');
 Route::get('/blog/search', [BlogController::class, 'search'])->name('blog.search');
 
-Route::get('/kegiatan', [KegiatanController::class, 'index'])->name('kegiatan.index');
-Route::get('/kegiatan/create', [KegiatanController::class, 'create'])->name('kegiatan.create');
-Route::post('/kegiatan', [KegiatanController::class, 'store'])->name('kegiatan.store');
-Route::get('/kegiatan/{id}/edit', [KegiatanController::class, 'edit'])->name('kegiatan.edit');
-Route::put('/kegiatan/{id}', [KegiatanController::class, 'update'])->name('kegiatan.update');
-Route::delete('/kegiatan/{id}', [KegiatanController::class, 'destroy'])->name('kegiatan.destroy');
+// Route::get('/kegiatan', [KegiatanController::class, 'index'])->name('kegiatan.index');
+// Route::get('/kegiatan/create', [KegiatanController::class, 'create'])->name('kegiatan.create');
+// Route::post('/kegiatan', [KegiatanController::class, 'store'])->name('kegiatan.store');
+// Route::get('/kegiatan/{id}/edit', [KegiatanController::class, 'edit'])->name('kegiatan.edit');
+// Route::put('/kegiatan/{id}', [KegiatanController::class, 'update'])->name('kegiatan.update');
+// Route::delete('/kegiatan/{id}', [KegiatanController::class, 'destroy'])->name('kegiatan.destroy');
 Route::post('/kegiatan/toggle/{id}', [KegiatanController::class, 'toggle'])->name('kegiatan.toggle');
 
-
-
-Route::get('/tentang', [TentangController::class, 'index'])->name('tentang.index');
-Route::get('/tentang/create', [TentangController::class, 'create'])->name('tentang.create');
-Route::post('/tentang', [TentangController::class, 'store'])->name('tentang.store');
-Route::get('/tentang/{id}', [TentangController::class, 'show'])->name('tentang.show');
-Route::get('/tentang/{id}/edit', [TentangController::class, 'edit'])->name('tentang.edit');
-Route::put('/tentang/{id}', [TentangController::class, 'update'])->name('tentang.update');
-Route::delete('/tentang/{id}', [TentangController::class, 'destroy'])->name('tentang.destroy');
+// Route::get('/tentang', [TentangController::class, 'index'])->name('tentang.index');
+// Route::get('/tentang/create', [TentangController::class, 'create'])->name('tentang.create');
+// Route::post('/tentang', [TentangController::class, 'store'])->name('tentang.store');
+// Route::get('/tentang/{id}', [TentangController::class, 'show'])->name('tentang.show');
+// Route::get('/tentang/{id}/edit', [TentangController::class, 'edit'])->name('tentang.edit');
+// Route::put('/tentang/{id}', [TentangController::class, 'update'])->name('tentang.update');
+// Route::delete('/tentang/{id}', [TentangController::class, 'destroy'])->name('tentang.destroy');
 
 
 
