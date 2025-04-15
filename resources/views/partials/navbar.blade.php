@@ -8,12 +8,12 @@
         <ul class="hidden space-x-6 lg:flex">
             <li><a href="{{route('welcome')}}" class="font-bold hover:text-gray-300">Beranda</a></li>
             <li class="relative group">
-                <a href="{{route('tentangme')}}" class="font-bold hover:text-gray-300">
+                <a href="" class="font-bold hover:text-gray-300">
                     Tentang
                 </a>
                 <ul class="absolute left-0 hidden w-40 text-gray-700 bg-white shadow-lg group-hover:block">
                     <li><a href="{{route('sejarah')}}" class="block px-4 py-2 hover:bg-gray-200">Sejarah</a></li>
-                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Visi Misi</a></li>
+                    <li><a href="{{route('visimisi')}}" class="block px-4 py-2 hover:bg-gray-200">Visi Misi</a></li>
                     <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Program Kerja</a></li>
                     <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Kepengurusan</a></li>
                     <li><a href="{{route('lambang')}}" class="block px-4 py-2 hover:bg-gray-200">Lambang PMI</a></li>
@@ -24,11 +24,8 @@
             </li>
             <li class="relative group">
                 <a href="{{route('layananksr')}}" class="font-bold hover:text-gray-300">Layanan</a>
-                {{-- <ul class="absolute left-0 hidden w-40 text-gray-700 bg-white shadow-lg group-hover:block">
-                    <li><a href="{{route('timkesehatan')}}" class="block px-4 py-2 hover:bg-gray-200">Tim Kesehatan</a></li>
-                    <li><a href="{{route('fasilitator')}}" class="block px-4 py-2 hover:bg-gray-200">Pemateri dan/ Fasilitator</a></li>
-                </ul> --}}
             </li>
+
             <li class="relative group">
                 <a href="#" class="font-bold hover:text-gray-300">Kegiatan</a>
                 <ul class="absolute left-0 hidden w-40 text-gray-700 bg-white shadow-lg group-hover:block">
@@ -76,10 +73,6 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
             </button>
-            {{-- <ul class="hidden pl-4 space-y-2 overflow-hidden transition-all duration-300 ease-in-out opacity-0 max-h-0 dropdown-content">
-                <li><a href="{{route('timkesehatan')}}" class="block hover:text-gray-300">Tim Kesehatan</a></li>
-                <li><a href="{{route('fasilitator')}}" class="block hover:text-gray-300">Fasilitator dan Pemateri</a></li>
-            </ul> --}}
         </li>
         <li>
             <button class="flex items-center justify-between w-full text-left hover:text-gray-300 dropdown-btn">

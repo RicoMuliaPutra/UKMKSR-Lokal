@@ -17,39 +17,39 @@
     </style>
 </head>
 
-<body class="bg-gray-100 text-gray-800">
+<body class="text-gray-800 bg-gray-100">
     @extends('admin.layout.navbar')
 
     @section('content')
     <div class="container mx-auto">
-        <h1 class="text-2xl font-bold mb-4">Tentang</h1>
+        <h1 class="mb-4 text-2xl font-bold">Tentang</h1>
 
-        <div class="bg-white shadow-md rounded-lg p-4">
-            <div class="flex justify-between items-center mb-4">
+        <div class="p-4 bg-white rounded-lg shadow-md">
+            <div class="flex items-center justify-between mb-4">
                 <h2 class="text-lg font-semibold text-gray-700">Tentang UKM KSR</h2>
                 <a href="{{ route('tentang.create') }}"
-                    class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded transition text-sm">
+                    class="px-3 py-1 text-sm text-white transition bg-blue-500 rounded hover:bg-blue-600">
                     + Tambah
                 </a>
             </div>
 
             <div class="overflow-x-auto">
-                <table class="w-full text-sm border-collapse border border-gray-300">
+                <table class="w-full text-sm border border-collapse border-gray-300">
                     <thead class="bg-gray-200">
                         <tr>
-                            <th class="border border-gray-300 p-2">No.</th>
-                            <th class="border border-gray-300 p-2">Deskripsi</th>
-                            <th class="border border-gray-300 p-2">Tanggal Publikasi</th>
-                            <th class="border border-gray-300 p-2">Aksi</th>
+                            <th class="p-2 border border-gray-300">No.</th>
+                            <th class="p-2 border border-gray-300">Deskripsi</th>
+                            <th class="p-2 border border-gray-300">Tanggal Publikasi</th>
+                            <th class="p-2 border border-gray-300">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse ($data as $i => $item)
                         <tr class="text-center bg-gray-50 hover:bg-gray-100">
-                            <td class="border border-gray-300 p-2">{{ $i + 1 }}</td>
-                            <td class="border border-gray-300 p-2 text-left">{{ Str::limit($item->deskripsi_ksr, 100) }}</td>
-                            <td class="border border-gray-300 p-2">{{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}</td>
-                            <td class="border border-gray-300 p-2 flex justify-center gap-2">
+                            <td class="p-2 border border-gray-300">{{ $i + 1 }}</td>
+                            <td class="p-2 text-left border border-gray-300">{{ Str::limit($item->deskripsi_ksr, 100) }}</td>
+                            <td class="p-2 border border-gray-300">{{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}</td>
+                            <td class="flex justify-center gap-2 p-2 border border-gray-300">
                                 <a href="{{ route('tentang.show', $item->id_tentang_ksr) }}"
                                     class="text-blue-500 hover:text-blue-700"><i class="fas fa-info-circle"></i></a>
 
@@ -66,7 +66,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="4" class="border border-gray-300 p-4 text-center text-gray-500 italic">
+                            <td colspan="4" class="p-4 italic text-center text-gray-500 border border-gray-300">
                                 Belum ada data tentang KSR.
                             </td>
                         </tr>
@@ -77,6 +77,20 @@
         </div>
     </div>
     @endsection
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+
+        function showImage(imageUrl) {
+            Swal.fire({
+                imageUrl: imageUrl,
+                imageWidth: 'auto',
+                imageHeight: 'auto',
+                imageAlt: 'Detail Foto',
+                showConfirmButton: false,
+                backdrop: true
+            });
+        }
+    </script>
 </body>
 
 </html>

@@ -5,7 +5,6 @@ use App\Http\Controllers\NavigateController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TentangController;
-use App\Http\Controllers\TentangkamiController;
 use App\Http\Controllers\LayananPageController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\AnggotaController;
@@ -22,8 +21,6 @@ Route::get('/', function () {
 // Route::get('/dashboard', function () {
 //     return view('admin.beranda.index');
 // })->middleware(['auth', 'verified']);
-
-
 // Route::get('/admin/beranda', function () {
 //     return view('admin.beranda.index');
 // })->middleware(['auth']);
@@ -56,10 +53,15 @@ Route::middleware('auth')->group(function () {
 });
 
 ////////////landing Page////////////
-Route::get('/Tentangkami', [TentangkamiController::class, 'tentangme'])->name('tentangme');
-Route::get('/sejarah', [TentangkamiController::class, 'sejarah'])->name('sejarah');
-Route::get('/LambangPmi', [TentangkamiController::class, 'lambang'])->name('lambang');
+// Route::get('/Tentangkami', [TentangkamiController::class, 'tentangme'])->name('tentangme');
+// Route::get('/sejarah', [TentangkamiController::class, 'sejarah'])->name('sejarah');
+// Route::get('/LambangPmi', [TentangkamiController::class, 'lambang'])->name('lambang');
+
 Route::get('/LayananKami', [LayananPageController::class, 'layananPage'])->name('layananksr');
+Route::get('/lambangPMI', [TentangController::class, 'lambang'])->name('lambang');
+Route::get('/SejarahKsr', [TentangController::class, 'sejarah'])->name('sejarah');
+Route::get('/Visi_misi', [TentangController::class, 'visimisi'])->name('visimisi');
+
 
 
 Route::get('/DataAnggota', [AnggotaController::class, 'dataAnggota'])->name('dataAnggota');
@@ -76,6 +78,7 @@ Route::get('/blog/search', [BlogController::class, 'search'])->name('blog.search
 // Route::get('/kegiatan/{id}/edit', [KegiatanController::class, 'edit'])->name('kegiatan.edit');
 // Route::put('/kegiatan/{id}', [KegiatanController::class, 'update'])->name('kegiatan.update');
 // Route::delete('/kegiatan/{id}', [KegiatanController::class, 'destroy'])->name('kegiatan.destroy');
+
 Route::post('/kegiatan/toggle/{id}', [KegiatanController::class, 'toggle'])->name('kegiatan.toggle');
 
 // Route::get('/tentang', [TentangController::class, 'index'])->name('tentang.index');

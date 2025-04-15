@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             BlogSeeder::class,
             layananSeeder::class,
             KegiatanSeeder::class,
+            tentangSeeder::class,
         ]);
     }
 }

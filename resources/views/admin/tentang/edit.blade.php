@@ -21,13 +21,13 @@
     </style>
 </head>
 
-<body class="bg-gray-100 text-gray-800">
+<body class="text-gray-800 bg-gray-100">
 
     @extends('admin.layout.navbar')
 
     @section('content')
-    <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md mt-6">
-        <h1 class="text-2xl font-bold mb-4">Edit Tentang UKM KSR</h1>
+    <div class="max-w-4xl p-6 mx-auto mt-6 bg-white rounded-lg shadow-md">
+        <h1 class="mb-4 text-2xl font-bold">Edit Tentang UKM KSR</h1>
 
         <form action="{{ route('tentang.update', $data->id_tentang_ksr) }}" method="POST">
             @csrf
@@ -36,12 +36,12 @@
             <label class="block font-semibold">Deskripsi:</label>
             <textarea id="summernote" name="deskripsi_ksr" required>{{ old('deskripsi_ksr', $data->deskripsi_ksr) }}</textarea>
             @error('deskripsi_ksr')
-            <span class="text-red-500 text-xs">{{ $message }}</span>
+            <span class="text-xs text-red-500">{{ $message }}</span>
             @enderror
 
             <div class="flex justify-end gap-4 mt-4">
-                <a href="{{ route('tentang.index') }}" class="bg-gray-500 text-white px-4 py-2 rounded">Kembali</a>
-                <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Update</button>
+                <a href="{{ route('tentang.index') }}" class="px-4 py-2 text-white bg-gray-500 rounded">Kembali</a>
+                <button type="submit" class="px-4 py-2 text-white bg-green-600 rounded hover:bg-green-700">Update</button>
             </div>
         </form>
     </div>
@@ -53,6 +53,20 @@
                 height: 150,
             });
         });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+
+        function showImage(imageUrl) {
+            Swal.fire({
+                imageUrl: imageUrl,
+                imageWidth: 'auto',
+                imageHeight: 'auto',
+                imageAlt: 'Detail Foto',
+                showConfirmButton: false,
+                backdrop: true
+            });
+        }
     </script>
 </body>
 

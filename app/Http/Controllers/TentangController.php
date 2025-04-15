@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tentang;
+use App\Models\info;
+use App\Models\visimisi;
+use App\Models\sejarah;
+
 
 class TentangController extends Controller
 {
@@ -49,4 +53,23 @@ class TentangController extends Controller
         Tentang::destroy($id);
         return back()->with('success', 'Data berhasil dihapus');
     }
+
+    ///////////// Function landingPage //////////////
+    public function lambang() {
+        $lambang = tentang::latest()->first();
+        return view ('LandingPage.lambang', compact('lambang'));
+    }
+
+    public function sejarah(){
+        $sejarah = sejarah::latest()->first();
+        return view ('LandingPage.sejarah', compact('sejarah'));
+    }
+
+    public function visimisi(){
+        $visimisi = visimisi::latest()->first();
+        return view ('LandingPage.visimisi', compact('visimisi'));
+    }
+
+
+
 }

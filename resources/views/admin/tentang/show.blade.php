@@ -21,24 +21,24 @@
     </style>
 </head>
 
-<body class="bg-gray-100 text-gray-800">
+<body class="text-gray-800 bg-gray-100">
 
     @extends('admin.layout.navbar')
 
     @section('content')
     <div class="container">
-        <h2 class="text-xl font-bold mb-4">Detail Tentang UKM KSR</h2>
+        <h2 class="mb-4 text-xl font-bold">Detail Tentang UKM KSR</h2>
 
-        <div class="bg-white shadow-md rounded p-4">
-            <p class="text-gray-700 mb-2"><strong>Deskripsi:</strong></p>
-            <div class="border p-3 rounded bg-gray-100">
+        <div class="p-4 bg-white rounded shadow-md">
+            <p class="mb-2 text-gray-700"><strong>Deskripsi:</strong></p>
+            <div class="p-3 bg-gray-100 border rounded">
                 {!! nl2br(e($data->deskripsi_ksr)) !!}
             </div>
 
-            <p class="text-sm text-gray-500 mt-4">Dibuat pada: {{ $data->created_at->translatedFormat('d F Y') }}</p>
+            <p class="mt-4 text-sm text-gray-500">Dibuat pada: {{ $data->created_at->translatedFormat('d F Y') }}</p>
             <p class="text-sm text-gray-500">Diperbarui pada: {{ $data->updated_at->translatedFormat('d F Y') }}</p>
 
-            <a href="{{ route('tentang.index') }}" class="mt-4 inline-block text-indigo-600 hover:underline">← Kembali</a>
+            <a href="{{ route('tentang.index') }}" class="inline-block mt-4 text-indigo-600 hover:underline">← Kembali</a>
         </div>
     </div>
     @endsection
@@ -49,6 +49,20 @@
                 height: 150,
             });
         });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+
+        function showImage(imageUrl) {
+            Swal.fire({
+                imageUrl: imageUrl,
+                imageWidth: 'auto',
+                imageHeight: 'auto',
+                imageAlt: 'Detail Foto',
+                showConfirmButton: false,
+                backdrop: true
+            });
+        }
     </script>
 </body>
 

@@ -18,7 +18,7 @@
              src="{{ asset('img/kegiatan1.png') }}"alt="Kegiatan 1">
         <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
         <div class="relative z-10 text-center">
-            <h1 class="font-bold text-white text-7xl" style="font-family: 'Kanit', sans-serif;">SEJARAH</h1>
+            <h1 class="font-bold text-white text-7xl" style="font-family: 'Kanit', sans-serif;">VISI MISI UKM KSR</h1>
             <hr class="w-1/2 mx-auto my-4 border-t-2 border-white opacity-80">
             <p class="mt-4 text-lg text-white">Unit Kegiatan Mahasiswa Korps Sukarela Palang Merah Indonesia Unit Politeknik Negeri Jember</p>
         </div>
@@ -28,7 +28,7 @@
         <section class="p-6 bg-white rounded-lg shadow-md">
             <div class="flex-grow">
                 <div class="px-3 py-8 mt-1 text-center">
-                    <h1 class="mt-1 mb-2 text-4xl font-bold" style="font-family: sans-serif;">SEJARAH</h1>
+                    <h1 class="mt-1 mb-2 text-4xl font-bold" style="font-family: sans-serif;">VISI MISI</h1>
 
                     <div class="flex flex-col items-center mt-3">
                         <img src="{{ asset('img/Lambang.png') }}" alt="lambang" class="w-40 h-30">
@@ -42,9 +42,9 @@
                 <section class="px-8 border-b fade-in">
                     <div class="container max-w-3xl mx-auto">
                         <div class="w-full rounded-lg">
-                            <p class="mb-8 ml-4 text-lg text-justify" style="font-family: 'Kanit', sans-serif;">
-                                {!! $sejarah->deskripsi_ksr !!}
-                            </p>
+                            <div class="mb-8 ml-4 prose prose-lg text-justify max-w-none" style="font-family: 'Kanit', sans-serif;">
+                                {!! $visimisi->deskripsi_visi_misi_ksr !!}
+                            </div>
                         </div>
                     </div>
                 </section>

@@ -42,17 +42,11 @@
                         <hr class="w-1/2 mx-auto mt-2 mb-2 border-t-2 border-black opacity-50">
                     </div>
 
-                    <section class="px-8 py-4 border-b fade-in">
+                    <section class="px-8 border-b fade-in">
                         <div class="container max-w-3xl mx-auto">
-                            <div class="w-full p-4 rounded-lg">
-                                <p class="ml-4 text-lg leading-relaxed text-justify" style="font-family: 'Kanit', sans-serif;">
-                                    Lambang UKM KSR PMI Politeknik Negeri Jember sebagai relawan PMI adalah berbentuk
-perisai dengan delapan sudut lancip yang berlandasan prinsip dasar pertama kali yang
-dicetuskan di Indonesia, serta prinsip tambahan yang dimaksud yaitu Ketuhanan.
-Didalamnya terdapat warna putih yang melambangkan kenetralan dan diatasnya tertulis
-“KSR PMI” yang merupakan identitas Relawan, lambang intisari POLIJE dan tulisan
-POLIJE dibawahnya sebagai identitas lembaga yang menaungi UKM KSR PMI Politeknik
-Negeri Jember.
+                            <div class="w-full p-2 rounded-lg">
+                                <p class="mb-8 ml-4 text-lg text-justify" style="font-family: 'Kanit', sans-serif;">
+                                    {!! $lambang->deskripsi_ksr !!}
                                 </p>
                             </div>
                         </div>
