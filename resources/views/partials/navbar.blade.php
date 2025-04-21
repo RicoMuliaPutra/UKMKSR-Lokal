@@ -37,6 +37,8 @@
                 </ul>
             </li>
             <li><a href="{{route('bloging')}}" class="font-bold hover:text-gray-300">Blog</a></li>
+            <li><a href="{{ url('login') }}" class="font-bold hover:text-gray-300">Login</a></li>
+
         </ul>
     </div>
 </nav>

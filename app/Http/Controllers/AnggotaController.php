@@ -12,8 +12,7 @@ use Illuminate\Support\Facades\Storage;
 class AnggotaController extends Controller
 {
 
-    public function index(Request $request)
-    {
+    public function index(Request $request) {
         $angkatan = $request->query('angkatan');
         $angkatanList = Anggota::select('angkatan')->distinct()->orderBy('angkatan', 'asc')->pluck('angkatan');
         $query = Anggota::query();
@@ -29,8 +28,7 @@ class AnggotaController extends Controller
         return view('admin.anggota.create_anggota');
     }
 
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         $request->validate([
             'nama' => 'required|string|max:255',
             'nim' => 'required',

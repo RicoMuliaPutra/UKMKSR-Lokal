@@ -39,11 +39,10 @@
                     </button>
                 </form>
 
-
                 <div class="grid gap-8 pb-8 mt-12 sm:grid-cols-2 lg:grid-cols-3">
                     @foreach($data as $blog)
                     <div class="transition-shadow duration-300 bg-white border border-gray-200 rounded-lg shadow-lg hover:shadow-xl">
-                        <img src="{{ asset($blog->images) }}" alt="{{ $blog->title }}" class="object-cover w-full h-48">
+                        <img src="{{ asset('storage/'. $blog->images) }}" alt="{{ $blog->title }}" class="object-cover w-full h-48">
                         <div class="relative p-6">
                             <p class="mb-2 text-xl font-bold text-black">
                                 {{ $blog->title }}
@@ -56,16 +55,13 @@
                                     class="px-6 py-3 font-bold text-red-500 transition bg-transparent border-2 border-red-600 rounded-lg hover:bg-red-600 hover:text-white">
                                      LEARN MORE
                                  </a>
-
                             </div>
                         </div>
                     </div>
                     @endforeach
                 </div>
-
             </div>
         </section>
-
     </main>
     @include('partials.footer')
 </body>

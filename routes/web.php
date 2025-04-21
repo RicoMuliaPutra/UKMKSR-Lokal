@@ -8,6 +8,8 @@ use App\Http\Controllers\TentangController;
 use App\Http\Controllers\LayananPageController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\AnggotaController;
+use App\Http\Controllers\pengurusController;
+
 
 
 
@@ -44,6 +46,7 @@ Route::get('/dashboard', function () {
  Route::resource('/tentang', TentangController::class);
  Route::resource('/service', LayananPageController::class);
  Route::post('/layanan/toggle/{id}', [LayananPageController::class, 'toggle'])->name('layanan.toggle');
+ Route::resource('/Kepengurusan', pengurusController::class);
 
 
 Route::middleware('auth')->group(function () {
@@ -53,15 +56,11 @@ Route::middleware('auth')->group(function () {
 });
 
 ////////////landing Page////////////
-// Route::get('/Tentangkami', [TentangkamiController::class, 'tentangme'])->name('tentangme');
-// Route::get('/sejarah', [TentangkamiController::class, 'sejarah'])->name('sejarah');
-// Route::get('/LambangPmi', [TentangkamiController::class, 'lambang'])->name('lambang');
-
 Route::get('/LayananKami', [LayananPageController::class, 'layananPage'])->name('layananksr');
 Route::get('/lambangPMI', [TentangController::class, 'lambang'])->name('lambang');
 Route::get('/SejarahKsr', [TentangController::class, 'sejarah'])->name('sejarah');
 Route::get('/Visi_misi', [TentangController::class, 'visimisi'])->name('visimisi');
-
+Route::get('/SerVice' , [LayananPageController::class, 'wellayanan'])->name('serviceksr');
 
 
 Route::get('/DataAnggota', [AnggotaController::class, 'dataAnggota'])->name('dataAnggota');
