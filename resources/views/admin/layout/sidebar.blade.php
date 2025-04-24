@@ -55,12 +55,10 @@
 
         <a href="{{ route('Kepengurusan.index') }}" class="flex items-center p-2 rounded-md
         {{ request()->is('Kepengurusan*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
-        <img src="/img/icon/pengurus.png" alt="kepengurusan Icon" class="w-6 h-6
+            <img src="/img/icon/pengurus.png" alt="kepengurusan Icon" class="w-6 h-6
         {{ request()->is('Kepengurusan*') ? 'filter invert brightness-0' : '' }}">
-        <span class="ml-2 text-xs sidebar-text">Kepengurusan</span>
-    </a>
-
-
+            <span class="ml-2 text-xs sidebar-text">Kepengurusan</span>
+        </a>
 
         <a href="{{ route('kegiatan.index') }}" class="flex items-center p-2 rounded-md
             {{ request()->is('kegiatan*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
@@ -83,10 +81,10 @@
             <span class="ml-2 text-xs sidebar-text">Blog</span>
         </a>
 
-        <a href="{{ route('galeri') }}" class="flex items-center p-1 rounded-md
-            {{ request()->is('galeri') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
+        <a href="{{ route('galeri.index') }}" class="flex items-center p-1 rounded-md
+            {{ request()->is('galeri*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
             <img src="/img/icon/image-galery.png" alt="Galeri Icon" class="w-7 h-7
-                {{ request()->is('galeri') ? 'filter invert brightness-0' : '' }}">
+                {{ request()->is('galeri*') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Galeri</span>
         </a>
 
