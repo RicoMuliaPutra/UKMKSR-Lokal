@@ -127,7 +127,6 @@
                     <p class="mb-4 text-xl font-bold text-center">UKM Ter Aktif</p>
                     <p class="text-center text-gray-400 text-l">Menjadi UKM teraktif di Politeknik Negeri Jember</p>
                 </div>
-
                 <div class="flex flex-col items-center">
                     <img src="{{ asset('img/icon/achivment.png') }}" alt="achivment" class="object-contain w-16 h-16 mb-4">
                     <p class="mb-4 text-xl font-bold text-center">15+ Tahun Berdiri</p>

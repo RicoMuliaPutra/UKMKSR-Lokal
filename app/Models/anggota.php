@@ -24,4 +24,9 @@ class Anggota extends Model
         "alamat",
         'created_at',
     ];
+
+    public function pengurus()
+    {
+        return $this->hasMany(Pengurus::class);
+    }
 }

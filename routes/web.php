@@ -9,6 +9,8 @@ use App\Http\Controllers\LayananPageController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\pengurusController;
+use App\Http\Controllers\devisiController;
+
 
 
 
@@ -47,6 +49,7 @@ Route::get('/dashboard', function () {
  Route::resource('/service', LayananPageController::class);
  Route::post('/layanan/toggle/{id}', [LayananPageController::class, 'toggle'])->name('layanan.toggle');
  Route::resource('/Kepengurusan', pengurusController::class);
+ Route::resource('/devisi', devisiController::class);
 
 
 Route::middleware('auth')->group(function () {
