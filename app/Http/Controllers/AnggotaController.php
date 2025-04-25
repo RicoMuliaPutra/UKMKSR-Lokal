@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Anggota;
 use Carbon\Carbon;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -42,6 +41,10 @@ class AnggotaController extends Controller
             'jenis_kelamin' => 'required',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'alamat' => 'required|string',
+            'nilai_kehadiran' => 'nullable|numeric|min:0|max:100',
+            'nilai_kontribusi' => 'nullable|numeric|min:0|max:100',
+            'nilai_kompetensi' => 'nullable|numeric|min:0|max:100',
+            'nilai_etika' => 'nullable|numeric|min:0|max:100',
         ]);
 
         $imagePath = null;
@@ -62,6 +65,10 @@ class AnggotaController extends Controller
             'jenis_kelamin' => $request->input('jenis_kelamin'),
             'foto' => $imagePath,
             'alamat' => $request->input('alamat'),
+            'nilai_kehadiran' => $request->input('nilai_kehadiran', 0),
+            'nilai_kontribusi' => $request->input('nilai_kontribusi', 0),
+            'nilai_kompetensi' => $request->input('nilai_kompetensi', 0),
+            'nilai_etika' => $request->input('nilai_etika', 0),
             'created_at' => Carbon::now(),
         ]);
 
@@ -96,6 +103,10 @@ class AnggotaController extends Controller
             'status' => 'required',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'alamat' => 'required|string',
+            'nilai_kehadiran' => 'nullable|numeric|min:0|max:100',
+            'nilai_kontribusi' => 'nullable|numeric|min:0|max:100',
+            'nilai_kompetensi' => 'nullable|numeric|min:0|max:100',
+            'nilai_etika' => 'nullable|numeric|min:0|max:100',
         ]);
 
         $anggota = Anggota::findOrFail($id);
@@ -117,6 +128,10 @@ class AnggotaController extends Controller
         $anggota->jenis_kelamin = $request->input('jenis_kelamin');
         $anggota->status = $request ->input('status');
         $anggota->alamat = $request->input('alamat');
+        $anggota->nilai_kehadiran = $request->input('nilai_kehadiran');
+        $anggota->nilai_kontribusi = $request->input('nilai_kontribusi');
+        $anggota->nilai_kompetensi = $request->input('nilai_kompetensi');
+        $anggota->nilai_etika = $request->input('nilai_etika');
         $anggota->save();
 
         return redirect()->route('anggota.index')->with('success', 'Data anggota berhasil diperbarui');
@@ -174,11 +189,5 @@ class AnggotaController extends Controller
 
         return view('LandingPage.anggota', compact('dataAnggota', 'daftarAngkatan'));
     }
-
-
-
-
-
-
 
 }

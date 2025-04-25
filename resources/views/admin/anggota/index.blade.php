@@ -24,7 +24,6 @@
     <h1 class="mb-4 text-2xl font-bold">Anggota KSR</h1>
     <div class="container py-8 mx-auto">
         <div class="flex flex-col gap-4 mb-4 md:flex-row md:items-center md:justify-between">
-
             <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:space-x-2">
                 <select id="filter"
                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 sm:w-auto">
