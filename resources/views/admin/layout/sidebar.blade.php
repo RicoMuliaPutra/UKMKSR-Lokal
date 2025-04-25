@@ -50,6 +50,14 @@
                 {{ request()->is('tentang*') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Tentang</span>
         </a>
+
+        <a href="{{ route('Kepengurusan.index') }}" class="flex items-center p-2 rounded-md
+        {{ request()->is('Kepengurusan*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
+            <img src="/img/icon/pengurus.png" alt="kepengurusan Icon" class="w-6 h-6
+        {{ request()->is('Kepengurusan*') ? 'filter invert brightness-0' : '' }}">
+            <span class="ml-2 text-xs sidebar-text">Kepengurusan</span>
+        </a>
+
         <a href="{{ route('kegiatan.index') }}" class="flex items-center p-2 rounded-md
             {{ request()->is('kegiatan*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
             <img src="/img/icon/calendar.png" alt="Kegiatan Icon" class="w-6 h-6
@@ -64,18 +72,16 @@
             <span class="ml-2 text-xs sidebar-text">Layanan</span>
         </a>
 
-
-
         <a href="{{ route('blogadmin.index') }}" class="flex items-center p-2 rounded-md
             {{ request()->is('blogadmin') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
             <img src="/img/icon/writing.png" alt="Galeri Blog" class="w-6 h-6
                 {{ request()->is('blogadmin') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Blog</span>
         </a>
-        <a href="{{ route('galeri') }}" class="flex items-center p-1 rounded-md
-            {{ request()->is('galeri') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
+        <a href="{{ route('galeri.index') }}" class="flex items-center p-1 rounded-md
+            {{ request()->is('galeri*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
             <img src="/img/icon/image-galery.png" alt="Galeri Icon" class="w-7 h-7
-                {{ request()->is('galeri') ? 'filter invert brightness-0' : '' }}">
+                {{ request()->is('galeri*') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Galeri</span>
         </a>
         <p class="text-gray-600 mt-3 text-[12px] font-semibold sidebar-text">Lainnya</p>

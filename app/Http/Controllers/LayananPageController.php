@@ -14,8 +14,12 @@ class LayananPageController extends Controller
     public function layananPage(){
         $layanans = Layanan::where('status', 'aktif')->get();
         return view('LandingPage.layanan', compact('layanans'));
-
     }
+
+    // public function wellayanan(){
+    //     $layanans = Layanan::where('status', 'aktif')->get();
+    //     return view('welcome', compact('layanans'));
+    // }
 
     public function index()
     {

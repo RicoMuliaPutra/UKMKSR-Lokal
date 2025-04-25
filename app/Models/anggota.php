@@ -30,6 +30,7 @@ class Anggota extends Model
         'created_at',
     ];
 
+
     public static function getAnggotaForClusters(){
         $query = self::where('status', 'aktif')
                 ->whereNotNull('nilai_kehadiran')
@@ -39,5 +40,11 @@ class Anggota extends Model
                 ->orderBy('angkatan', 'desc');
 
         return $query->get()->toArray();
+    }
+
+    public function pengurus()
+    {
+        return $this->hasMany(Pengurus::class);
+
     }
 }

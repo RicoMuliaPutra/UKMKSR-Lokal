@@ -51,7 +51,7 @@
                             <td class="px-4 py-2 border-r">{!! Str::limit(strip_tags($blog->description), 50, '...') !!}</td>
                             <td class="px-4 py-2 text-center border-r">
                                 @if ($blog->images)
-                                    <img src="{{ asset($blog->images) }}" alt="Gambar Blog" class="object-cover w-20 h-20 rounded">
+                                    <img src="{{ asset('storage/'. $blog->images) }}" alt="Gambar Blog" class="object-cover w-20 h-20 rounded">
                                 @else
                                     <span>-</span>
                                 @endif                            </td>

@@ -14,124 +14,203 @@
         body {
             font-family: 'Poppins', sans-serif;
         }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 36px;
+            height: 20px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 14px;
+            width: 14px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #22c55e;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(16px);
+        }
     </style>
 </head>
 
-<body class="text-gray-800 bg-gray-100">
+<body class="bg-gray-100 text-gray-800">
     @extends('admin.layout.navbar')
 
     @section('content')
-    <div class="container mx-auto">
-        <h1 class="mb-4 text-2xl font-bold">Kegiatan</h1>
+    <div class="max-w-6xl mx-auto py-5 px-4">
 
-        <!-- Kegiatan Terkini (Hanya yang Aktif) -->
-        <div class="p-4 mb-4 bg-white rounded-lg shadow-md">
-            <h2 class="mb-2 text-lg font-semibold">Kegiatan Terkini</h2>
+        <!-- Judul Halaman -->
+        <div class="text-center mb-8">
+            <div class="bg-gradient-to-r from-red-600 to-red-300 text-white text-xl font-bold py-4 rounded-2xl shadow-lg">
+                Kegiatan UKM KSR
+            </div>
+        </div>
+
+        <!-- Box Layanan Terkini -->
+        <div class="bg-white shadow-xl rounded-3xl p-6 mt-10">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-lg font-semibold text-gray-700">Kegiatan Terkini</h2>
+            </div>
+
             <div class="overflow-x-auto">
-                <table class="w-full text-sm border border-collapse border-gray-300">
-                    <thead class="bg-gray-200">
+                <table class="min-w-full text-sm text-left">
+                    <thead class="bg-gray-200 text-gray-700 font-semibold">
                         <tr>
-                            <th class="p-2 border border-gray-300">No.</th>
-                            <th class="p-2 border border-gray-300">Nama Kegiatan</th>
-                            <th class="p-2 border border-gray-300">Tanggal Publikasi</th>
-                            <th class="p-2 border border-gray-300">Aksi</th>
+                            <th class="px-6 py-3">No.</th>
+                            <th class="px-6 py-3">Nama Kegiatan</th>
+                            <th class="px-6 py-3">Tanggal Publikasi</th>
+                            <th class="px-6 py-3">Aksi</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        @foreach ($kegiatan as $key => $item)
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        @forelse ($kegiatan as $key => $item)
                         @if ($item->status === 'aktif')
-                        <tr class="text-center bg-gray-50 hover:bg-gray-100">
-                            <td class="p-2 border border-gray-300">{{ $key+1 }}</td>
-                            <td class="p-2 border border-gray-300">{{ $item->nama_kegiatan }}</td>
-                            <td class="p-2 border border-gray-300">
+                        <tr class="hover:bg-gray-100 transition">
+                            <td class="px-6 py-3">{{ $key+1 }}</td>
+                            <td class="px-6 py-3">{{ $item->nama_kegiatan }}</td>
+                            <td class="px-6 py-3">
                                 {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}
                             </td>
-                            <td class="flex justify-center gap-2 p-2 border border-gray-300">
-                                <!-- Tombol Lihat -->
-                                <a href="{{ route('kegiatan.show', $item->id_kegiatan) }}" class="text-blue-500 hover:text-blue-700"><i class="fas fa-info-circle"></i></a>
+                            <td class="px-6 py-3 flex items-center space-x-3">
+                                <a href="{{ route('kegiatan.show', $item->id_kegiatan) }}" class="text-blue-500 hover:text-blue-700">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
 
-                                <!-- Tombol Edit -->
-                                <a href="{{ route('kegiatan.edit', $item->id_kegiatan) }}" class="text-yellow-500 hover:text-yellow-700"><i class="fas fa-edit"></i></a>
+                                <a href="{{ route('kegiatan.edit', $item->id_kegiatan) }}" class="text-yellow-500 hover:text-yellow-700">
+                                    <i class="fas fa-edit"></i>
+                                </a>
 
-                                <!-- Tombol Hapus -->
-                                <form action="{{ route('kegiatan.destroy', $item->id_kegiatan) }}" method="POST" style="display:inline;">
+                                <form action="{{ route('kegiatan.destroy', $item->id_kegiatan) }}" method="POST" class="inline">
                                     @csrf @method('DELETE')
-                                    <button type="submit" class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>
+                                    <button type="submit" class="text-red-500 hover:text-red-700">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
                                 </form>
 
-                                <!-- Checkbox Aktif (Tercentang) -->
                                 <form action="{{ route('kegiatan.toggle', $item->id_kegiatan) }}" method="POST">
                                     @csrf
-                                    <input type="checkbox" onchange="this.form.submit()" checked>
+                                    <label class="switch">
+                                        <input type="checkbox" checked onchange="this.form.submit()">
+                                        <span class="slider"></span>
+                                    </label>
                                 </form>
                             </td>
                         </tr>
                         @endif
-                        @endforeach
+                        @empty
+                        <tr>
+                            <td colspan="4" class="px-6 py-6 text-center text-gray-500 italic">
+                                Belum ada kegiatan terkini.
+                            </td>
+                        </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <!-- Daftar Kegiatan (Hanya yang Tidak Aktif) -->
-        <div class="p-4 bg-white rounded-lg shadow-md">
-            <div class="flex items-center justify-between mb-2">
-                <h2 class="text-lg font-semibold">Daftar Kegiatan</h2>
+        <!-- Box Daftar Kegiatan -->
+        <div class="bg-white shadow-xl rounded-3xl p-6 mt-10">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-lg font-semibold text-gray-700">Daftar Kegiatan</h2>
                 <a href="{{ route('kegiatan.create') }}"
-                    class="px-3 py-1 text-sm text-white transition bg-blue-500 rounded hover:bg-blue-600">
+                    class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full text-sm shadow-md transition">
                     + Tambah
                 </a>
             </div>
+
             <div class="overflow-x-auto">
-                <table class="w-full text-sm border border-collapse border-gray-300">
-                    <thead class="bg-gray-200">
+                <table class="min-w-full text-sm text-left">
+                    <thead class="bg-gray-200 text-gray-700 font-semibold">
                         <tr>
-                            <th class="p-2 border border-gray-300">No.</th>
-                            <th class="p-2 border border-gray-300">Nama Kegiatan</th>
-                            <th class="p-2 border border-gray-300">Tanggal Publikasi</th>
-                            <th class="p-2 border border-gray-300">Aksi</th>
+                            <th class="px-6 py-3">No.</th>
+                            <th class="px-6 py-3">Nama Layanan</th>
+                            <th class="px-6 py-3">Tanggal Publikasi</th>
+                            <th class="px-6 py-3">Aksi</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        @foreach ($daftarKegiatan as $key => $item)
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        @forelse ($daftarKegiatan as $key => $item)
                         @if ($item->status === 'tidak')
-                        <tr class="text-center bg-gray-50 hover:bg-gray-100">
-                            <td class="p-2 border border-gray-300">{{ $key+1 }}</td>
-                            <td class="p-2 border border-gray-300">{{ $item->nama_kegiatan }}</td>
-                            <td class="p-2 border border-gray-300">
+                        <tr class="hover:bg-gray-100 transition">
+                            <td class="px-6 py-3">{{ $key+1 }}</td>
+                            <td class="px-6 py-3">{{ $item->nama_kegiatan }}</td>
+                            <td class="px-6 py-3">
                                 {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}
                             </td>
-                            <td class="flex justify-center gap-2 p-2 border border-gray-300">
-                                <!-- Tombol Lihat -->
+                            <td class="px-6 py-3 flex items-center space-x-3">
                                 <a href="{{ route('kegiatan.show', $item->id_kegiatan) }}" class="text-blue-500 hover:text-blue-700"><i class="fas fa-info-circle"></i></a>
 
-                                <!-- Tombol Edit -->
                                 <a href="{{ route('kegiatan.edit', $item->id_kegiatan) }}" class="text-yellow-500 hover:text-yellow-700"><i class="fas fa-edit"></i></a>
 
-                                <!-- Tombol Hapus -->
                                 <form action="{{ route('kegiatan.destroy', $item->id_kegiatan) }}" method="POST" style="display:inline;">
                                     @csrf @method('DELETE')
                                     <button type="submit" class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>
                                 </form>
 
-                                <!-- Checkbox Tidak Aktif (Uncheck) -->
                                 <form action="{{ route('kegiatan.toggle', $item->id_kegiatan) }}" method="POST">
                                     @csrf
-                                    <input type="checkbox" onchange="this.form.submit()">
+                                    <label class="switch">
+                                        <input type="checkbox" onchange="this.form.submit()">
+                                        <span class="slider"></span>
+                                    </label>
                                 </form>
                             </td>
                         </tr>
                         @endif
-                        @endforeach
+                        @empty
+                        <tr>
+                            <td colspan="4" class="px-6 py-6 text-center text-gray-500 italic">
+                                Belum ada daftar kegiatan.
+                            </td>
+                        </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
-
         </div>
     </div>
     @endsection
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        @if(session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: '{{ session("success") }}',
+            confirmButtonText: 'OK'
+        });
+        @endif
+    </script>
 </body>
 
 </html>
-
-

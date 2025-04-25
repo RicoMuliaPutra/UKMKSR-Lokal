@@ -28,6 +28,8 @@ class DatabaseSeeder extends Seeder
             layananSeeder::class,
             KegiatanSeeder::class,
             tentangSeeder::class,
+            anggotaSeeder::class,
+            kepengurasanSeeder::class,
         ]);
     }
 }

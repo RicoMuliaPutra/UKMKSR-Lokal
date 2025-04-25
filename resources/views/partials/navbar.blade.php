@@ -37,11 +37,12 @@
                 </ul>
             </li>
             <li><a href="{{route('bloging')}}" class="font-bold hover:text-gray-300">Blog</a></li>
+            <li><a href="{{ url('login') }}" class="font-bold hover:text-gray-300">Login</a></li>
+
         </ul>
     </div>
 </nav>
 
-<!-- Sidebar (Mobile) -->
 <div id="sidebar" class="fixed top-0 right-0 z-50 w-64 h-screen text-white transition-transform transform translate-x-full bg-black shadow-lg lg:hidden">
     <div class="flex items-center justify-between p-5 border-b border-gray-700">
         <h2 class="text-lg font-bold">Menu</h2>
