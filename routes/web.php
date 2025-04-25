@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TentangController;
 use App\Http\Controllers\LayananPageController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\pengurusController;
 use App\Http\Controllers\devisiController;
@@ -37,7 +38,7 @@ Route::get('/dashboard', function () {
  Route::get('/nilai', [NavigateController::class, 'nilai'])->name('nilai');
  Route::get('/clustering', [NavigateController::class, 'clustering'])->name('clustering');
  Route::get('/kegiatan', [NavigateController::class, 'kegiatan'])->name('kegiatan');
- Route::get('/galeri', [NavigateController::class, 'galeri'])->name('galeri');
+ Route::get('/galeri', [GaleriController::class, 'index'])->name('galeri.index');
 
 
 
@@ -47,7 +48,7 @@ Route::get('/dashboard', function () {
  Route::resource('/kegiatan', KegiatanController::class);
  Route::resource('/tentang', TentangController::class);
  Route::resource('/service', LayananPageController::class);
- Route::post('/layanan/toggle/{id}', [LayananPageController::class, 'toggle'])->name('layanan.toggle');
+ Route::post('/service/toggle/{id}', [LayananPageController::class, 'toggle'])->name('service.toggle');
  Route::resource('/Kepengurusan', pengurusController::class);
  Route::resource('/devisi', devisiController::class);
 
@@ -74,22 +75,8 @@ Route::get('/Blog', [BlogController::class, 'Blogging'])->name('bloging');
 Route::get('/blog{id}', [BlogController::class, 'detail'])->name('blog.show');
 Route::get('/blog/search', [BlogController::class, 'search'])->name('blog.search');
 
-// Route::get('/kegiatan', [KegiatanController::class, 'index'])->name('kegiatan.index');
-// Route::get('/kegiatan/create', [KegiatanController::class, 'create'])->name('kegiatan.create');
-// Route::post('/kegiatan', [KegiatanController::class, 'store'])->name('kegiatan.store');
-// Route::get('/kegiatan/{id}/edit', [KegiatanController::class, 'edit'])->name('kegiatan.edit');
-// Route::put('/kegiatan/{id}', [KegiatanController::class, 'update'])->name('kegiatan.update');
-// Route::delete('/kegiatan/{id}', [KegiatanController::class, 'destroy'])->name('kegiatan.destroy');
-
 Route::post('/kegiatan/toggle/{id}', [KegiatanController::class, 'toggle'])->name('kegiatan.toggle');
 
-// Route::get('/tentang', [TentangController::class, 'index'])->name('tentang.index');
-// Route::get('/tentang/create', [TentangController::class, 'create'])->name('tentang.create');
-// Route::post('/tentang', [TentangController::class, 'store'])->name('tentang.store');
-// Route::get('/tentang/{id}', [TentangController::class, 'show'])->name('tentang.show');
-// Route::get('/tentang/{id}/edit', [TentangController::class, 'edit'])->name('tentang.edit');
-// Route::put('/tentang/{id}', [TentangController::class, 'update'])->name('tentang.update');
-// Route::delete('/tentang/{id}', [TentangController::class, 'destroy'])->name('tentang.destroy');
 
 
 
