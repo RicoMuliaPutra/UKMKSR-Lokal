@@ -22,6 +22,22 @@ class Anggota extends Model
         "jenis_kelamin",
         "foto",
         "alamat",
+        "nilai_kehadiran",
+        "nilai_kontribusi",
+        "nilai_kompetensi",
+        "nilai_etika",
+        "cluster",
         'created_at',
     ];
+
+    public static function getAnggotaForClusters(){
+        $query = self::where('status', 'aktif')
+                ->whereNotNull('nilai_kehadiran')
+                ->whereNotNull('nilai_kompetensi')
+                ->whereNotNull('nilai_kontribusi')
+                ->whereNotNull('nilai_etika')
+                ->orderBy('angkatan', 'desc');
+
+        return $query->get()->toArray();
+    }
 }

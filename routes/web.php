@@ -8,10 +8,8 @@ use App\Http\Controllers\TentangController;
 use App\Http\Controllers\LayananPageController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\AnggotaController;
-
-
-
-
+use App\Http\Controllers\ClusteringController;
+use Faker\Guesser\Name;
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,7 +29,6 @@ Route::get('/dashboard', function () {
 
  Route::get('/akun', [NavigateController::class, 'akun'])->middleware(['auth', 'verified'])->name('akun');
  Route::get('/nilai', [NavigateController::class, 'nilai'])->name('nilai');
- Route::get('/clustering', [NavigateController::class, 'clustering'])->name('clustering');
  Route::get('/kegiatan', [NavigateController::class, 'kegiatan'])->name('kegiatan');
  Route::get('/galeri', [NavigateController::class, 'galeri'])->name('galeri');
 
@@ -40,6 +37,8 @@ Route::get('/dashboard', function () {
  Route::resource('/blogadmin', BlogController::class);
  Route::resource('anggota', AnggotaController::class)->except(['show']);
  Route::get('/anggota/search', [AnggotaController::class, 'search'])->name('anggota.search');
+ Route::resource('clustering', ClusteringController::class);
+ Route::get('/cluster', [ClusteringController::class, 'cluster']);
  Route::resource('/kegiatan', KegiatanController::class);
  Route::resource('/tentang', TentangController::class);
  Route::resource('/service', LayananPageController::class);

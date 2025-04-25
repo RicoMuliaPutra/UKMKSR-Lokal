@@ -17,10 +17,10 @@ class NavigateController extends Controller
         return view('admin.nilai');
     }
 
-    public function clustering()
-    {
-        return view('admin.clustering');
-    }
+    // public function clustering()
+    // {
+    //     return view('admin.clustering.index');
+    // }
 
     public function tentang()
     {
