@@ -31,20 +31,18 @@
          {{ request()->is('anggota*') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Anggota</span>
         </a>
-        <p class="text-gray-600 mt-3 text-[12px] font-semibold sidebar-text">Rekrutmen</p>
         <a href="{{ route('nilai') }}" class="flex items-center p-1 rounded-md
             {{ request()->is('nilai') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
             <img src="/img/icon/add.png" alt="Nilai Anggota Baru Icon" class="h-7 w-7
                 {{ request()->is('nilai') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Nilai Anggota Baru</span>
         </a>
-        <a href="{{ route('clustering') }}" class="flex items-center p-2 rounded-md
-            {{ request()->is('clustering') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
+        <a href="{{ route('clustering.index') }}" class="flex items-center p-2 rounded-md
+        {{ request()->is('clustering*') || request()->is('cluster*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
             <img src="/img/icon/network.png" alt="Clustering Icon" class="w-6 h-6
-                {{ request()->is('clustering') ? 'filter invert brightness-0' : '' }}">
+        {{ request()->is('clustering*') || request()->is('cluster*') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Clustering</span>
         </a>
-
         <p class="text-gray-600 mt-3 text-[12px] font-semibold sidebar-text">Landing Page</p>
         <a href="{{ route('tentang.index') }}" class="flex items-center p-2 rounded-md
             {{ request()->is('tentang*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
@@ -80,14 +78,13 @@
                 {{ request()->is('blogadmin') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Blog</span>
         </a>
-
         <a href="{{ route('galeri.index') }}" class="flex items-center p-1 rounded-md
             {{ request()->is('galeri*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
             <img src="/img/icon/image-galery.png" alt="Galeri Icon" class="w-7 h-7
                 {{ request()->is('galeri*') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Galeri</span>
         </a>
-
+        <p class="text-gray-600 mt-3 text-[12px] font-semibold sidebar-text">Lainnya</p>
         <form method="POST" action="{{ route('logout') }}" class="mt-6">
             @csrf
             <button type="submit" class="flex items-center w-full p-2 text-red-500 rounded-md hover:bg-gray-100">
