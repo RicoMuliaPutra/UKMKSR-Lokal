@@ -42,7 +42,7 @@
         <section class="p-6 bg-white rounded-lg">
             <section  class="p-6 bg-white rounded-lg">
             <h2 class="mb-4 text-3xl font-bold text-center">KAMI ADALAH ORGANISASI UKM KSR POLIJE.</h2>
-            <p class="text-center text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p class="text-center text-gray-700">KSR PMI Unit POLIJE merupakan salah satu UKM di Politeknik Negeri Jember yang bergerak di bidang kemanusiaan dan kepalangmerahan.</p>
             <div class="mt-4 text-center p-9">
                 <a href=""
                    class="px-6 py-3 font-bold text-gray-700 transition bg-transparent border-2 border-gray-400 rounded-lg hover:border-sky-400 hover:text-sky-400">

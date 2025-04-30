@@ -125,4 +125,26 @@ class KegiatanController extends Controller
 
         return back()->with('success', 'Status kegiatan berhasil diperbarui.');
     }
+
+    public function viewPage(){
+        return view ('LandingPage.kegiatan');
+    }
+
+    public function getKegiatan()
+    {
+        $kegiatan = Kegiatan::where('status', 'aktif')->get();
+
+        $events = [];
+
+        foreach ($kegiatan as $item) {
+            $events[] = [
+                'title' => $item->nama_kegiatan,
+                'start' => $item->start_kegiatan,
+                'end' => $item->end_kegiatan,
+                'description' => $item->deskripsi_kegiatan
+            ];
+        }
+
+        return response()->json($events);
+    }
 }

@@ -15,7 +15,7 @@
                     <li><a href="{{route('sejarah')}}" class="block px-4 py-2 hover:bg-gray-200">Sejarah</a></li>
                     <li><a href="{{route('visimisi')}}" class="block px-4 py-2 hover:bg-gray-200">Visi Misi</a></li>
                     <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Program Kerja</a></li>
-                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Kepengurusan</a></li>
+                    <li><a href="{{route('struktur')}}" class="block px-4 py-2 hover:bg-gray-200">Kepengurusan</a></li>
                     <li><a href="{{route('lambang')}}" class="block px-4 py-2 hover:bg-gray-200">Lambang PMI</a></li>
                     <li><a href="{{route('dataAnggota')}}" class="block px-4 py-2 hover:bg-gray-200">Anggota </a></li>
 
@@ -27,14 +27,14 @@
             </li>
 
             <li class="relative group">
-                <a href="#" class="font-bold hover:text-gray-300">Kegiatan</a>
-                <ul class="absolute left-0 hidden w-40 text-gray-700 bg-white shadow-lg group-hover:block">
+                <a href="{{ route('aktifitas') }}" class="font-bold hover:text-gray-300">Kegiatan</a>
+                {{-- <ul class="absolute left-0 hidden w-40 text-gray-700 bg-white shadow-lg group-hover:block">
                     <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Donor Darah</a></li>
                     <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Bakti Sosial</a></li>
                     <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Dies Natalis</a></li>
                     <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Diklatsar dan Pelantikan Anggota</a></li>
                     <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Rencana Kerja Tindak Lanjut</a></li>
-                </ul>
+                </ul> --}}
             </li>
             <li><a href="{{route('bloging')}}" class="font-bold hover:text-gray-300">Blog</a></li>
             <li><a href="{{ url('login') }}" class="font-bold hover:text-gray-300">Login</a></li>
@@ -60,9 +60,9 @@
             </button>
             <ul class="hidden pl-4 space-y-2 overflow-hidden transition-all duration-300 ease-in-out opacity-0 max-h-0 dropdown-content">
                 <li><a href="{{route('sejarah')}}" class="block hover:text-gray-300">Sejarah</a></li>
-                <li><a href="#" class="block hover:text-gray-300">Visi Misi</a></li>
+                <li><a href="{{route('visimisi')}}" class="block hover:text-gray-300">Visi Misi</a></li>
                 <li><a href="#" class="block hover:text-gray-300">Program Kerja</a></li>
-                <li><a href="#" class="block hover:text-gray-300">Kepengurusan</a></li>
+                <li><a href="{{route('struktur')}}" class="block hover:text-gray-300">Kepengurusan</a></li>
                 <li><a href="{{route('dataAnggota')}}" class="block hover:text-gray-300">Anggota</a></li>
                 <li><a href="{{route('lambang')}}" class="block hover:text-gray-300">Lambang PMI</a></li>
             </ul>

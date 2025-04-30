@@ -19,7 +19,7 @@ class Pengurus extends Model
 
     public function periode()
     {
-        return $this->belongsTo(PeriodeKepengurusan::class);
+        return $this->belongsTo(PeriodeKepengurusan::class, 'periode_id');
     }
 
     public function jabatan()

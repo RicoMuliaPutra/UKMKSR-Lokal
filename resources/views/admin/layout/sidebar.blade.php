@@ -18,12 +18,12 @@
                 {{ request()->is('dashboard') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs font-medium sidebar-text">Beranda</span>
         </a>
-        <a href="{{ route('akun') }}" class="flex items-center p-2 rounded-md
+        {{-- <a href="{{ route('akun') }}" class="flex items-center p-2 rounded-md
             {{ request()->is('akun') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
             <img src="/img/icon/user.png" alt="Akun Icon" class="w-6 h-6
                 {{ request()->is('akun') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Akun</span>
-        </a>
+        </a> --}}
 
         <a href="{{ route('anggota.index') }}" class="flex items-center p-3 rounded-md
          {{ request()->is('anggota*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">

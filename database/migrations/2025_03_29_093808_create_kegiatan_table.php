@@ -13,6 +13,8 @@ return new class extends Migration {
             $table->string('foto_kegiatan')->nullable();
             $table->string('poster_kegiatan')->nullable();
             $table->enum('status', ['aktif', 'tidak'])->default('tidak');
+            $table->date('start_kegiatan')->nullable();
+            $table->date('end_kegiatan')->nullable();
             $table->timestamps();
         });
     }

@@ -18,8 +18,8 @@
             <div class="container max-w-5xl mx-auto">
 
                 <div class="mb-10 text-center">
-                    <h1 class="text-5xl font-bold leading-tight text-gray-800">Blogging</h1>
-                    <div class="w-64 h-1 mx-auto mt-4 bg-red-600 rounded-t bg-gradient-to-r from-orange-500 opacity-60"></div>
+                    <h1 class="text-3xl font-bold leading-tight text-gray-800">Blogging</h1>
+                    <div class="w-64 h-1 mx-auto mt-4 bg-red-600 rounded-t "></div>
                 </div>
 
                 <form action="{{ route('blog.search') }}" method="GET" class="flex items-start justify-start mb-8">
