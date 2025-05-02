@@ -31,11 +31,11 @@
          {{ request()->is('anggota*') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Anggota</span>
         </a>
-        <a href="{{ route('nilai') }}" class="flex items-center p-1 rounded-md
-            {{ request()->is('nilai') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
+        <a href="{{ route('nilai.index') }}" class="flex items-center p-1 rounded-md
+            {{ request()->is('nilai*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
             <img src="/img/icon/add.png" alt="Nilai Anggota Baru Icon" class="h-7 w-7
-                {{ request()->is('nilai') ? 'filter invert brightness-0' : '' }}">
-            <span class="ml-2 text-xs sidebar-text">Nilai Anggota Baru</span>
+                {{ request()->is('nilai*') ? 'filter invert brightness-0' : '' }}">
+            <span class="ml-2 text-xs sidebar-text">Data Nilai Anggota</span>
         </a>
         <a href="{{ route('clustering.index') }}" class="flex items-center p-2 rounded-md
         {{ request()->is('clustering*') || request()->is('cluster*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">

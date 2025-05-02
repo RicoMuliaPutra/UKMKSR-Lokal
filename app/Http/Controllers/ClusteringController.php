@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Anggota;
+use App\Models\DataNilai;
 use Illuminate\Support\Facades\Http;
 
 class ClusteringController extends Controller
@@ -13,10 +14,12 @@ class ClusteringController extends Controller
      */
     public function index()
     {
-        $query = Anggota::where('status', 'aktif')->orderBy('angkatan', 'desc');
-        $anggotas = $query->orderBy('angkatan', 'desc')->get();
-        $title = 'Cluster';
-        return view('admin.clustering.index', compact('anggotas', 'title'));
+        $anggotas = DataNilai::getDataNilai();
+
+        return view('admin.clustering.index', [
+            'title'=>'Cluster',
+            'anggotas'=> $anggotas
+        ]);
     }
 
     /**
@@ -68,15 +71,18 @@ class ClusteringController extends Controller
     }
 
     public function cluster(){
-        $anggota = Anggota::getAnggotaForClusters();
+        $anggota = DataNilai::getAnggotaForClusters();
         $response = Http::post('http://127.0.0.1:5000/cluster', $anggota);
     
+        if ($response->failed()) {
+            dd('Error connecting to Python server', $response->body());
+        }
         $clusterData = $response->json();
     
         if (is_array($clusterData)) {
             foreach ($clusterData as $data) {
-                if (isset($data['id'], $data['cluster'])) {
-                    Anggota::where('id', $data['id'])->update([
+                if (isset($data['anggota_id'], $data['cluster'])) {
+                    DataNilai::where('anggota_id', $data['anggota_id'])->update([
                         'cluster' => $data['cluster']
                     ]);
                 }
@@ -85,7 +91,7 @@ class ClusteringController extends Controller
             dd('Data dari server tidak valid:', $response->body());
         }
     
-        $anggotas = Anggota::whereNotNull('cluster')->orderby('cluster', 'asc' )->get();
+        $anggotas = DataNilai::whereNotNull('cluster')->orderby('cluster', 'asc' )->get();
 
         $title = 'Cluster';
     
