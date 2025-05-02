@@ -23,7 +23,7 @@
   "dependencies": {
     "fullcalendar": "^6.1.17",
     "summernote": "^0.9.1",
-    "sweetalert2": "^11.6.13"
+    "sweetalert2": "^11.19.1"
   },
   "name": "ukmksr-website",
   "description": "<p align=\"center\"><a href=\"https://laravel.com\" target=\"_blank\"><img src=\"https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg\" width=\"400\" alt=\"Laravel Logo\"></a></p>",

@@ -161,50 +161,6 @@
                     class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     accept="image/*">
             </div>
-            <div class="flex flex-col space-y-2">
-                <label for="nilai_kehadiran" class="font-medium text-gray-700">Nilai Kehadiran</label>
-                <input
-                    type="number"
-                    id="nilai_kehadiran"
-                    name="nilai_kehadiran"
-                    value="{{$anggota->nilai_kehadiran}}"
-                    min="0"
-                    max="100"
-                    class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-            </div>
-            <div class="flex flex-col space-y-2">
-                <label for="nilai_kontribusi" class="font-medium text-gray-700">Nilai Kontribusi</label>
-                <input
-                    type="number"
-                    id="nilai_kontribusi"
-                    name="nilai_kontribusi"
-                    value="{{$anggota->nilai_kontribusi}}"
-                    min="0"
-                    max="100"
-                    class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-            </div>
-            <div class="flex flex-col space-y-2">
-                <label for="nilai_kompetensi" class="font-medium text-gray-700">Nilai Kompetensi</label>
-                <input
-                    type="number"
-                    id="nilai_kompetensi"
-                    name="nilai_kompetensi"
-                    value="{{$anggota->nilai_kompetensi}}"
-                    min="0"
-                    max="100"
-                    class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-            </div>
-            <div class="flex flex-col space-y-2">
-                <label for="nilai_etika" class="font-medium text-gray-700">Nilai Etika</label>
-                <input
-                    type="number"
-                    id="nilai_etika"
-                    name="nilai_etika"
-                    value="{{$anggota->nilai_etika}}"
-                    min="0"
-                    max="100"
-                    class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-            </div>
             <div class="flex justify-end">
                 <button type="submit" class="px-6 py-3 text-white bg-green-500 rounded-md hover:bg-green-600">
                     Simpan
@@ -225,8 +181,6 @@
                 confirmButtonText: 'OK'
             });
         @endif
-
-
     </script>
     @endpush
     @push('scripts')
@@ -248,8 +202,6 @@
         });
     </script>
 @endpush
-
-
 
 </body>
 </html>
