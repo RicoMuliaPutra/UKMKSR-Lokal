@@ -12,6 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2" defer></script>
+
 
     <style>
         body {
@@ -28,30 +30,14 @@
     <h1 class="mb-10 text-2xl font-bold">Struktur Kepengurusan</h1>
     <div class="flex flex-col gap-4 mb-4 md:flex-row md:items-center md:justify-between">
         <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:space-x-2">
-            <form action="" method="GET" class="flex flex-col w-full gap-2 sm:flex-row sm:items-center">
-                <input type="hidden" name="angkatan" value="">
-                <input type="text" name="query" placeholder="Cari Pengurus..."
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 sm:w-auto"
-                    value="">
 
-                <button type="submit"
-                    class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-5 py-2.5 w-full sm:w-auto">
-                    Cari
-                </button>
-            </form>
-
-
-            <script>
-                document.getElementById('filter').addEventListener('change', function () {
-                    let filterValue = this.value;
-                    window.location.href = `?angkatan=${filterValue}`;
-                });
-            </script>
         </div>
-
         <!-- Tombol Dropdown -->
-        <div x-data="{ openModal: false }">
+        <div x-data="{ openModal: false ,  openDivisi: false, openJabatan: false, openPeriode: false}">
             @include('admin.kepengurusan.create')
+            @include('admin.devisi.create')
+            @include('admin.pengurus_jabatan.create_Jabatan')
+            @include('admin.pengurus_jabatan.create_priode')
 
             <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
                 class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
@@ -67,18 +53,26 @@
                 <a href="#" @click.prevent="openModal = true"
                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-red-500 dark:hover:text-white">Pengurus</a>
             </li>
+ 
             <li>
-                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-red-500 dark:hover:text-white">Program Kerja</a>
+                <a href="#" @click.prevent="openDivisi = true"
+                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-red-500 dark:hover:text-white">Divisi</a>
             </li>
+
             <li>
-                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-red-500 dark:hover:text-white">Divisi</a>
+                <a href="#" @click.prevent="openJabatan = true"
+                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-red-500 dark:hover:text-white">Jabatan</a>
             </li>
+
+            <li>
+                <a href="#" @click.prevent="openPeriode = true"
+                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-red-500 dark:hover:text-white">Periode Kepengurusan</a>
+            </li>
+
         </ul>
     </div>
     </div>
     </div>
-
-
 
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table class="w-full text-sm text-left text-black rtl:text-right">
@@ -93,14 +87,30 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($pengurus as $index => $item)
-                    <tr>
-                        <td class="px-6 py-3">{{ $index + 1 }}</td>
-                        <td class="px-6 py-3">{{ $item->anggota->nama }}</td>
-                        <td class="px-6 py-3">{{ $item->jabatan->divisi->nama_divisi }}</td>
-                        <td class="px-6 py-3">{{ $item->jabatan->nama_jabatan }}</td>
-                        <td class="px-6 py-3">{{ $item->periode->nama_periode }}</td>
-                        <td class="px-6 py-3">Aksi</td>
+                    @foreach($pengurus as $index => $item)
+                        <tr>
+                            <td class="px-6 py-3">{{ $index + 1 }}</td>
+                            <td class="px-6 py-3">{{ $item->anggota->nama }}</td>
+                            <td class="px-6 py-3">{{ $item->jabatan->divisi->nama_divisi }}</td>
+                            <td class="px-6 py-3">{{ $item->jabatan->nama_jabatan }}</td>
+                            <td class="px-6 py-3">{{ $item->periode->nama_periode }}</td>
+                            <td class="flex items-center px-6 py-3 space-x-3" x-data="{ openModal: false, detailUrl: '' }">
+                                <a href="{{route('Kepengurusan.show', $item->id)}}" class="text-blue-500 hover:text-blue-700">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
+                            <div x-data="{ openModal: false }">
+                                <a href="{{route('Kepengurusan.edit', $item->id)}}" class="text-yellow-500 hover:text-yellow-700">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            </div>
+                            <form action="{{route('Kepengurusan.destroy', $item->id)}}" method="POST" class="inline">
+                                @csrf @method('DELETE')
+                                <button type="submit" class="text-red-500 hover:text-red-700">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </form>
+
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
@@ -108,13 +118,12 @@
     </div>
 
 
-
-
     </div>
 
     @endsection
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 
     <script>
         @if (session('success'))

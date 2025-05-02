@@ -12,6 +12,8 @@ use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\ClusteringController;
 use App\Http\Controllers\pengurusController;
 use App\Http\Controllers\devisiController;
+use App\Http\Controllers\ProgramKerjaController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -47,6 +49,10 @@ Route::get('/dashboard', function () {
  Route::post('/service/toggle/{id}', [LayananPageController::class, 'toggle'])->name('service.toggle');
  Route::resource('/Kepengurusan', pengurusController::class);
  Route::resource('/devisi', devisiController::class);
+ Route::post('/jabatan_create', [devisiController::class, 'storeJabatan'])->name('jabatan.store');
+ Route::post('/Periode_create', [devisiController::class, 'storePeriode'])->name('Periode.store');
+ Route::resource('/Program_kerja', ProgramKerjaController::class);
+
 
 
 Route::middleware('auth')->group(function () {

@@ -69,11 +69,7 @@
         </li>
 
         <li>
-            <button class="flex items-center justify-between w-full text-left hover:text-gray-300 dropdown-btn">LAYANAN
-                <svg class="w-4 h-4 ml-2 transition-transform duration-300 ease-in-out dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-            </button>
+            <a href="{{route('layananksr')}}" class="block hover:text-gray-300">LAYANAN</a>
         </li>
         <li>
             <button class="flex items-center justify-between w-full text-left hover:text-gray-300 dropdown-btn">

@@ -58,6 +58,14 @@
             <span class="ml-2 text-xs sidebar-text">Kepengurusan</span>
         </a>
 
+        <a href="{{ route('Program_kerja.index') }}" class="flex items-center p-2 rounded-md
+        {{ request()->is('Program_kerja*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
+            <img src="/img/icon/program.png" alt="program Icon" class="w-6 h-6
+        {{ request()->is('Program_kerja*') ? 'filter invert brightness-0' : '' }}">
+            <span class="ml-2 text-xs sidebar-text">Program Kerja</span>
+        </a>
+
+
         <a href="{{ route('kegiatan.index') }}" class="flex items-center p-2 rounded-md
             {{ request()->is('kegiatan*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
             <img src="/img/icon/calendar.png" alt="Kegiatan Icon" class="w-6 h-6
