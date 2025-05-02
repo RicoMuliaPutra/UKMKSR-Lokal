@@ -23,11 +23,6 @@ return new class extends Migration
         $table->enum('status', ['Aktif', 'Tidak Aktif', 'Inaktif']);
         $table->year('tahun_masuk_kuliah')->nullable();
         $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
-        $table->integer('nilai_kehadiran')->nullable()->default(0);
-        $table->integer('nilai_kompetensi')->nullable()->default(0);
-        $table->integer('nilai_kontribusi')->nullable()->default(0);
-        $table->integer('nilai_etika')->nullable()->default(0);
-        $table->integer('cluster')->nullable();
         $table->timestamps();
     });
 }

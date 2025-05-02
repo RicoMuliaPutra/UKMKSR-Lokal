@@ -50,11 +50,11 @@
             <tbody>
                 @foreach ($anggotas as $anggota)
                     <tr class="border-b hover:bg-gray-50">
-                        <td class="px-4 py-2 border-r">{{ $anggota->nim }}</td>
-                        <td class="px-4 py-2 border-r">{{ $anggota->nama }}</td>
-                        <td class="px-4 py-2 border-r">{{ $anggota->angkatan }}</td>
-                        <td class="px-4 py-2 border-r">{{ $anggota->jenis_kelamin }}</td>
-                        <td class="px-4 py-2 border-r">{{ $anggota->prodi }}</td>
+                        <td class="px-4 py-2 border-r">{{ $anggota->anggota->nim }}</td>
+                        <td class="px-4 py-2 border-r">{{ $anggota->anggota->nama }}</td>
+                        <td class="px-4 py-2 border-r">{{ $anggota->anggota->angkatan }}</td>
+                        <td class="px-4 py-2 border-r">{{ $anggota->anggota->jenis_kelamin }}</td>
+                        <td class="px-4 py-2 border-r">{{ $anggota->anggota->prodi }}</td>
                         <td class="px-4 py-2 border-r">{{ $anggota->nilai_kehadiran }}</td>
                         <td class="px-4 py-2 border-r">{{ $anggota->nilai_kontribusi }}</td>
                         <td class="px-4 py-2 border-r">{{ $anggota->nilai_kompetensi }}</td>

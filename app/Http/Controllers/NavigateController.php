@@ -12,10 +12,10 @@ class NavigateController extends Controller
     }
 
 
-    public function nilai()
-    {
-        return view('admin.nilai');
-    }
+    // public function nilai()
+    // {
+    //     return view('admin.data_nilai.index');
+    // }
 
     // public function clustering()
     // {
