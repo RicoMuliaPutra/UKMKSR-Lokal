@@ -16,16 +16,4 @@ class PeriodeKepengurusan extends Model
     {
         return $this->hasMany(Pengurus::class, 'periode_id');
     }
-
-
-
-    // public function pengurus()
-    // {
-    //     return $this->hasMany(Pengurus::class);
-    // }
-
-    // public function programKerjas()
-    // {
-    //     return $this->hasMany(ProgramKerja::class);
-    // }
 }

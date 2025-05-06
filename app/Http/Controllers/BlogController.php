@@ -20,13 +20,14 @@ class BlogController extends Controller
 
     /// function blog landing page///
     public function blogging() {
-        $data = Blog::latest()->get()->map(function ($blog) {
-            $blog->description = strip_tags($blog->description);
-            $blog->description = Str::limit($blog->description, 100, '...');
+        $data = Blog::latest()
+        ->paginate(6)
+        ->through(function ($blog) {
+            $blog->description = Str::limit(strip_tags($blog->description), 100, '...');
             return $blog;
         });
 
-        return view('LandingPage.BlogPage', compact('data'));
+    return view('LandingPage.BlogPage', compact('data'));
     }
 
     public function edit ($id){
@@ -80,7 +81,6 @@ class BlogController extends Controller
         'created_at' => Carbon::createFromFormat('Y-m-d', $request->input('tanggal')),
     ]);
 
-
     return redirect()->route('blogadmin.index')->with('success', 'Blog berhasil ditambahkan!');
 }
 
@@ -112,5 +112,10 @@ class BlogController extends Controller
         return view('LandingPage.BlogPage', compact('data'));
     }
 
+    public function show($id){
+        $blog =Blog::findOrFail($id);
+        $blog->description = html_entity_decode($blog->description);
+        return view('admin.blog.detail', compact('blog'));
+    }
 
 }

@@ -31,6 +31,7 @@ Route::get('/dashboard', function () {
 
 
  Route::resource('/blogadmin', BlogController::class);
+//  Route::get('/blogadmin/{id}', [BlogController::class, 'showAdminBlog'])->name('blogadmin.show');
  Route::resource('anggota', AnggotaController::class)->except(['show']);
  Route::get('/anggota/search', [AnggotaController::class, 'search'])->name('anggota.search');
  Route::resource('nilai', DataNilaiController::class);
@@ -69,7 +70,7 @@ Route::get('/DataAnggota/search', [AnggotaController::class, 'cari'])->name('ang
 
 
 Route::get('/Blog', [BlogController::class, 'Blogging'])->name('bloging');
-Route::get('/blog{id}', [BlogController::class, 'detail'])->name('blog.show');
+Route::get('/blog{id}', [BlogController::class, 'detail'])->name('blog.detail');
 Route::get('/blog/search', [BlogController::class, 'search'])->name('blog.search');
 
 Route::post('/kegiatan/toggle/{id}', [KegiatanController::class, 'toggle'])->name('kegiatan.toggle');

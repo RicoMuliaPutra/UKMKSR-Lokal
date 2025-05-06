@@ -28,14 +28,6 @@ return new class extends Migration {
             $table->timestamps();
         });
 
-        Schema::create('program_kerja', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_program');
-            $table->text('deskripsi')->nullable();
-            $table->foreignId('jabatan_id')->constrained('jabatan')->onDelete('cascade');
-            $table->timestamps();
-        });
-
         Schema::create('pengurus', function (Blueprint $table) {
             $table->id();
             $table->foreignId('anggota_id')->constrained('anggota')->onDelete('cascade');
@@ -44,13 +36,22 @@ return new class extends Migration {
             $table->timestamps();
         });
 
-        Schema::create('pengurus_program_kerja', function (Blueprint $table) {
+        Schema::create('program_kerja', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pengurus_id')->constrained('pengurus')->onDelete('cascade');
-            $table->foreignId('program_kerja_id')->constrained('program_kerja')->onDelete('cascade');
+            $table->string('nama_program');
+            $table->text('deskripsi')->nullable();
+            $table->foreignId('jabatan_id')->constrained('jabatan')->onDelete('cascade');
+            // $table->foreignId('pengurus_id')->constrained('pengurus')->onDelete('cascade'); // relasi langsung ke pengurus
             $table->timestamps();
         });
 
+        // Hapus tabel pivot karena tidak diperlukan
+        // Schema::create('pengurus_program_kerja', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->foreignId('pengurus_id')->constrained('pengurus')->onDelete('cascade');
+        //     $table->foreignId('program_kerja_id')->constrained('program_kerja')->onDelete('cascade');
+        //     $table->timestamps();
+        // });
     }
 
     public function down(): void

@@ -7,14 +7,19 @@ use App\Models\Anggota;
 use App\Models\PeriodeKepengurusan;
 use App\Models\Jabatan;
 use App\Models\Divisi;
+use App\Models\ProgramKerja;
 use Illuminate\Http\Request;
 
 class ProgramKerjaController extends Controller
 {
-    public function index(){
-        // $jabatan = Jabatan::all();
-        return view('admin.program_kerja.index');
+    public function index() {
+        $jabatans = Jabatan::has('programKerja')
+            ->with(['programKerja', 'pengurus.anggota'])
+            ->get();
+
+        return view('admin.program_kerja.index', compact('jabatans'));
     }
+
 
     public function create(){
         $pengurus = Pengurus::with(['anggota', 'jabatan'])->get();
@@ -22,9 +27,7 @@ class ProgramKerjaController extends Controller
     }
 
 
-
-public function store(Request $request)
-{
+    public function store(Request $request) {
     $request->validate([
         'nama_program' => 'required|string|max:255',
         'deskripsi' => 'nullable|string',
@@ -36,7 +39,7 @@ public function store(Request $request)
         'deskripsi' => $request->deskripsi,
         'jabatan_id' => $request->jabatan_id,
     ]);
+    return redirect()->route('Program_kerja.index')->with('success', 'Program kerja berhasil ditambahkan.');
 
-    return redirect()->back()->with('success', 'Program kerja berhasil ditambahkan.');
-}
+    }
 }

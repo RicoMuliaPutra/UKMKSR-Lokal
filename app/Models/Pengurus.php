@@ -27,13 +27,10 @@ class Pengurus extends Model
         return $this->belongsTo(Jabatan::class);
     }
 
-    public function pengurusProgramKerjas()
-    {
-        return $this->hasMany(PengurusProgramKerja::class);
-    }
-
+    // Relasi ke ProgramKerja (pengurus memiliki banyak program kerja)
     public function programKerjas()
     {
-        return $this->belongsToMany(ProgramKerja::class, 'pengurus_program_kerja');
+        return $this->hasManyThrough(ProgramKerja::class, Jabatan::class, 'id', 'jabatan_id', 'jabatan_id', 'id');
     }
+
 }

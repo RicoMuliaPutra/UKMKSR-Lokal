@@ -30,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
 
             $view->with('layanans', $layanans);
             $view->with('blogs', $blogs);
+            Paginator::useTailwind();
         });
 
     }
