@@ -220,7 +220,6 @@ class kepengurasanSeeder extends Seeder
             'jabatan_id' => $jabatan->id
         ]);
 
-        // 6. Buat program kerja di jabatan yang dibuat
         $programs = [
             'Pengarsipan Digital',
             'Pendidikan Karakter',
@@ -233,17 +232,8 @@ class kepengurasanSeeder extends Seeder
             $programKerjas[] = ProgramKerja::create([
                 'nama_program' => $prog,
                 'deskripsi' => 'Deskripsi untuk ' . $prog,
-                'jabatan_id' => $jabatan->id
-            ]);
-        }
-
-        // 7. Relasikan pengurus ke 3 program kerja (random)
-        $randomProgramKerjas = collect($programKerjas)->random(3);
-
-        foreach ($randomProgramKerjas as $proker) {
-            PengurusProgramKerja::create([
-                'pengurus_id' => $pengurus->id,
-                'program_kerja_id' => $proker->id,
+                'jabatan_id' => $jabatan->id,
+                // 'pengurus_id' => $pengurus->id
             ]);
         }
     }

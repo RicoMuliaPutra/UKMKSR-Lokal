@@ -18,7 +18,7 @@
             <div class="container mx-auto max-w-9xl">
 
                 <div class="mb-10 text-center">
-                    <h1 class="text-5xl font-bold leading-tight text-gray-800">Anggota</h1>
+                    <h1 class="text-3xl font-bold leading-tight text-gray-800">Anggota</h1>
                     <div class="w-64 h-1 mx-auto mt-4 bg-red-600 rounded-t bg-gradient-to-r from-orange-500 opacity-60"></div>
                 </div>
 

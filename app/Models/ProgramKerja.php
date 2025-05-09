@@ -10,21 +10,15 @@ class ProgramKerja extends Model
     use HasFactory;
     protected $table = 'program_kerja';
 
-    protected $fillable = ['nama_program', 'deskripsi', 'jabatan_id'];
+    protected $fillable = ['nama_program', 'deskripsi', 'jabatan_id', 'pengurus_id'];
 
     public function jabatan()
     {
         return $this->belongsTo(Jabatan::class);
     }
-
-    public function pengurusProgramKerja()
-    {
-        return $this->hasMany(PengurusProgramKerja::class);
-    }
-
     public function pengurus()
     {
-        return $this->belongsToMany(Pengurus::class, 'pengurus_program_kerja');
+        return $this->belongsTo(Pengurus::class);
     }
 }
 

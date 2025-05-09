@@ -17,11 +17,13 @@
         <section class="px-8 py-1 bg-white border-b fade-in">
             <div class="container max-w-5xl mx-auto">
 
+                <!-- Heading -->
                 <div class="mb-10 text-center">
                     <h1 class="text-3xl font-bold leading-tight text-gray-800">Blogging</h1>
-                    <div class="w-64 h-1 mx-auto mt-4 bg-red-600 rounded-t "></div>
+                    <div class="w-64 h-1 mx-auto mt-4 bg-red-600 rounded-t"></div>
                 </div>
 
+                <!-- Search Form -->
                 <form action="{{ route('blog.search') }}" method="GET" class="flex items-start justify-start mb-8">
                     <input
                         type="text"
@@ -39,9 +41,10 @@
                     </button>
                 </form>
 
+                <!-- Blog Cards -->
                 <div class="grid gap-8 pb-8 mt-12 sm:grid-cols-2 lg:grid-cols-3">
                     @foreach($data as $blog)
-                    <div class="transition-shadow duration-300 bg-white border border-gray-200 rounded-lg shadow-lg hover:shadow-xl">
+                    <div class="transition-all duration-1000 delay-200 translate-y-10 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 scroll-animate hover:shadow-xl">
                         <img src="{{ asset('storage/'. $blog->images) }}" alt="{{ $blog->title }}" class="object-cover w-full h-48">
                         <div class="relative p-6">
                             <p class="mb-2 text-xl font-bold text-black">
@@ -51,19 +54,42 @@
                                 {!! $blog->description !!}
                             </p>
                             <div class="mt-4 text-center p-9">
-                                <a href="{{ route('blog.show', $blog->id) }}"
-                                    class="px-6 py-3 font-bold text-red-500 transition bg-transparent border-2 border-red-600 rounded-lg hover:bg-red-600 hover:text-white">
-                                     LEARN MORE
-                                 </a>
+                                <a href="{{ route('blog.detail', $blog->id) }}"
+                                   class="px-6 py-3 font-bold text-red-500 transition bg-transparent border-2 border-red-600 rounded-lg hover:bg-red-600 hover:text-white">
+                                    LEARN MORE
+                                </a>
                             </div>
                         </div>
                     </div>
                     @endforeach
                 </div>
+
+                <!-- Pagination -->
+                <div class="mt-6">
+                    {{ $data->links('vendor.pagination.custom') }}
+                </div>
+
+
             </div>
         </section>
     </main>
     @include('partials.footer')
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const elements = document.querySelectorAll('.scroll-animate');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        observer.unobserve(entry.target); // agar hanya animasi sekali
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            elements.forEach(el => observer.observe(el));
+        });
+    </script>
 </body>
 </html>
 

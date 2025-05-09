@@ -48,7 +48,6 @@
                     </button>
                 </form>
 
-
                 <script>
                     document.getElementById('filter').addEventListener('change', function () {
                         let filterValue = this.value;

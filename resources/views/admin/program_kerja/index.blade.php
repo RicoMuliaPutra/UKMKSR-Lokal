@@ -26,17 +26,33 @@
                         <th class="px-6 py-3">No.</th>
                         <th class="px-6 py-3">Nama Pengurus</th>
                         <th class="px-6 py-3">Jabatan</th>
-                        <th class="px-6 py-3">Nama Program</th>
+                        <th class="px-6 py-3">Program</th>
                         <th class="px-6 py-3">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-
+                    @php $no = 1; @endphp
+                    @foreach ($jabatans as $jabatan)
+                        @foreach ($jabatan->pengurus as $pengurus)
+                            @if ($pengurus->programKerjas->isNotEmpty())
+                                <tr>
+                                    <td class="px-6 py-4">{{ $no++ }}</td>
+                                    <td class="px-6 py-4">{{ $pengurus->anggota->nama ?? '-' }}</td>
+                                    <td class="px-6 py-4">{{ $jabatan->nama_jabatan }}</td>
+                                    <td class="px-6 py-4">{{ $pengurus->programKerjas->count() }} Program</td>
+                                    <td class="px-6 py-4">
+                                        <a href="" class="text-blue-500 hover:underline">Detail</a>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
+                    @endforeach
                 </tbody>
             </table>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"> --}}
     <script>
         @if(session('success'))
         Swal.fire({

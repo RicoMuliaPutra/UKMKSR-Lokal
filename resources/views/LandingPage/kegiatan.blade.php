@@ -26,7 +26,7 @@
         </div>
     </section>
     <div class="w-full bg-red-600 h-7"></div>
-    <div class="container flex flex-col items-center flex-grow gap-4 py-8 bg-black">
+    <div class="flex flex-col items-center flex-grow w-full gap-4 py-8 bg-black w-fullcontainer">
         <h1 class="text-xl font-bold text-white">TIME LINE KEGIATAN</h1>
         <div id="calendar" class="w-full max-w-xl p-4 bg-white rounded-lg shadow-md"></div>
     </div>
@@ -38,7 +38,6 @@
                 <hr class="w-1/5 mx-auto mt-2 mb-2 border-t-2 border-black opacity-50">
                 <div class="container px-4 py-6 mx-auto">
 
-            
                 </div>
             </div>
         </section>
