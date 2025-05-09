@@ -15,11 +15,11 @@
     </head>
     <body class="flex flex-col min-h-screen bg-gray-100">
         @include('partials.navbar')
-        <section class="relative flex items-center justify-center w-full h-screen text-white animate-on-scroll">
+        <section class="relative flex items-center justify-center w-full h-screen text-white ">
             <img class="absolute top-0 left-0 object-cover w-full h-full filter "
                  src="{{ asset('img/kegiatan1.png') }}"alt="Kegiatan 1">
             <div class="relative z-10 text-center">
-                <h1 class="font-bold text-white text-7xl" style="font-family: 'Kanit', sans-serif;">KEPENGURUSAN</h1>
+                <h1 class="font-bold text-white text-7xl animate__animated animate__fadeInUp" style="font-family: 'Kanit', sans-serif;">KEPENGURUSAN</h1>
                 <hr class="w-1/2 mx-auto my-4 border-t-2 border-white opacity-80">
                 <p class="mt-4 text-lg text-white">Unit Kegiatan Mahasiswa Korps Sukarela Palang Merah Indonesia Unit Politeknik Negeri Jember</p>
             </div>
@@ -178,7 +178,25 @@
             });
         });
     </script>
-    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const animatedEls = document.querySelectorAll('.animate-on-scroll');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.2
+            });
+
+            animatedEls.forEach(el => observer.observe(el));
+        });
+        </script>
+
 
     </body>
 

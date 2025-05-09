@@ -14,7 +14,7 @@
                 <ul class="absolute left-0 hidden w-40 text-gray-700 bg-white shadow-lg group-hover:block">
                     <li><a href="{{route('sejarah')}}" class="block px-4 py-2 hover:bg-gray-200">Sejarah</a></li>
                     <li><a href="{{route('visimisi')}}" class="block px-4 py-2 hover:bg-gray-200">Visi Misi</a></li>
-                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Program Kerja</a></li>
+                    <li><a href="{{route('proker')}}" class="block px-4 py-2 hover:bg-gray-200">Program Kerja</a></li>
                     <li><a href="{{route('struktur')}}" class="block px-4 py-2 hover:bg-gray-200">Kepengurusan</a></li>
                     <li><a href="{{route('lambang')}}" class="block px-4 py-2 hover:bg-gray-200">Lambang PMI</a></li>
                     <li><a href="{{route('dataAnggota')}}" class="block px-4 py-2 hover:bg-gray-200">Anggota </a></li>

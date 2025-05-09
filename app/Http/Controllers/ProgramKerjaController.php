@@ -42,4 +42,22 @@ class ProgramKerjaController extends Controller
     return redirect()->route('Program_kerja.index')->with('success', 'Program kerja berhasil ditambahkan.');
 
     }
+
+    public function viewpage(Request $request){
+    $periodeId = $request->input('periode');
+    $programQuery = ProgramKerja::with(['jabatan']);
+    if ($periodeId) {
+        $jabatanIds = Pengurus::where('periode_id', $periodeId)->pluck('jabatan_id')->unique();
+        $programQuery->whereIn('jabatan_id', $jabatanIds);
+    }
+
+    $dataProgram = $programQuery->get()->groupBy(function ($item) {
+        return $item->jabatan->nama_jabatan ?? 'Tidak Ada Jabatan';
+    });
+
+    $daftarPeriode = PeriodeKepengurusan::all();
+
+    return view('LandingPage.program_kerja', compact('dataProgram', 'daftarPeriode'));
+    }
+
 }

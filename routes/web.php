@@ -69,6 +69,8 @@ Route::get('/struktur', [pengurusController::class, 'tampilanblade'])->name('str
 Route::get('/kepengurusan/periode', [pengurusController::class, 'pengurusPerPeriode'])->name('kepengurusan.periode');
 Route::get('/pengurus', [pengurusController::class, 'dataPengurus'])->name('pengurus');
 
+Route::get('/program-kerja', [ProgramKerjaController::class, 'viewpage'])->name('proker');
+
 
 Route::get('/DataAnggota', [AnggotaController::class, 'dataAnggota'])->name('dataAnggota');
 Route::get('/DataAnggota/search', [AnggotaController::class, 'cari'])->name('anggota.cari');
