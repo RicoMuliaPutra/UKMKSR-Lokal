@@ -61,9 +61,14 @@ Route::get('/lambangPMI', [TentangController::class, 'lambang'])->name('lambang'
 Route::get('/SejarahKsr', [TentangController::class, 'sejarah'])->name('sejarah');
 Route::get('/Visi_misi', [TentangController::class, 'visimisi'])->name('visimisi');
 Route::get('/SerVice' , [LayananPageController::class, 'wellayanan'])->name('serviceksr');
+Route::get('/serVice/{id}', [LayananPageController::class, 'detail'])->name('service.detail');
+
 Route::get('/KegiatanKami', [KegiatanController::class, 'viewPage'])->name('aktifitas');
 Route::get('/calendar-events', [KegiatanController::class, 'getKegiatan']);
 Route::get('/struktur', [pengurusController::class, 'tampilanblade'])->name('struktur');
+Route::get('/kepengurusan/periode', [pengurusController::class, 'pengurusPerPeriode'])->name('kepengurusan.periode');
+Route::get('/pengurus', [pengurusController::class, 'dataPengurus'])->name('pengurus');
+
 
 Route::get('/DataAnggota', [AnggotaController::class, 'dataAnggota'])->name('dataAnggota');
 Route::get('/DataAnggota/search', [AnggotaController::class, 'cari'])->name('anggota.cari');

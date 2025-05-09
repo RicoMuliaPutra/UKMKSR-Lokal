@@ -12,15 +12,17 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     </head>
 <body class="flex flex-col min-h-screen bg-white">
     @include('partials.navbar')
-    <section class="relative flex items-center justify-center w-full h-screen text-white">
+    <section class="relative flex items-center justify-center w-full h-screen text-white ">
         <img class="absolute top-0 left-0 object-cover w-full h-full filter "
              src="{{ asset('img/aktifitas.png') }}"alt="Kegiatan 1">
         <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
         <div class="relative z-10 text-center">
-            <h1 class="font-bold text-white text-7xl" style="font-family: 'Kanit', sans-serif;">KEGIATAN</h1>
+            <h1 class="font-bold text-white text-7xl animate__animated animate__fadeInUp" style="font-family: 'Kanit', sans-serif;">KEGIATAN</h1>
             <hr class="w-1/2 mx-auto my-4 border-t-2 border-white opacity-80">
             <p class="mt-4 text-lg text-white">Unit Kegiatan Mahasiswa Korps Sukarela Palang Merah Indonesia Unit Politeknik Negeri Jember</p>
         </div>
@@ -108,55 +110,24 @@
         border: 1px solid #e0e0e0;
     }
 </style>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const animatedEls = document.querySelectorAll('.animate-on-scroll');
 
-{{-- <style>
-    body {
-        font-family: 'Comic Neue', cursive;
-    }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
 
-    .fc {
-        font-size: 14px;
-        color: #333;
-    }
+        animatedEls.forEach(el => observer.observe(el));
+    });
+    </script>
 
-    .fc .fc-toolbar-title {
-        color: #ff69b4; /* pink title */
-        font-weight: bold;
-    }
-    .fc-daygrid-day {
-    background-color: #fff8f0; /* warna pastel */
-    border: 1px dashed #ffb6c1;
-}
-
-.fc-day-today {
-    background-color: #ffe6f0 !important; /* warna hari ini */
-}
-.fc-daygrid-day {
-    background-color: #fff8f0; /* warna pastel */
-    border: 1px dashed #ffb6c1;
-}
-
-.fc-day-today {
-    background-color: #ffe6f0 !important; /* warna hari ini */
-}
-.fc-event {
-    background-color: #ffd6e0 !important;
-    border: none;
-    border-radius: 12px;
-    padding: 4px 8px;
-    font-size: 13px;
-    color: #5c0067;
-    box-shadow: 2px 2px 5px rgba(255, 182, 193, 0.5);
-}
-.fc-button {
-    background-color: #ffb3c1 !important;
-    border: none !important;
-    color: #fff !important;
-    border-radius: 8px !important;
-    padding: 5px 10px;
-    font-weight: bold;
-}
-
-</style> --}}
 </body>
 </html>

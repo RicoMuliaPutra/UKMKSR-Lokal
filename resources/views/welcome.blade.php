@@ -86,21 +86,33 @@
     <main class="flex-1 w-full p-6 bg-gray-50">
         <h2 class="text-2xl font-bold text-center">BLOG</h2>
         <div class="px-4 mx-auto max-w-7xl">
-            <div class="flex flex-wrap justify-center gap-8 mt-12">
+            <div class="grid gap-8 pb-8 mt-12 sm:grid-cols-2 lg:grid-cols-3">
                 @foreach($blogs->take(3) as $blog)
-                    <div class="w-full transition-all duration-1000 delay-200 translate-y-10 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 sm:w-1/2 lg:w-1/3 hover:shadow-xl scroll-animate">
-                        <img src="{{ asset('storage/' . $blog->images) }}" alt="{{ $blog->title }}" class="object-cover w-full h-48">
-                        <div class="relative p-6">
-                            <p class="mb-2 text-xl font-bold text-black">{{ $blog->title }}</p>
-                            <p class="mb-4 text-gray-800">{!! $blog->description !!}</p>
-                            <div class="mt-4 text-center p-9">
-                                <a href="{{ route('blog.detail', $blog->id) }}"
-                                   class="px-6 py-3 font-bold text-red-500 transition bg-transparent border-2 border-red-600 rounded-lg hover:bg-red-600 hover:text-white">
-                                    LEARN MORE
+                <div class="relative overflow-hidden transition-transform duration-1000 delay-200 bg-white border border-gray-200 shadow-lg group hover:scale-105 hover:shadow-2xl scroll-animate">
+                    <img src="{{ asset('storage/'. $blog->images) }}" alt="{{ $blog->title }}" class="object-cover w-full h-48 rounded-t-lg">
+                    <div class="p-6 flex flex-col justify-between min-h-[200px]">
+                        <p class="flex items-center gap-1 mb-1 text-sm text-gray-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 4h10M5 11h14M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            {{ $blog->created_at->format('d M Y') }}
+                        </p>
+
+                        <div>
+                            <p class="mb-2 text-xl font-bold text-black">
+                                {{ $blog->title }}
+                            </p>
+                        </div>
+                        <div class="mt-auto">
+                            <hr class="mb-4 ml-0 transition-all duration-500 ease-in-out transform translate-y-4 border-t-2 opacity-0 border-gray-80 w-2/2 group-hover:translate-y-0 group-hover:opacity-100" />
+                            <div class="transition-all duration-500 ease-in-out transform translate-y-6 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
+                                <a href="{{ route('blog.detail', $blog->id) }}" class="font-bold text-blue-800 hover:underline">
+                                    SELENGKAPNYA
                                 </a>
                             </div>
                         </div>
                     </div>
+                </div>
                 @endforeach
             </div>
         </div>
@@ -112,6 +124,7 @@
             </a>
         </div>
     </main>
+
     <main class="flex-1 w-full bg-gray-50">
         <section class="relative flex flex-col items-center justify-center w-full text-white min-h-[55vh] px-4 md:px-10 py-10">
             <img class="absolute top-0 left-0 object-cover w-full h-full"
@@ -224,6 +237,16 @@
     .scroll-text.visible {
         animation: slideRight 0.8s forwards;
     }
+    .scroll-animate {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease-out;
+}
+.scroll-animate.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 </style>
 
 <script>
@@ -290,6 +313,25 @@
       scrollFadeElements.forEach(el => fadeObserver.observe(el));
     });
   </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const elements = document.querySelectorAll(".scroll-animate");
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                    // Jika hanya ingin animasi sekali:
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        elements.forEach(el => observer.observe(el));
+    });
+</script>
+
 
 </body>
 </html>

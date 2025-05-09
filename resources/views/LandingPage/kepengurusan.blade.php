@@ -9,15 +9,15 @@
         <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap" rel="stylesheet">
         <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     </head>
-
     <body class="flex flex-col min-h-screen bg-gray-100">
         @include('partials.navbar')
-        <section class="relative flex items-center justify-center w-full h-screen text-white">
+        <section class="relative flex items-center justify-center w-full h-screen text-white animate-on-scroll">
             <img class="absolute top-0 left-0 object-cover w-full h-full filter "
                  src="{{ asset('img/kegiatan1.png') }}"alt="Kegiatan 1">
-            <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-30"></div>
             <div class="relative z-10 text-center">
                 <h1 class="font-bold text-white text-7xl" style="font-family: 'Kanit', sans-serif;">KEPENGURUSAN</h1>
                 <hr class="w-1/2 mx-auto my-4 border-t-2 border-white opacity-80">
@@ -25,15 +25,15 @@
             </div>
         </section>
         <div class="w-full bg-red-600 h-7"></div>
-
         <main class="container flex-1 p-6 mx-auto">
             <section class="p-4 px-20 bg-white rounded-lg shadow-md">
                 <div class="flex-grow mb-9">
                     <div class="px-3 py-2 mt-1 text-center">
-                        <h1 class="mt-1 mb-2 text-3xl font-bold" style="font-family: sans-serif;">KEPENGURUSAN</h1>
+                        <h1 class="mt-1 mb-2 text-3xl font-bold animate__animated animate__fadeInLeft" style="font-family: sans-serif;">
+                            KEPENGURUSAN</h1>
                         <div class="flex flex-col items-center mt-3">
                             <img src="{{ asset('img/Lambang.png') }}" alt="lambang" class="w-40 h-30">
-                            <h1 class="mt-2 font-bold text-l" style="font-family: sans-serif;">
+                            <h1 class="mt-2 font-bold text-l animate__animated animate__fadeInRight" style="font-family: sans-serif;">
                                 UKM KSR POLITEKNIK NEGERI JEMBER
                             </h1>
                         </div>
@@ -41,74 +41,145 @@
                     </div>
                 </div>
 
-                <select id="filter"
-                    class="w-full px-10 py-2 bg-left bg-no-repeat border border-gray-300 rounded-lg sm:w-auto focus:ring-blue-400 ">
-                    <option value="">Pengurus Angkatan :</option>
-                </select>
+                <div class="flex justify-start mb-6">
+                    {{-- <select id="filterPeriode"
+                        class="w-full max-w-xs px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        <option value="">Semua Periode</option>
+                        {{-- @foreach($daftarPeriode as $periode)
+                            @php
+                                $tahun = $periode->tahun_mulai;
+                            @endphp
+                            <option value="{{ $tahun }}" {{ request('periode') == $tahun ? 'selected' : '' }}>
+                                {{ $periode->tahun_mulai }} - {{ $periode->tahun_selesai }}
+                            </option>
+                        @endforeach --}}
+                    {{-- </select> --}}
+                    <form method="GET" action="{{ route('pengurus') }}">
+                        <select name="periode" onchange="this.form.submit()"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 sm:w-auto">
+                            <option value="">Semua Periode</option>
+                            @foreach ($daftarPeriode as $periode)
+                                <option value="{{ $periode->id }}" {{ request('periode') == $periode->id ? 'selected' : '' }}>
+                                    {{ $periode->nama_periode }} ({{ $periode->tahun_mulai }} - {{ $periode->tahun_selesai ?? 'Sekarang' }})
+                                </option>
+                            @endforeach
+                        </select>
+                    </form>
+
+                </div>
 
                 <!-- Foto Buniya -->
-                <div class="flex justify-center mt-10">
-                    <div class="flex flex-col items-center max-w-sm p-5 overflow-hidden bg-white rounded-lg shadow ">
+                <div class="flex justify-center mt-10 scroll-animate">
+                    <div class="flex flex-col items-center max-w-sm p-5 overflow-hidden bg-white rounded-lg shadow">
                         <img src="{{ asset('img/buniya.jpg') }}" alt="buniya" class="object-cover max-w-[240px] h-auto rounded-md"/>
                         <div class="pt-6 text-center">
                             <h3 class="mb-2 text-xl font-bold text-black">Niyalatul Muna S.Kom., MT</h3>
                             <p class="mb-2 text-xl text-gray-800">Pembina</p>
-
                         </div>
                     </div>
                 </div>
 
+
                 @php
-                    $pengurusKetua = $pengurus->filter(function ($item) {
+                    $pengurusKetua = $dataPengurus->filter(function ($item) {
                         $jabatan = strtolower($item->jabatan->nama_jabatan);
                         return $jabatan === 'ketua umum' || $jabatan === 'wakil ketua';
                     });
                 @endphp
 
-                <div class="container py-10 mx-auto">
-                    <div class="flex flex-wrap justify-center gap-8">
-                        @foreach($pengurusKetua as $item)
-                            <div class="flex flex-col items-center max-w-sm p-5 overflow-hidden bg-white rounded-lg shadow">
-                                <img src="{{ asset('storage/'.$item->anggota->foto) }}"
-                                    alt="{{ $item->anggota->nama }}"
-                                    class="object-cover max-w-[240px] h-auto rounded-md" />
-                                <div class="pt-6 text-center">
-                                    <h3 class="mb-2 text-xl font-bold text-black">{{ $item->anggota->nama }}</h3>
-                                    <p class="mb-2 text-gray-800">
-                                        {{ $item->jabatan->divisi->nama_divisi }} - {{ $item->jabatan->nama_jabatan }}
-                                    </p>
-                                    <p class="text-gray-600">
-                                        Periode: {{ $item->periode->tahun_mulai }} - {{ $item->periode->tahun_selesai }}
-                                    </p>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
 
-                <div class="container py-10 mx-auto">
-                    <div class="{{ count($pengurus) <= 3 ? 'flex flex-wrap justify-center gap-8' : 'grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center' }}">
-                        @foreach($pengurus as $item)
-                            <div class="flex flex-col items-center max-w-sm p-5 overflow-hidden bg-white rounded-lg shadow">
-                                <img src="{{ asset('storage/'.$item->anggota->foto) }}"
-                                     alt="{{ $item->anggota->nama }}"
-                                     class="object-cover max-w-[240px] h-auto rounded-md"/>
-                                <div class="pt-6 text-center">
-                                    <h3 class="mb-2 text-xl font-bold text-black">{{ $item->anggota->nama }}</h3>
-                                    <p class="mb-2 text-gray-800">{{ $item->jabatan->divisi->nama_divisi }} - {{ $item->jabatan->nama_jabatan }}</p>
-                                    <p class="text-gray-600">Periode: {{ $item->periode->tahun_mulai }} - {{ $item->periode->tahun_selesai }}</p>
-                                </div>
-                            </div>
-                        @endforeach
+        <div class="container py-10 mx-auto">
+            <div class="flex flex-wrap justify-center gap-8">
+                @foreach($pengurusKetua as $item)
+                    <div class="flex flex-col items-center max-w-sm p-5 overflow-hidden bg-white rounded-lg shadow scroll-animate">
+                        <img src="{{ asset('storage/'.$item->anggota->foto) }}"
+                            alt="{{ $item->anggota->nama }}"
+                            class="object-cover max-w-[240px] h-auto rounded-md" />
+                        <div class="pt-6 text-center">
+                            <h3 class="mb-2 text-xl font-bold text-black">{{ $item->anggota->nama }}</h3>
+                            <p class="mb-2 text-gray-800">
+                                {{ $item->jabatan->divisi->nama_divisi }} - {{ $item->jabatan->nama_jabatan }}
+                            </p>
+                            <p class="text-gray-600">
+                                Periode: {{ $item->periode->tahun_mulai }} - {{ $item->periode->tahun_selesai ?? 'Sekarang' }}
+                            </p>
+                        </div>
                     </div>
-                </div>
+                @endforeach
+            </div>
+        </div>
+
+
+        <div class="container py-10 mx-auto">
+            <div class="{{ count($dataPengurus) <= 3 ? 'flex flex-wrap justify-center gap-8' : 'grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center' }}">
+                @foreach($dataPengurus as $item)
+                    <div class="flex flex-col items-center max-w-sm p-5 overflow-hidden bg-white rounded-lg shadow scroll-animate">
+                        <img src="{{ asset('storage/'.$item->anggota->foto) }}"
+                            alt="{{ $item->anggota->nama }}"
+                            class="object-cover max-w-[240px] h-auto rounded-md"/>
+                        <div class="pt-6 text-center">
+                            <h3 class="mb-2 text-xl font-bold text-black">{{ $item->anggota->nama }}</h3>
+                            <p class="mb-2 text-gray-800">{{ $item->jabatan->divisi->nama_divisi }} - {{ $item->jabatan->nama_jabatan }}</p>
+                            <p class="text-gray-600">Periode: {{ $item->periode->tahun_mulai }} - {{ $item->periode->tahun_selesai ?? 'Sekarang' }}</p>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+
             </section>
         </main>
-
         <div class="w-full bg-red-600 h-7"></div>
 
-
         @include('partials.footer')
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("animate__fadeInUp");
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                });
+
+                document.querySelectorAll(".fade-on-scroll").forEach((el) => {
+                    el.classList.add("opacity-0", "animate__animated");
+                    observer.observe(el);
+                });
+            });
+        </script>
+    <script>
+        document.getElementById('filterPeriode').addEventListener('change', function () {
+            let filterValue = this.value;
+            let params = new URLSearchParams(window.location.search);
+            if (filterValue) {
+                params.set('periode', filterValue);
+            } else {
+                params.delete('periode');
+            }
+            window.location.href = `?${params.toString()}`;
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                        observer.unobserve(entry.target); // Optional: hanya animasi sekali
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.scroll-animate').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+    
+
     </body>
 
 
