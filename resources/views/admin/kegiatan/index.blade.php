@@ -75,7 +75,7 @@
             </div>
         </div>
 
-        <!-- Box Layanan Terkini -->
+        <!-- Box Kegiatan Terkini -->
         <div class="bg-white shadow-xl rounded-3xl p-6 mt-10">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-lg font-semibold text-gray-700">Kegiatan Terkini</h2>
@@ -88,6 +88,8 @@
                             <th class="px-6 py-3">No.</th>
                             <th class="px-6 py-3">Nama Kegiatan</th>
                             <th class="px-6 py-3">Tanggal Publikasi</th>
+                            <th class="px-6 py-3">Tanggal Mulai</th>
+                            <th class="px-6 py-3">Tanggal Selesai</th>
                             <th class="px-6 py-3">Aksi</th>
                         </tr>
                     </thead>
@@ -97,25 +99,22 @@
                         <tr class="hover:bg-gray-100 transition">
                             <td class="px-6 py-3">{{ $key+1 }}</td>
                             <td class="px-6 py-3">{{ $item->nama_kegiatan }}</td>
-                            <td class="px-6 py-3">
-                                {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}
-                            </td>
+                            <td class="px-6 py-3">{{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}</td>
+                            <td class="px-6 py-3">{{ \Carbon\Carbon::parse($item->start_kegiatan)->format('d M Y') }}</td>
+                            <td class="px-6 py-3">{{ \Carbon\Carbon::parse($item->end_kegiatan)->format('d M Y') }}</td>
                             <td class="px-6 py-3 flex items-center space-x-3">
                                 <a href="{{ route('kegiatan.show', $item->id_kegiatan) }}" class="text-blue-500 hover:text-blue-700">
                                     <i class="fas fa-info-circle"></i>
                                 </a>
-
                                 <a href="{{ route('kegiatan.edit', $item->id_kegiatan) }}" class="text-yellow-500 hover:text-yellow-700">
                                     <i class="fas fa-edit"></i>
                                 </a>
-
                                 <form action="{{ route('kegiatan.destroy', $item->id_kegiatan) }}" method="POST" class="inline">
                                     @csrf @method('DELETE')
                                     <button type="submit" class="text-red-500 hover:text-red-700">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
-
                                 <form action="{{ route('kegiatan.toggle', $item->id_kegiatan) }}" method="POST">
                                     @csrf
                                     <label class="switch">
@@ -128,7 +127,7 @@
                         @endif
                         @empty
                         <tr>
-                            <td colspan="4" class="px-6 py-6 text-center text-gray-500 italic">
+                            <td colspan="6" class="px-6 py-6 text-center text-gray-500 italic">
                                 Belum ada kegiatan terkini.
                             </td>
                         </tr>
@@ -155,6 +154,8 @@
                             <th class="px-6 py-3">No.</th>
                             <th class="px-6 py-3">Nama Layanan</th>
                             <th class="px-6 py-3">Tanggal Publikasi</th>
+                            <th class="px-6 py-3">Tanggal Mulai</th>
+                            <th class="px-6 py-3">Tanggal Selesai</th>
                             <th class="px-6 py-3">Aksi</th>
                         </tr>
                     </thead>
@@ -164,19 +165,16 @@
                         <tr class="hover:bg-gray-100 transition">
                             <td class="px-6 py-3">{{ $key+1 }}</td>
                             <td class="px-6 py-3">{{ $item->nama_kegiatan }}</td>
-                            <td class="px-6 py-3">
-                                {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}
-                            </td>
+                            <td class="px-6 py-3">{{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}</td>
+                            <td class="px-6 py-3">{{ \Carbon\Carbon::parse($item->start_kegiatan)->format('d M Y') }}</td>
+                            <td class="px-6 py-3">{{ \Carbon\Carbon::parse($item->end_kegiatan)->format('d M Y') }}</td>
                             <td class="px-6 py-3 flex items-center space-x-3">
                                 <a href="{{ route('kegiatan.show', $item->id_kegiatan) }}" class="text-blue-500 hover:text-blue-700"><i class="fas fa-info-circle"></i></a>
-
                                 <a href="{{ route('kegiatan.edit', $item->id_kegiatan) }}" class="text-yellow-500 hover:text-yellow-700"><i class="fas fa-edit"></i></a>
-
                                 <form action="{{ route('kegiatan.destroy', $item->id_kegiatan) }}" method="POST" style="display:inline;">
                                     @csrf @method('DELETE')
                                     <button type="submit" class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>
                                 </form>
-
                                 <form action="{{ route('kegiatan.toggle', $item->id_kegiatan) }}" method="POST">
                                     @csrf
                                     <label class="switch">
@@ -189,7 +187,7 @@
                         @endif
                         @empty
                         <tr>
-                            <td colspan="4" class="px-6 py-6 text-center text-gray-500 italic">
+                            <td colspan="6" class="px-6 py-6 text-center text-gray-500 italic">
                                 Belum ada daftar kegiatan.
                             </td>
                         </tr>
@@ -200,6 +198,7 @@
         </div>
     </div>
     @endsection
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         @if(session('success'))
