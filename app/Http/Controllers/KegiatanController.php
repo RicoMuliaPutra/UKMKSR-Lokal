@@ -11,12 +11,12 @@ class KegiatanController extends Controller
 {
     public function index()
     {
-        $kegiatan = Kegiatan::select('id_kegiatan', 'nama_kegiatan', 'created_at', 'status')
+        $kegiatan = Kegiatan::select('id_kegiatan', 'nama_kegiatan', 'created_at', 'status', 'start_kegiatan', 'end_kegiatan')
             ->where('status', 'aktif')
             ->latest()
             ->get();
 
-        $daftarKegiatan = Kegiatan::select('id_kegiatan', 'nama_kegiatan', 'created_at', 'status')
+        $daftarKegiatan = Kegiatan::select('id_kegiatan', 'nama_kegiatan', 'created_at', 'status', 'start_kegiatan', 'end_kegiatan')
             ->where('status', 'tidak')
             ->orderBy('created_at', 'desc')
             ->get();
@@ -40,6 +40,8 @@ class KegiatanController extends Controller
         $request->validate([
             'nama_kegiatan' => 'required|string|max:255',
             'deskripsi_kegiatan' => 'nullable|string',
+            'start_kegiatan' => 'required|date',
+            'end_kegiatan' => 'required|date|after_or_equal:start_kegiatan',
             'foto_kegiatan' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
             'poster_kegiatan' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
         ]);
@@ -50,18 +52,20 @@ class KegiatanController extends Controller
         if ($request->hasFile('foto_kegiatan')) {
             $fotoFile = $request->file('foto_kegiatan');
             $fotoNama = time() . '_' . $fotoFile->getClientOriginalName();
-            $fotoPath = $fotoFile->storeAs('kegiatan', $fotoNama, 'public');
+            $fotoPath = $fotoFile->storeAs('kegiatan/foto', $fotoNama, 'public');
         }
 
         if ($request->hasFile('poster_kegiatan')) {
             $posterFile = $request->file('poster_kegiatan');
             $posterNama = time() . '_' . $posterFile->getClientOriginalName();
-            $posterPath = $posterFile->storeAs('kegiatan', $posterNama, 'public');
+            $posterPath = $posterFile->storeAs('kegiatan/poster', $posterNama, 'public');
         }
 
         Kegiatan::create([
             'nama_kegiatan' => $request->nama_kegiatan,
             'deskripsi_kegiatan' => $request->deskripsi_kegiatan,
+            'start_kegiatan' => $request->start_kegiatan,
+            'end_kegiatan' => $request->end_kegiatan,
             'foto_kegiatan' => $fotoPath,
             'poster_kegiatan' => $posterPath,
         ]);
@@ -82,14 +86,18 @@ class KegiatanController extends Controller
         $request->validate([
             'nama_kegiatan' => 'required|string|max:255',
             'deskripsi_kegiatan' => 'nullable|string',
+            'start_kegiatan' => 'required|date',
+            'end_kegiatan' => 'required|date|after_or_equal:start_kegiatan',
             'foto_kegiatan' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'poster_kegiatan' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $kegiatan->nama_kegiatan = $request->nama_kegiatan;
         $kegiatan->deskripsi_kegiatan = $request->deskripsi_kegiatan;
-        if ($request->hasFile('foto_kegiatan')) {
+        $kegiatan->start_kegiatan = $request->start_kegiatan;
+        $kegiatan->end_kegiatan = $request->end_kegiatan;
 
+        if ($request->hasFile('foto_kegiatan')) {
             if ($kegiatan->foto_kegiatan) {
                 Storage::delete('public/' . $kegiatan->foto_kegiatan);
             }
@@ -119,15 +127,15 @@ class KegiatanController extends Controller
     public function toggle($id)
     {
         $kegiatan = Kegiatan::findOrFail($id);
-
         $kegiatan->status = $kegiatan->status === 'aktif' ? 'tidak' : 'aktif';
         $kegiatan->save();
 
         return back()->with('success', 'Status kegiatan berhasil diperbarui.');
     }
 
-    public function viewPage(){
-        return view ('LandingPage.kegiatan');
+    public function viewPage()
+    {
+        return view('LandingPage.kegiatan');
     }
 
     public function getKegiatan()
@@ -141,7 +149,7 @@ class KegiatanController extends Controller
                 'title' => $item->nama_kegiatan,
                 'start' => $item->start_kegiatan,
                 'end' => $item->end_kegiatan,
-                'description' => $item->deskripsi_kegiatan
+                'description' => $item->deskripsi_kegiatan,
             ];
         }
 
