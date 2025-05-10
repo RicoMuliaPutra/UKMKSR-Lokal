@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\Layanan;
@@ -33,6 +34,5 @@ class AppServiceProvider extends ServiceProvider
             $view->with('blogs', $blogs);
             Paginator::useTailwind();
         });
-
     }
 }

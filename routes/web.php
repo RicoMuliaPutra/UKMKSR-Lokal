@@ -34,6 +34,7 @@ Route::post('galeri/store', [GaleriController::class, 'store'])->name('galeri.st
 Route::get('galeri', [GaleriController::class, 'index'])->name('galeri.index');
 
 Route::resource('/blogadmin', BlogController::class);
+//  Route::get('/blogadmin/{id}', [BlogController::class, 'showAdminBlog'])->name('blogadmin.show');
 Route::resource('anggota', AnggotaController::class)->except(['show']);
 Route::get('/anggota/search', [AnggotaController::class, 'search'])->name('anggota.search');
 Route::resource('nilai', DataNilaiController::class);
@@ -48,8 +49,6 @@ Route::resource('/devisi', devisiController::class);
 Route::post('/jabatan_create', [devisiController::class, 'storeJabatan'])->name('jabatan.store');
 Route::post('/Periode_create', [devisiController::class, 'storePeriode'])->name('Periode.store');
 Route::resource('/Program_kerja', ProgramKerjaController::class);
-
-
 
  Route::resource('/blogadmin', BlogController::class);
 //  Route::get('/blogadmin/{id}', [BlogController::class, 'showAdminBlog'])->name('blogadmin.show');
@@ -67,9 +66,6 @@ Route::resource('/Program_kerja', ProgramKerjaController::class);
  Route::post('/jabatan_create', [devisiController::class, 'storeJabatan'])->name('jabatan.store');
  Route::post('/Periode_create', [devisiController::class, 'storePeriode'])->name('Periode.store');
  Route::resource('/Program_kerja', ProgramKerjaController::class);
-
-
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
