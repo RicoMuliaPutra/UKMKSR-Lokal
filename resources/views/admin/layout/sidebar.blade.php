@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<aside id="sidebar" class="fixed z-40 flex flex-col w-64 h-auto min-h-screen overflow-y-auto transition-all duration-300 transform -translate-x-full bg-white shadow-md md:translate-x-0 md:relative">
+<aside id="sidebar" class="fixed z-40 flex flex-col w-64 h-auto min-h-screen overflow-y-auto transition-all duration-300 transform -translate-x-full bg-white shadow-md md:translate-x-0 md:relative md:w-64 sm:w-full sm:max-w-[250px]">
     <div id="sidebarHeader" class="p-4 text-center transition-all duration-300">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mx-auto text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -18,12 +18,6 @@
                 {{ request()->is('dashboard') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs font-medium sidebar-text">Beranda</span>
         </a>
-        {{-- <a href="{{ route('akun') }}" class="flex items-center p-2 rounded-md
-            {{ request()->is('akun') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
-            <img src="/img/icon/user.png" alt="Akun Icon" class="w-6 h-6
-                {{ request()->is('akun') ? 'filter invert brightness-0' : '' }}">
-            <span class="ml-2 text-xs sidebar-text">Akun</span>
-        </a> --}}
 
         <a href="{{ route('anggota.index') }}" class="flex items-center p-3 rounded-md
          {{ request()->is('anggota*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
@@ -31,19 +25,23 @@
          {{ request()->is('anggota*') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Anggota</span>
         </a>
+
         <a href="{{ route('nilai.index') }}" class="flex items-center p-1 rounded-md
             {{ request()->is('nilai*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
             <img src="/img/icon/add.png" alt="Nilai Anggota Baru Icon" class="h-7 w-7
                 {{ request()->is('nilai*') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Data Nilai Anggota</span>
         </a>
+
         <a href="{{ route('clustering.index') }}" class="flex items-center p-2 rounded-md
         {{ request()->is('clustering*') || request()->is('cluster*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
             <img src="/img/icon/network.png" alt="Clustering Icon" class="w-6 h-6
         {{ request()->is('clustering*') || request()->is('cluster*') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Clustering</span>
         </a>
+
         <p class="text-gray-600 mt-3 text-[12px] font-semibold sidebar-text">Landing Page</p>
+
         <a href="{{ route('tentang.index') }}" class="flex items-center p-2 rounded-md
             {{ request()->is('tentang*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
             <img src="/img/icon/info.png" alt="Tentang Icon" class="w-6 h-6
@@ -64,7 +62,6 @@
         {{ request()->is('Program_kerja*') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Program Kerja</span>
         </a>
-
 
         <a href="{{ route('kegiatan.index') }}" class="flex items-center p-2 rounded-md
             {{ request()->is('kegiatan*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">

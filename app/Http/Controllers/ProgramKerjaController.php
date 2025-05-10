@@ -20,6 +20,12 @@ class ProgramKerjaController extends Controller
         return view('admin.program_kerja.index', compact('jabatans'));
     }
 
+    public function show($id) {
+        $jabatan = Jabatan::with(['programKerja', 'pengurus.anggota'])->findOrFail($id);
+        return view('admin.program_kerja.show', compact('jabatan'));
+    }
+
+
 
     public function create(){
         $pengurus = Pengurus::with(['anggota', 'jabatan'])->get();
@@ -42,6 +48,14 @@ class ProgramKerjaController extends Controller
     return redirect()->route('Program_kerja.index')->with('success', 'Program kerja berhasil ditambahkan.');
 
     }
+
+    public function destroy($id){
+    $program = ProgramKerja::findOrFail($id);
+    $program->delete();
+
+    return redirect()->route('Program_kerja.index')->with('success', 'Program kerja berhasil Dihapus.');
+}
+
 
     public function viewpage(Request $request){
     $periodeId = $request->input('periode');

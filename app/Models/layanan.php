@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Layanan extends Model
 {
     use HasFactory;
-
     protected $table = 'layanan';
     protected $primaryKey = 'id_layanan';
     public $timestamps = true;
@@ -20,4 +19,9 @@ class Layanan extends Model
         'poster_layanan',
         'status',
     ];
+
+    public function pesanans() {
+    return $this->hasMany(PesanLayanan::class, 'id_layanan');
+ }
+
 }

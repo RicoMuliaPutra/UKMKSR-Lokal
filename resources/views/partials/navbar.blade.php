@@ -61,7 +61,7 @@
             <ul class="hidden pl-4 space-y-2 overflow-hidden transition-all duration-300 ease-in-out opacity-0 max-h-0 dropdown-content">
                 <li><a href="{{route('sejarah')}}" class="block hover:text-gray-300">Sejarah</a></li>
                 <li><a href="{{route('visimisi')}}" class="block hover:text-gray-300">Visi Misi</a></li>
-                <li><a href="#" class="block hover:text-gray-300">Program Kerja</a></li>
+                <li><a href="{{route('proker')}}" class="block hover:text-gray-300">Program Kerja</a></li>
                 <li><a href="{{route('struktur')}}" class="block hover:text-gray-300">Kepengurusan</a></li>
                 <li><a href="{{route('dataAnggota')}}" class="block hover:text-gray-300">Anggota</a></li>
                 <li><a href="{{route('lambang')}}" class="block hover:text-gray-300">Lambang PMI</a></li>

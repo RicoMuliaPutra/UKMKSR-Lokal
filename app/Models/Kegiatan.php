@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Kegiatan extends Model {
+class Kegiatan extends Model
+{
     use HasFactory;
 
     protected $table = 'kegiatan';
     protected $primaryKey = 'id_kegiatan';
+
     protected $fillable = [
         'nama_kegiatan',
         'deskripsi_kegiatan',
@@ -17,8 +19,6 @@ class Kegiatan extends Model {
         'end_kegiatan',
         'foto_kegiatan',
         'poster_kegiatan',
-        'status'
-
+        'status',
     ];
 }
-

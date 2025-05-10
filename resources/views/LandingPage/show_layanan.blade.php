@@ -11,6 +11,8 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <script src="https://unpkg.com/alpinejs" defer></script>
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
     </head>
 <body class="flex flex-col min-h-screen bg-white">
@@ -27,33 +29,35 @@
     </section>
     <div class="w-full bg-red-600 h-7"></div>
     <main class="container flex-1 mx-auto">
-        <section class="p-5 bg-white rounded-lg">
-            <div class="flex flex-col items-center justify-center p-6 py-12 animate-on-scroll">
-                <h2 class="text-3xl font-bold text-center">Detail Layanan</h2>
-                <hr class="w-1/5 mx-auto mt-2 mb-2 border-t-2 border-black opacity-50">
-                <div class="container px-4 py-6 mx-auto">
-                    <div class="max-w-2xl mx-auto overflow-hidden bg-white rounded-lg shadow-lg">
-                        <img src="{{ asset('storage/' . $layanan->poster_layanan) }}" alt="Poster {{ $layanan->nama_layanan }}" class="w-full h-auto">
+       {{-- show_layanan.blade.php --}}
+       <section class="p-5 bg-white rounded-lg" x-data="{ open: false }">
+        <div class="flex flex-col items-center justify-center p-6 py-12 animate-on-scroll">
+            <h2 class="text-3xl font-bold text-center">Detail Layanan</h2>
+            <hr class="w-1/5 mx-auto mt-2 mb-2 border-t-2 border-black opacity-50">
+            <div class="container px-4 py-6 mx-auto">
+                <div class="max-w-2xl mx-auto overflow-hidden bg-white rounded-lg shadow-lg">
+                    <img src="{{ asset('storage/' . $layanan->poster_layanan) }}" alt="Poster {{ $layanan->nama_layanan }}" class="w-full h-auto">
 
-                        <div class="p-6">
-                            <h2 class="mb-4 text-3xl font-bold text-center text-gray-800 ">{{ $layanan->nama_layanan }}</h2>
-                            <div class="text-gray-700">
-                                {!! $layanan->deskripsi_layanan !!}
-                            </div>
+                    <div class="p-6">
+                        <h2 class="mb-4 text-3xl font-bold text-center text-gray-800 ">{{ $layanan->nama_layanan }}</h2>
+                        <div class="text-gray-700">
+                            {!! $layanan->deskripsi_layanan !!}
                         </div>
+                    </div>
 
-                        <div class="mt-4 text-center p-9">
-                            <a href=""
-                               class="px-6 py-3 font-bold text-gray-700 transition bg-transparent border-2 border-gray-400 rounded-lg hover:border-sky-400 hover:text-sky-400">
-                                Gunakan Layanan
-                            </a>
-                        </div>
+                    <div class="mt-4 text-center p-9">
+                        <button @click="open = true"
+                                class="px-6 py-3 font-bold text-gray-700 transition bg-transparent border-2 border-gray-400 rounded-lg hover:border-sky-400 hover:text-sky-400">
+                            Gunakan Layanan
+                        </button>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
 
+    @include('LandingPage.PesanLayanan')
+    </section>
+</main>
     @include('partials.footer')
 </body>
 <script>

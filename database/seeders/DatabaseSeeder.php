@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             tentangSeeder::class,
             anggotaSeeder::class,
             kepengurasanSeeder::class,
+            JenisGaleriSeeder::class,
         ]);
     }
 }
