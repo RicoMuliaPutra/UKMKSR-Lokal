@@ -31,8 +31,8 @@ Route::get('galeri/tambah-video', [GaleriController::class, 'tambahVideo'])->nam
 Route::post('galeri/store', [GaleriController::class, 'store'])->name('galeri.store');
 Route::get('galeri', [GaleriController::class, 'index'])->name('galeri.index');
 
-<<<<<<< HEAD
 Route::resource('/blogadmin', BlogController::class);
+//  Route::get('/blogadmin/{id}', [BlogController::class, 'showAdminBlog'])->name('blogadmin.show');
 Route::resource('anggota', AnggotaController::class)->except(['show']);
 Route::get('/anggota/search', [AnggotaController::class, 'search'])->name('anggota.search');
 Route::resource('nilai', DataNilaiController::class);
@@ -47,28 +47,6 @@ Route::resource('/devisi', devisiController::class);
 Route::post('/jabatan_create', [devisiController::class, 'storeJabatan'])->name('jabatan.store');
 Route::post('/Periode_create', [devisiController::class, 'storePeriode'])->name('Periode.store');
 Route::resource('/Program_kerja', ProgramKerjaController::class);
-=======
-
-
- Route::resource('/blogadmin', BlogController::class);
-//  Route::get('/blogadmin/{id}', [BlogController::class, 'showAdminBlog'])->name('blogadmin.show');
- Route::resource('anggota', AnggotaController::class)->except(['show']);
- Route::get('/anggota/search', [AnggotaController::class, 'search'])->name('anggota.search');
- Route::resource('nilai', DataNilaiController::class);
- Route::resource('clustering', ClusteringController::class);
- Route::get('/cluster', [ClusteringController::class, 'cluster']);
- Route::resource('/kegiatan', KegiatanController::class);
- Route::resource('/tentang', TentangController::class);
- Route::resource('/service', LayananPageController::class);
- Route::post('/service/toggle/{id}', [LayananPageController::class, 'toggle'])->name('service.toggle');
- Route::resource('/Kepengurusan', pengurusController::class);
- Route::resource('/devisi', devisiController::class);
- Route::post('/jabatan_create', [devisiController::class, 'storeJabatan'])->name('jabatan.store');
- Route::post('/Periode_create', [devisiController::class, 'storePeriode'])->name('Periode.store');
- Route::resource('/Program_kerja', ProgramKerjaController::class);
->>>>>>> 0a81b9188e20aaa3a651038394b50d4009a59f16
-
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
