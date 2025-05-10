@@ -43,28 +43,33 @@ class GaleriController extends Controller
     // Menyimpan data galeri (foto atau video)
     public function store(Request $request)
     {
+        // Validasi input
         $request->validate([
-            'id_jenis_galeri' => 'required|exists:jenis_galeri,id_jenis_galeri',
+            'id_jenis_galeri' => 'required|in:1,2', // Validasi nilai 1 atau 2 untuk jenis galeri
             'foto_galeri' => 'nullable|image|mimes:jpeg,png,jpg,gif',
             'video_galeri' => 'nullable|mimes:mp4,mkv,avi',
             'status' => 'required|in:aktif,tidak',
         ]);
 
+        // Ambil data selain foto dan video
         $data = $request->only(['id_jenis_galeri', 'status']);
 
-        // Simpan foto ke folder public
-        // Menyimpan foto ke folder public
+        // Menyimpan foto jika ada
         if ($request->hasFile('foto_galeri')) {
-            $data['foto_galeri'] = $request->file('foto_galeri')->storeAs('public/galeri/foto', $request->file('foto_galeri')->getClientOriginalName());
+            $fotoPath = $request->file('foto_galeri')->store('galeri/foto', 'public');
+            $data['foto_galeri'] = $fotoPath;  // Simpan path relatif
         }
 
-        // Simpan video ke folder public
+        // Menyimpan video jika ada
         if ($request->hasFile('video_galeri')) {
-            $data['video_galeri'] = $request->file('video_galeri')->store('public/galeri/video');
+            $videoPath = $request->file('video_galeri')->store('galeri/video', 'public');
+            $data['video_galeri'] = $videoPath;  // Simpan path relatif
         }
 
+        // Simpan data galeri ke database
         Galeri::create($data);
 
+        // Redirect ke halaman galeri dengan pesan sukses
         return redirect()->route('galeri.index')->with('success', 'Data galeri berhasil ditambahkan');
     }
 }

@@ -64,17 +64,18 @@
                 <div class="bg-gray-300 rounded-md w-full aspect-[2/1] overflow-hidden shadow">
                     @if ($item->foto_galeri)
                     <!-- Foto -->
-                    <img src="{{ asset('storage/galeri/foto/' . $item->foto_galeri) }}" class="object-cover w-full h-full" alt="Foto Galeri">
+                    <img src="{{ asset('storage/' . $item->foto_galeri) }}" class="object-cover w-full h-full" alt="Foto Galeri">
                     @elseif ($item->video_galeri)
                     <!-- Video -->
                     <video controls class="object-cover w-full h-full">
-                        <source src="{{ asset('storage/galeri/video/' . $item->video_galeri) }}" type="video/mp4">
+                        <source src="{{ asset('storage/' . $item->video_galeri) }}" type="video/mp4">
                         Browser tidak mendukung tag video.
                     </video>
                     @endif
                 </div>
                 @endforeach
             </div>
+
         </div>
     </body>
     @endsection
