@@ -91,7 +91,7 @@ class ClusteringController extends Controller
             dd('Data dari server tidak valid:', $response->body());
         }
     
-        $anggotas = DataNilai::whereNotNull('cluster')->orderby('cluster', 'asc' )->get();
+        $anggotas = DataNilai::whereNotNull('cluster')->orderby('cluster', 'asc' )->paginate(10);
 
         $title = 'Cluster';
     

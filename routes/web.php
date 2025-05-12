@@ -10,6 +10,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\ClusteringController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataNilaiController;
 use App\Http\Controllers\pengurusController;
 use App\Http\Controllers\devisiController;
@@ -18,9 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('admin.dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
  Route::get('/akun', [NavigateController::class, 'akun'])->middleware(['auth', 'verified'])->name('akun');
  Route::get('/kegiatan', [NavigateController::class, 'kegiatan'])->name('kegiatan');
@@ -65,15 +67,6 @@ Route::get('/blog{id}', [BlogController::class, 'detail'])->name('blog.show');
 Route::get('/blog/search', [BlogController::class, 'search'])->name('blog.search');
 
 Route::post('/kegiatan/toggle/{id}', [KegiatanController::class, 'toggle'])->name('kegiatan.toggle');
-
-
-
-
-
-
-
-
-
 
 
 require __DIR__ . '/auth.php';

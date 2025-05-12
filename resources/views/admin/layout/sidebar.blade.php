@@ -5,7 +5,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M12 12c2.5 0 4.5-2 4.5-4.5S14.5 3 12 3s-4.5 2-4.5 4.5S9.5 12 12 12zm0 2c-4 0-7 2-7 4v1h14v-1c0-2-3-4-7-4z" />
         </svg>
-        <h2 class="text-lg font-semibold">Humas Polije</h2>
+        <h2 class="text-lg font-semibold">Humas UKM KSR</h2>
         <p class="mb-6 text-sm text-gray-500">Admin Humas</p>
         <hr class="border-gray-300">
     </div>
