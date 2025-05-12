@@ -122,6 +122,9 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="mt-4">
+            {{ $anggotas->links() }}
+        </div>
     </div>
     </div>
     @endsection

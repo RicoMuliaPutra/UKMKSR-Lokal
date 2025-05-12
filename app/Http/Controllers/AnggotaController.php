@@ -18,7 +18,7 @@ class AnggotaController extends Controller
         if (!empty($angkatan)) {
             $query->where('angkatan', $angkatan);
         }
-        $anggotas = $query->orderBy('angkatan', 'desc')->get();
+        $anggotas = $query->orderBy('angkatan', 'desc')->paginate(10);
         return view('admin.anggota.index', compact('anggotas', 'angkatanList'));
     }
 

@@ -62,6 +62,9 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="mt-4">
+            {{ $anggotas->links() }}
+        </div>
         @else
         <table class="w-full text-sm text-left text-black rtl:text-right">
             <thead class="text-xs text-black uppercase bg-white border-b border-gray-200">

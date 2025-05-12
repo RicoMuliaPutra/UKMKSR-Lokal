@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "fullcalendar": "^6.1.17",
+    "pagination": "^0.4.6",
     "summernote": "^0.9.1",
     "sweetalert2": "^11.19.1"
   },
