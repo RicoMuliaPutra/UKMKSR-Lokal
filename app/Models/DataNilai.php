@@ -22,29 +22,35 @@ class DataNilai extends Model
 
     public static function getAnggotaForClusters()
     {
-        // return self::select('nilai_anggota.*')
-        //     ->join('anggota', 'anggota.id', '=', 'nilai_anggota.anggota_id')
-        //     ->where('anggota.status', 'aktif')
-        //     ->whereNotNull('nilai_anggota.nilai_kehadiran')
-        //     ->whereNotNull('nilai_anggota.nilai_kompetensi')
-        //     ->whereNotNull('nilai_anggota.nilai_kontribusi')
-        //     ->whereNotNull('nilai_anggota.nilai_etika')
-        //     ->orderBy('anggota.angkatan', 'desc')
-        //     ->get()
-        //     ->toArray();
-        return self::select('anggota_id', 'nilai_kehadiran', 'nilai_kontribusi', 'nilai_kompetensi', 'nilai_etika')->get()->toArray();
+            return self::select(
+            'nilai_anggota.anggota_id',
+            'nilai_anggota.nilai_kehadiran',
+            'nilai_anggota.nilai_kontribusi',
+            'nilai_anggota.nilai_kompetensi',
+            'nilai_anggota.nilai_etika'
+        )
+        ->join('anggota', 'anggota.id', '=', 'nilai_anggota.anggota_id')
+        ->where('anggota.status', 'aktif')
+        ->whereNotNull('nilai_anggota.nilai_kehadiran')
+        ->whereNotNull('nilai_anggota.nilai_kontribusi')
+        ->whereNotNull('nilai_anggota.nilai_kompetensi')
+        ->whereNotNull('nilai_anggota.nilai_etika')
+        ->orderBy('anggota.angkatan', 'desc')
+        ->get()
+        ->toArray();
     }    
 
     public static function getDataNilai($search = null)
     {
-        $query = DataNilai::with('anggota')->latest();
+        $query = DataNilai::with('anggota')
+            ->whereHas('anggota', function ($q) use ($search) {
+                $q->where('status', 'aktif');
 
-        if ($search) {
-            $query->whereHas('anggota', function ($q) use ($search) {
-                $q->where('nama', 'LIKE', "%$search%");
-            });
-        }
-        
+                if ($search) {
+                    $q->where('nama', 'LIKE', "%$search%");
+                }
+            })
+            ->latest();
 
         return $query->paginate(10)->withQueryString();
     }

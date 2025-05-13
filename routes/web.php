@@ -33,6 +33,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['au
  Route::resource('/blogadmin', BlogController::class);
  Route::resource('anggota', AnggotaController::class)->except(['show']);
  Route::get('/anggota/search', [AnggotaController::class, 'search'])->name('anggota.search');
+ Route::post('/anggota/import', [AnggotaController::class, 'importExcel'])->name('anggota.import');
  Route::resource('nilai', DataNilaiController::class);
  Route::resource('clustering', ClusteringController::class);
  Route::get('/cluster', [ClusteringController::class, 'cluster']);

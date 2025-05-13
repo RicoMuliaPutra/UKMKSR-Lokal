@@ -1,23 +1,4 @@
-<!DOCTYPE html>
-<html lang="id">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anggota</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-    </style>
-</head>
-
-<body class="text-gray-800 bg-gray-100">
     @extends('admin.layout.navbar')
     @section('content')
 
@@ -56,32 +37,42 @@
                     });
                 </script>
             </div>
-            <a href="{{ route('anggota.create') }}"
-                class="flex items-center justify-center w-full px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600 md:w-auto">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                </svg>
-                Tambah
-            </a>
+            <div class="flex gap-2">
+                <!-- Form Import Excel -->
+                <form action="{{ route('anggota.import') }}" method="POST" enctype="multipart/form-data"
+                    class="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow-md" id="import-form">
+                    @csrf
+                    <input type="file" name="file" accept=".xlsx,.xls" class="text-sm text-gray-500" required>
+
+                    <button type="button" class="px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600" id="import-btn">
+                        Import Excel
+                    </button>
+                </form>
+
+                <!-- Tombol Tambah -->
+                <a href="{{ route('anggota.create') }}"
+                    class="flex items-center justify-center px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                    </svg>
+                    Tambah
+                </a>
+            </div>
         </div>
 
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table class="w-full text-sm text-left text-black rtl:text-right">
             <thead class="text-xs text-black uppercase bg-white border-b border-gray-200">
                 <tr>
-                    <th scope="col" class="px-6 py-3">No</th>
-                    <th scope="col" class="px-6 py-3">Nama</th>
                     <th scope="col" class="px-6 py-3">NIM</th>
-                    <th scope="col" class="px-6 py-3">Tanggal lahir</th>
+                    <th scope="col" class="px-6 py-3">Nama</th>
                     <th scope="col" class="px-6 py-3">Angkatan</th>
                     <th scope="col" class="px-6 py-3">Jenis Kelamin</th>
                     <th scope="col" class="px-6 py-3">Alamat</th>
                     <th scope="col" class="px-6 py-3">Jurusan</th>
                     <th scope="col" class="px-6 py-3">Prodi</th>
                     <th scope="col" class="px-6 py-3">Status</th>
-                    <th scope="col" class="px-6 py-3">Tahun Masuk Kuliah</th>
-                    <th scope="col" class="px-6 py-3">Alasan Bergabung</th>
                     <th scope="col" class="px-6 py-3">Foto</th>
                     <th scope="col" class="px-6 py-3">Action</th>
                 </tr>
@@ -89,18 +80,14 @@
             <tbody>
                 @foreach ($anggotas as $key => $anggota)
                     <tr class="border-b hover:bg-gray-50">
-                        <td class="px-4 py-2 text-center border-r">{{ $key + 1 }}</td>
-                        <td class="px-4 py-2 border-r">{{ $anggota->nama }}</td>
                         <td class="px-4 py-2 border-r">{{ $anggota->nim }}</td>
-                        <td class="px-4 py-2 border-r">{{ $anggota->tanggal_lahir }}</td>
+                        <td class="px-4 py-2 border-r truncate max-w-[80px] overflow-hidden">{{ $anggota->nama }}</td>
                         <td class="px-4 py-2 border-r">{{ $anggota->angkatan }}</td>
                         <td class="px-4 py-2 border-r">{{ $anggota->jenis_kelamin }}</td>
                         <td class="px-4 py-2 border-r">{{ $anggota->alamat }}</td>
-                        <td class="px-4 py-2 border-r">{{ $anggota->jurusan }}</td>
+                        <td class="px-4 py-2 border-r truncate max-w-[80px] overflow-hidden">{{ $anggota->jurusan }}</td>
                         <td class="px-4 py-2 border-r">{{ $anggota->prodi }}</td>
                         <td class="px-4 py-2 border-r">{{ $anggota->status }}</td>
-                        <td class="px-4 py-2 border-r">{{ $anggota->tahun_masuk_kuliah }}</td>
-                        <td class="px-4 py-2 border-r">{!! $anggota->alasan_join !!}</td>
                         <td class="px-4 py-2 text-center border-r">
                             @if ($anggota->foto)
                                 <img src="{{ asset('storage/' . $anggota->foto) }}"
@@ -128,7 +115,7 @@
         </div>
     </div>
     </div>
-    @endsection
+    
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         @if (session('success'))
@@ -141,7 +128,6 @@
         @endif
     </script>
     <script>
-
         function showImage(imageUrl) {
             Swal.fire({
                 imageUrl: imageUrl,
@@ -154,9 +140,55 @@
         }
     </script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('import-btn').addEventListener('click', function () {
+                Swal.fire({
+                    title: 'Konfirmasi Import',
+                    html: `
+                        <p>Pastikan urutan kolom di file Excel sesuai dengan daftar di bawah dan gunakan huruf besar/kecil yang sama persis (case-sensitive).</p>
+                        <ol style="text-align:left">
+                            <li>nim</li>
+                            <li>nama</li>
+                            <li>tanggal_Lahir (YYYY-MM-DD)</li>
+                            <li>alamat</li>
+                            <li>alasan_join</li>
+                            <li>angkatan</li>
+                            <li>jurusan</li>
+                            <li>prodi</li>
+                            <li>status</li>
+                            <li>tahun_masuk_kuliah</li>
+                            <li>jenis_kelamin</li>
+                        </ol>
+                    `,
+                    icon: 'info',
+                    showCancelButton: true,
+                    confirmButtonText: 'Lanjutkan Import',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('import-form').submit();
+                    }
+                });
+            });
+        });
+    </script>
 
-
-
-</body>
-
-</html>
+    <script>
+    @if ($errors->any())
+        let errorMessages = `
+            <ul style="text-align: left;">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        `;
+        Swal.fire({
+            icon: 'error',
+            title: 'Terjadi Kesalahan!',
+            html: errorMessages,
+            confirmButtonText: 'OK'
+        });
+    @endif
+</script>
+@endsection
