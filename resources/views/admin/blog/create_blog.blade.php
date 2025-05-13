@@ -1,57 +1,56 @@
+@extends('admin.layout.navbar')
 
-    @extends('admin.layout.navbar')
-    @section('content')
-    <div class="container p-8 mx-auto">
-        <h2 class="mb-6 text-2xl font-bold text-gray-700">Tambah Blog</h2>
-        <form action="{{ route('blogadmin.store') }}" method="POST" class="p-6 space-y-6 bg-white rounded-lg shadow-md" enctype="multipart/form-data">
-            @csrf
-            <div class="flex flex-col space-y-2">
-                <label for="judul" class="font-medium text-gray-700">Judul</label>
-                <input
-                    type="text"
-                    id="judul"
-                    name="judul"
-                    class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="Masukkan Judul"
-                    required>
-            </div>
-            <div class="flex flex-col space-y-2">
-                <label for="tanggal" class="font-medium text-gray-700">Tanggal Publikasi</label>
-                <input
-                    type="date"
-                    id="tanggal"
-                    name="tanggal"
-                    class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required>
-            </div>
-            <div class="flex flex-col space-y-2">
-                <label for="gambar" class="font-medium text-gray-700">Gambar</label>
-                <input
-                    type="file"
-                    id="gambar"
-                    name="gambar"
-                    class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    accept="image/*">
-            </div>
-            <div class="flex flex-col space-y-2">
-                <label for="deskripsi" class="font-medium text-gray-700">Deskripsi</label>
-                <textarea
-                    id="summernote"
-                    name="deskripsi"
-                    class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required></textarea>
-            </div>
-            <div class="flex justify-end">
-                <button type="submit" class="px-6 py-3 text-white bg-green-500 rounded-md hover:bg-green-600">
-                    Simpan
-                </button>
-            </div>
-        </form>
-    </div>
+@section('content')
+<div class="max-w-4xl p-6 mx-auto bg-white rounded-lg shadow-md">
+    <h1 class="mb-4 text-2xl font-bold">Tambah Blog Artikel</h1>
+
+    <form action="{{route('blogadmin.store')}}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="flex flex-col space-y-2">
+            <label for="judul" class="text-gray-700 py-font-medium">Judul</label>
+            <input
+                type="text"
+                id="judul"
+                name="judul"
+                class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Masukkan Judul"
+                required>
+        </div>
+        <div class="flex flex-col space-y-2">
+            <label for="tanggal" class="py-2 font-medium text-gray-700">Tanggal Publikasi</label>
+            <input
+                type="date"
+                id="tanggal"
+                name="tanggal"
+                class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required>
+        </div>
+        <div class="flex flex-col space-y-2">
+            <label for="gambar" class="py-2 font-medium text-gray-700">Gambar</label>
+            <input
+                type="file"
+                id="gambar"
+                name="gambar"
+                class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                accept="image/*">
+        </div>
+        <div class="flex flex-col space-y-2">
+            <label for="deskripsi" class="py-2 font-medium text-gray-700">Deskripsi</label>
+            <textarea
+                id="summernote"
+                name="deskripsi"
+                class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required></textarea>
+        </div>
+        <div class="flex justify-end gap-4 mt-4">
+            <a href="{{route('blogadmin.index')}}" class="px-4 py-2 text-white bg-gray-500 rounded">Batal</a>
+
+            <button type="submit" class="px-4 py-2 text-white bg-green-500 rounded">Simpan</button>
+        </div>
+    </form>
+</div>
 
 
-
-    <!-- Tambahkan Script Summernote -->
 @push('scripts')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote/dist/summernote-lite.min.css" rel="stylesheet">
@@ -86,9 +85,5 @@
         @endif
     </script>
 @endpush
-
 @endsection
-
-
-
 

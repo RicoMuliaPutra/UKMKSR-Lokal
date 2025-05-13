@@ -49,9 +49,133 @@ class kepengurasanSeeder extends Seeder
         ]);
 
         // 2. Buat jabatan yang berada di divisi SDM
+
+        /////sdm/////
         $jabatan = Jabatan::create([
             'nama_jabatan' => 'Kearsipan',
             'divisi_id' => $sdm->id
+        ]);
+
+        $KoordinatorSDM = Jabatan::create([
+            'nama_jabatan' => 'Koordinator Bidang SDM',
+            'divisi_id' => $sdm->id
+        ]);
+
+        $PPKSDM = Jabatan::create([
+            'nama_jabatan' => 'Pembinaan dan Pengembangan Kapasitas',
+            'divisi_id' => $sdm->id
+        ]);
+
+        $PenelitianSDM = Jabatan::create([
+            'nama_jabatan' => 'Penelitian dan Evaluasi',
+            'divisi_id' => $sdm->id
+        ]);
+
+        $ImplementasiSDM = Jabatan::create([
+            'nama_jabatan' => 'Implementasi dan Kompetisi',
+            'divisi_id' => $sdm->id
+        ]);
+
+        //////bph/////
+        $KetuaBPH = Jabatan::create([
+            'nama_jabatan' => 'Ketua Umum',
+            'divisi_id' => $BPH->id
+        ]);
+
+        $wakilBPH = Jabatan::create([
+            'nama_jabatan' => 'Wakil Ketua',
+            'divisi_id' => $BPH->id
+        ]);
+
+        $bendahara1BPH = Jabatan::create([
+            'nama_jabatan' => 'Bendahara umun 1',
+            'divisi_id' => $BPH->id
+        ]);
+
+        $bendahara2BPH = Jabatan::create([
+            'nama_jabatan' => 'Bendahara umun 2',
+            'divisi_id' => $BPH->id
+        ]);
+
+        $sekretaris1BPH = Jabatan::create([
+            'nama_jabatan' => 'Sekretaris 1',
+            'divisi_id' => $BPH->id
+        ]);
+
+        $sekretaris2BPH = Jabatan::create([
+            'nama_jabatan' => 'Sekretaris 2',
+            'divisi_id' => $BPH->id
+        ]);
+
+        //////// Humas ////////
+
+        $KoordinatorHumas = Jabatan::create([
+            'nama_jabatan' => 'Koordinator Bidang Humas',
+            'divisi_id' => $humas->id
+        ]);
+
+        $internalHumas = Jabatan::create([
+            'nama_jabatan' => 'Humas Internal',
+            'divisi_id' => $humas->id
+        ]);
+
+        $EkternalHumas = Jabatan::create([
+            'nama_jabatan' => 'Humas Eksternal',
+            'divisi_id' => $humas->id
+        ]);
+
+        $DKVHumas = Jabatan::create([
+            'nama_jabatan' => 'DKV',
+            'divisi_id' => $humas->id
+        ]);
+
+        ////////Logistik///////
+        $KoordinatorLogistik = Jabatan::create([
+            'nama_jabatan' => 'Koordinator Bidang Logistik',
+            'divisi_id' => $logistik->id
+        ]);
+
+        $peralatanLogistik = Jabatan::create([
+            'nama_jabatan' => 'peralatan dan Perlengkapan',
+            'divisi_id' => $logistik->id
+        ]);
+
+        $obatLogistik = Jabatan::create([
+            'nama_jabatan' => 'Obat-Obatan',
+            'divisi_id' => $logistik->id
+        ]);
+
+        $KeamananLogistik = Jabatan::create([
+            'nama_jabatan' => 'Keamanan dan Kebersihan',
+            'divisi_id' => $logistik->id
+        ]);
+
+        //////Danus////////
+        $Codanus = Jabatan::create([
+            'nama_jabatan' => 'Koornidator bidang Dana Usaha',
+            'divisi_id' => $Danus->id
+        ]);
+
+        $Kewirausahaandanus = Jabatan::create([
+            'nama_jabatan' => 'Kewirausahaan',
+            'divisi_id' => $Danus->id
+        ]);
+
+        ///////// PKBM ////////
+
+        $CoPKBM = Jabatan::create([
+            'nama_jabatan' => 'Koordinator Bidang PKBM',
+            'divisi_id' => $PKMB->id
+        ]);
+
+        $BinmasPKBM = Jabatan::create([
+            'nama_jabatan' => 'Binmas',
+            'divisi_id' => $PKMB->id
+        ]);
+
+        $dorasPKBM = Jabatan::create([
+            'nama_jabatan' => 'Doras',
+            'divisi_id' => $PKMB->id
         ]);
 
         // 3. Buat periode kepengurusan
@@ -96,7 +220,6 @@ class kepengurasanSeeder extends Seeder
             'jabatan_id' => $jabatan->id
         ]);
 
-        // 6. Buat program kerja di jabatan yang dibuat
         $programs = [
             'Pengarsipan Digital',
             'Pendidikan Karakter',
@@ -109,17 +232,8 @@ class kepengurasanSeeder extends Seeder
             $programKerjas[] = ProgramKerja::create([
                 'nama_program' => $prog,
                 'deskripsi' => 'Deskripsi untuk ' . $prog,
-                'jabatan_id' => $jabatan->id
-            ]);
-        }
-
-        // 7. Relasikan pengurus ke 3 program kerja (random)
-        $randomProgramKerjas = collect($programKerjas)->random(3);
-
-        foreach ($randomProgramKerjas as $proker) {
-            PengurusProgramKerja::create([
-                'pengurus_id' => $pengurus->id,
-                'program_kerja_id' => $proker->id,
+                'jabatan_id' => $jabatan->id,
+                // 'pengurus_id' => $pengurus->id
             ]);
         }
     }

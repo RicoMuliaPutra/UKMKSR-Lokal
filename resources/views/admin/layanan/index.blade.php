@@ -62,28 +62,28 @@
     </style>
 </head>
 
-<body class="bg-gray-100 text-gray-800">
+<body class="text-gray-800 bg-gray-100">
     @extends('admin.layout.navbar')
 
     @section('content')
-    <div class="max-w-6xl mx-auto py-5 px-4">
+    <div class="max-w-6xl px-4 py-5 mx-auto">
 
         <!-- Judul Halaman -->
-        <div class="text-center mb-8">
-            <div class="bg-gradient-to-r from-red-600 to-red-300 text-white text-xl font-bold py-4 rounded-2xl shadow-lg">
+        <div class="mb-8 text-center">
+            <div class="py-4 text-xl font-bold text-white shadow-lg bg-gradient-to-r from-red-600 to-red-300 rounded-2xl">
                 Layanan UKM KSR
             </div>
         </div>
 
         <!-- Box Layanan Terkini -->
-        <div class="bg-white shadow-xl rounded-3xl p-6 mt-10">
-            <div class="flex justify-between items-center mb-6">
+        <div class="p-6 mt-10 bg-white shadow-xl rounded-3xl">
+            <div class="flex items-center justify-between mb-6">
                 <h2 class="text-lg font-semibold text-gray-700">Layanan Terkini</h2>
             </div>
 
             <div class="overflow-x-auto">
                 <table class="min-w-full text-sm text-left">
-                    <thead class="bg-gray-200 text-gray-700 font-semibold">
+                    <thead class="font-semibold text-gray-700 bg-gray-200">
                         <tr>
                             <th class="px-6 py-3">No.</th>
                             <th class="px-6 py-3">Nama Layanan</th>
@@ -94,13 +94,13 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                         @forelse ($layanan as $key => $item)
                         @if ($item->status === 'aktif')
-                        <tr class="hover:bg-gray-100 transition">
+                        <tr class="transition hover:bg-gray-100">
                             <td class="px-6 py-3">{{ $key+1 }}</td>
                             <td class="px-6 py-3">{{ $item->nama_layanan }}</td>
                             <td class="px-6 py-3">
                                 {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}
                             </td>
-                            <td class="px-6 py-3 flex items-center space-x-3">
+                            <td class="flex items-center px-6 py-3 space-x-3">
                                 <a href="{{ route('service.show', $item->id_layanan) }}" class="text-blue-500 hover:text-blue-700">
                                     <i class="fas fa-info-circle"></i>
                                 </a>
@@ -128,7 +128,7 @@
                         @endif
                         @empty
                         <tr>
-                            <td colspan="4" class="px-6 py-6 text-center text-gray-500 italic">
+                            <td colspan="4" class="px-6 py-6 italic text-center text-gray-500">
                                 Belum ada layanan terkini.
                             </td>
                         </tr>
@@ -139,18 +139,18 @@
         </div>
 
         <!-- Box Daftar Layanan -->
-        <div class="bg-white shadow-xl rounded-3xl p-6 mt-10">
-            <div class="flex justify-between items-center mb-6">
+        <div class="p-6 mt-10 bg-white shadow-xl rounded-3xl">
+            <div class="flex items-center justify-between mb-6">
                 <h2 class="text-lg font-semibold text-gray-700">Daftar Layanan</h2>
                 <a href="{{ route('service.create') }}"
-                    class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full text-sm shadow-md transition">
+                    class="px-4 py-2 text-sm text-white transition bg-green-600 rounded-full shadow-md hover:bg-green-700">
                     + Tambah
                 </a>
             </div>
 
             <div class="overflow-x-auto">
                 <table class="min-w-full text-sm text-left">
-                    <thead class="bg-gray-200 text-gray-700 font-semibold">
+                    <thead class="font-semibold text-gray-700 bg-gray-200">
                         <tr>
                             <th class="px-6 py-3">No.</th>
                             <th class="px-6 py-3">Nama Layanan</th>
@@ -161,13 +161,13 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                         @forelse ($daftarLayanan as $key => $item)
                         @if ($item->status === 'tidak')
-                        <tr class="hover:bg-gray-100 transition">
+                        <tr class="transition hover:bg-gray-100">
                             <td class="px-6 py-3">{{ $key+1 }}</td>
                             <td class="px-6 py-3">{{ $item->nama_layanan }}</td>
                             <td class="px-6 py-3">
                                 {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}
                             </td>
-                            <td class="px-6 py-3 flex items-center space-x-3">
+                            <td class="flex items-center px-6 py-3 space-x-3">
                                 <a href="{{ route('service.show', $item->id_layanan) }}" class="text-blue-500 hover:text-blue-700">
                                     <i class="fas fa-info-circle"></i>
                                 </a>
@@ -195,7 +195,7 @@
                         @endif
                         @empty
                         <tr>
-                            <td colspan="4" class="px-6 py-6 text-center text-gray-500 italic">
+                            <td colspan="4" class="px-6 py-6 italic text-center text-gray-500">
                                 Belum ada data tentang KSR.
                             </td>
                         </tr>

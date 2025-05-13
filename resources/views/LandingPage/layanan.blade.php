@@ -33,7 +33,7 @@
                 <div class="container px-4 py-6 mx-auto">
                     <div class="{{ count($layanans) <= 3 ? 'flex flex-wrap justify-center gap-6' : 'grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4' }}">
                         @foreach ($layanans as $layanan)
-                        <div class="relative w-full overflow-hidden bg-center bg-cover md:h-[750px] aspect-[2/4] rounded-2xl max-w-sm"
+                <div class="relative w-full overflow-hidden bg-center bg-cover md:h-[750px] aspect-[2/4] shadow-lg hover:shadow-xl rounded-2xl max-w-sm transition-all duration-1000 delay-200 opacity-0 translate-y-10 scroll-animate"
                         style="background-image: url('{{ asset('storage/' . $layanan->foto_layanan) }}');">
                             <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-black bg-opacity-50">
                                 <h3 class="text-3xl font-bold text-white">{{ $layanan->nama_layanan }}</h3>
@@ -59,6 +59,21 @@
     </main>
     <div class="w-full bg-red-600 h-7"></div>
     @include('partials.footer')
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
 

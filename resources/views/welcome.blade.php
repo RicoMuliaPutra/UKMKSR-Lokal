@@ -39,17 +39,19 @@
     </section>
 
     <main class="flex-1 w-full mx-auto" id="konten-berikutnya">
-        <section class="p-6 bg-white rounded-lg">
-            <section  class="p-6 bg-white rounded-lg">
+        <section class="p-6 transition-all duration-700 delay-500 translate-y-10 bg-white opacity-0 scroll-animate">
+
             <h2 class="mb-4 text-3xl font-bold text-center">KAMI ADALAH ORGANISASI UKM KSR POLIJE.</h2>
-            <p class="text-center text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p class="text-center text-gray-700">
+              KSR PMI Unit POLIJE merupakan salah satu UKM di Politeknik Negeri Jember yang bergerak di bidang kemanusiaan dan kepalangmerahan.
+            </p>
             <div class="mt-4 text-center p-9">
                 <a href=""
                    class="px-6 py-3 font-bold text-gray-700 transition bg-transparent border-2 border-gray-400 rounded-lg hover:border-sky-400 hover:text-sky-400">
                     TENTANG KAMI
                 </a>
             </div>
-        </section>
+          </section>
     </main>
 
     <main class="flex-1 w-full p-6 bg-gray-100">
@@ -62,38 +64,37 @@
 
             <div class="{{ $layoutClass }}">
                 @foreach ($layanans as $layanan)
-                    <div class="relative w-full overflow-hidden bg-center bg-cover md:h-[750px] aspect-[2/4]  shadow-lg hover:shadow-xl rounded-2xl max-w-sm"
-                        style="background-image: url('{{ asset('storage/' . $layanan->foto_layanan) }}');">
-                        <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-black bg-opacity-50">
-                            <h3 class="text-3xl font-bold text-white">{{ $layanan->nama_layanan }}</h3>
-                            <div class="text-white [&_p]:text-white [&_li]:text-white [&_span]:text-white">
-                                {!! $layanan->deskripsi_layanan !!}
-                            </div>
-                        </div>
-                        <div class="absolute p-8 transform -translate-x-1/2 bottom-4 left-1/2">
-                            <a href="#"
-                                class="px-6 py-3 font-bold text-center text-white transition border border-red-600 rounded-lg hover:bg-red-600 hover:text-white whitespace-nowrap">
-                                LEARN MORE
-                            </a>
+                <div class="relative w-full overflow-hidden bg-center bg-cover md:h-[750px] aspect-[2/4] shadow-lg hover:shadow-xl rounded-2xl max-w-sm transition-all duration-1000 delay-200 opacity-0 translate-y-10 scroll-animate"
+                    style="background-image: url('{{ asset('storage/' . $layanan->foto_layanan) }}');">
+                    <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-black bg-opacity-50">
+                        <h3 class="text-3xl font-bold text-white">{{ $layanan->nama_layanan }}</h3>
+                        <div class="text-white [&_p]:text-white [&_li]:text-white [&_span]:text-white">
+                            {!! $layanan->deskripsi_layanan !!}
                         </div>
                     </div>
-                @endforeach
+                    <div class="absolute p-8 transform -translate-x-1/2 bottom-4 left-1/2">
+                        <a href="#"
+                            class="px-6 py-3 font-bold text-center text-white transition border border-red-600 rounded-lg hover:bg-red-600 hover:text-white whitespace-nowrap">
+                            LEARN MORE
+                        </a>
+                    </div>
+                </div>
+            @endforeach
             </div>
         </div>
     </main>
-
     <main class="flex-1 w-full p-6 bg-gray-50">
-        <h2 class="text-2xl font-bold text-center ">BLOG</h2>
+        <h2 class="text-2xl font-bold text-center">BLOG</h2>
         <div class="px-4 mx-auto max-w-7xl">
-            <div class="grid gap-8 mt-12 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="flex flex-wrap justify-center gap-8 mt-12">
                 @foreach($blogs->take(3) as $blog)
-                    <div class="transition-shadow duration-300 bg-white border border-gray-200 rounded-lg shadow-lg hover:shadow-xl">
+                    <div class="w-full transition-all duration-1000 delay-200 translate-y-10 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 sm:w-1/2 lg:w-1/3 hover:shadow-xl scroll-animate">
                         <img src="{{ asset('storage/' . $blog->images) }}" alt="{{ $blog->title }}" class="object-cover w-full h-48">
                         <div class="relative p-6">
                             <p class="mb-2 text-xl font-bold text-black">{{ $blog->title }}</p>
                             <p class="mb-4 text-gray-800">{!! $blog->description !!}</p>
                             <div class="mt-4 text-center p-9">
-                                <a href="{{ route('blog.show', $blog->id) }}"
+                                <a href="{{ route('blog.detail', $blog->id) }}"
                                    class="px-6 py-3 font-bold text-red-500 transition bg-transparent border-2 border-red-600 rounded-lg hover:bg-red-600 hover:text-white">
                                     LEARN MORE
                                 </a>
@@ -103,8 +104,9 @@
                 @endforeach
             </div>
         </div>
+
         <div class="mt-4 text-center p-9">
-            <a href="{{route('bloging')}}"
+            <a href="{{ route('bloging') }}"
                class="px-6 py-3 font-bold text-gray-700 transition bg-transparent border-2 border-gray-400 rounded-lg hover:border-sky-400 hover:text-sky-400">
                 GO TO BLOG
             </a>
@@ -114,32 +116,36 @@
         <section class="relative flex flex-col items-center justify-center w-full text-white min-h-[55vh] px-4 md:px-10 py-10">
             <img class="absolute top-0 left-0 object-cover w-full h-full"
                  src="{{ asset('img/bg4.jpg') }}" alt="Kegiatan 1">
-                 <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
+            <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
+
             <div class="relative z-10 mb-6 text-center">
                 <h1 class="text-3xl font-bold text-white">Mengapa Kami?</h1>
                 <hr class="w-1/2 mx-auto my-4 border-t-2 border-white opacity-50">
             </div>
 
             <div class="relative z-10 grid grid-cols-1 mt-6 md:grid-cols-3 gap-y-10 gap-x-12">
-
                 <div class="flex flex-col items-center">
                     <img src="{{ asset('img/icon/image.png') }}" alt="image" class="object-contain w-16 h-16 mb-4">
-                    <p class="mb-4 text-xl font-bold text-center">UKM Ter Aktif</p>
-                    <p class="text-center text-gray-400 text-l">Menjadi UKM teraktif di Politeknik Negeri Jember</p>
+                    <p class="mb-4 text-xl font-bold text-center opacity-0 animate-slide-right scroll-text">UKM Ter Aktif</p>
+                    <p class="text-center text-gray-400 opacity-0 text-l animate-slide-right scroll-text">Menjadi UKM teraktif di Politeknik Negeri Jember</p>
                 </div>
+
                 <div class="flex flex-col items-center">
                     <img src="{{ asset('img/icon/achivment.png') }}" alt="achivment" class="object-contain w-16 h-16 mb-4">
-                    <p class="mb-4 text-xl font-bold text-center">15+ Tahun Berdiri</p>
-                    <p class="text-center text-gray-400 text-l">Didirikan sejak tahun 2009</p>
+                    <p class="mb-4 text-xl font-bold text-center opacity-0 animate-slide-right scroll-text">15+ Tahun Berdiri</p>
+                    <p class="text-center text-gray-400 opacity-0 text-l animate-slide-right scroll-text">Didirikan sejak tahun 2009</p>
                 </div>
+
                 <div class="flex flex-col items-center">
                     <img src="{{ asset('img/icon/group.png') }}" alt="group" class="object-contain w-16 h-16 mb-4">
-                    <p class="mb-4 text-xl font-bold text-center">Tenaga Yang Profesional</p>
-                    <p class="text-center text-gray-400 text-l">Dengan Ilmu dan sertifikasi yang terstandardisasi.</p>
+                    <p class="mb-4 text-xl font-bold text-center opacity-0 animate-slide-right scroll-text">Tenaga Yang Profesional</p>
+                    <p class="text-center text-gray-400 opacity-0 text-l animate-slide-right scroll-text">Dengan Ilmu dan sertifikasi yang terstandardisasi.</p>
                 </div>
             </div>
         </section>
     </main>
+
+
 
     <main class="flex-1 w-full p-6 bg-black">
         <div class="">
@@ -150,8 +156,12 @@
     <div class="w-full bg-red-600 h-7"></div>
     <main class="flex-1 w-full p-4 bg-gray-100">
         <div class="max-w-3xl mx-auto">
-          <h2 class="mb-6 text-2xl font-bold text-center text-gray-800">Tonton Video Kami</h2>
-          <div class="relative overflow-hidden shadow-lg rounded-xl group">
+          <h2 class="mb-6 text-2xl font-bold text-center text-gray-800 transition-all duration-700 translate-y-10 opacity-0 scroll-fade">
+            Tonton Video Kami
+          </h2>
+
+          <div class="relative overflow-hidden transition-all duration-700 translate-y-10 shadow-lg opacity-0 rounded-xl group scroll-fade">
+
             <img
               src="https://img.youtube.com/vi/Zyujq5QNC4g/hqdefault.jpg"
               alt="Thumbnail Video"
@@ -166,24 +176,23 @@
               </div>
             </a>
             <div class="absolute top-0 left-0 right-0 flex items-center justify-between px-4 py-3 text-white bg-gradient-to-b from-black/80 to-transparent">
-                <span id="yt-title" class="text-sm sm:text-base font-semibold truncate max-w-[70%]">Memuat judul...</span>
-                <button onclick="navigator.share({ title: 'Tonton Video', url: 'https://youtu.be/Zyujq5QNC4g?si=brdUohg2TOmpWxE5' })"
-                  class="px-3 py-1 text-xs text-gray-800 transition bg-white rounded-full sm:text-sm hover:bg-gray-100">
-                  🔗 Bagikan
-                </button>
-              </div>
-        </div>
-        <div class="mt-4 text-center p-9">
+              <span id="yt-title" class="text-sm sm:text-base font-semibold truncate max-w-[70%]">Memuat judul...</span>
+              <button onclick="navigator.share({ title: 'Tonton Video', url: 'https://youtu.be/Zyujq5QNC4g?si=brdUohg2TOmpWxE5' })"
+                class="px-3 py-1 text-xs text-gray-800 transition bg-white rounded-full sm:text-sm hover:bg-gray-100">
+                🔗 Bagikan
+              </button>
+            </div>
+          </div>
+
+          <div class="mt-4 text-center p-9">
             <a href=""
-               class="px-6 py-3 font-bold transition bg-transparent border-2 border-gray-400 text-l gray-700 text- hover:border-sky-400 hover:text-sky-400">
+               class="px-6 py-3 font-bold text-gray-700 transition-all transition duration-700 translate-y-10 bg-transparent border-2 border-gray-400 opacity-0 text-l hover:border-sky-400 hover:text-sky-400 scroll-fade">
                 Kontak Kami
             </a>
+          </div>
         </div>
       </main>
     <div class="w-full bg-red-600 h-7"></div>
-
-
-
 
 
 
@@ -196,6 +205,25 @@
 <style>
   html {
   scroll-behavior: smooth;}
+
+  @keyframes slideRight {
+        0% {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .animate-slide-right {
+        transition: all 0.7s ease-out;
+    }
+
+    .scroll-text.visible {
+        animation: slideRight 0.8s forwards;
+    }
 </style>
 
 <script>
@@ -217,6 +245,51 @@
         document.getElementById("yt-title").textContent = "Gagal memuat judul";
       });
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Gabungan semua elemen target
+      const scrollAnimateElements = document.querySelectorAll('.scroll-animate');
+      const scrollTextElements = document.querySelectorAll('.scroll-text');
+      const scrollFadeElements = document.querySelectorAll('.scroll-fade');
+
+      // Buat satu observer untuk scroll-animate
+      const animateObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('opacity-0', 'translate-y-10');
+            entry.target.classList.add('opacity-100', 'translate-y-0');
+            animateObserver.unobserve(entry.target); // hanya animasi sekali
+          }
+        });
+      }, { threshold: 0.1 });
+
+      scrollAnimateElements.forEach(el => animateObserver.observe(el));
+
+      // Observer untuk scroll-text
+      const textObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            textObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+
+      scrollTextElements.forEach(el => textObserver.observe(el));
+
+      // Observer untuk scroll-fade
+      const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('opacity-100', 'translate-y-0');
+            fadeObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+
+      scrollFadeElements.forEach(el => fadeObserver.observe(el));
+    });
+  </script>
 
 </body>
 </html>

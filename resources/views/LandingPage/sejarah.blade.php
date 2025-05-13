@@ -10,6 +10,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap" rel="stylesheet">
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
     </head>
 <body class="flex flex-col min-h-screen bg-gray-100">
     @include('partials.navbar')
@@ -28,11 +30,14 @@
         <section class="p-6 bg-white rounded-lg shadow-md">
             <div class="flex-grow">
                 <div class="px-3 py-8 mt-1 text-center">
-                    <h1 class="mt-1 mb-2 text-4xl font-bold" style="font-family: sans-serif;">SEJARAH</h1>
+                    <h1 class="mt-1 mb-2 text-4xl font-bold animate__animated animate__fadeInLeft" style="font-family: sans-serif;">
+                        SEJARAH
+                    </h1>
 
                     <div class="flex flex-col items-center mt-3">
                         <img src="{{ asset('img/Lambang.png') }}" alt="lambang" class="w-40 h-30">
-                        <h1 class="mt-2 text-xl font-bold" style="font-family: sans-serif;">
+
+                        <h1 class="mt-2 text-xl font-bold animate__animated animate__fadeInRight" style="font-family: sans-serif;">
                             UKM KSR POLITEKNIK NEGERI JEMBER
                         </h1>
                     </div>
@@ -40,7 +45,7 @@
                 </div>
 
                 <section class="px-8 border-b fade-in">
-                    <div class="container max-w-3xl mx-auto">
+                    <div class="container max-w-3xl mx-auto fade-on-scroll">
                         <div class="w-full rounded-lg">
                             <p class="mb-8 ml-4 text-lg text-justify" style="font-family: 'Kanit', sans-serif;">
                                 {!! $sejarah->deskripsi_ksr !!}
@@ -48,12 +53,32 @@
                         </div>
                     </div>
                 </section>
+
             </div>
         </section>
     </main>
     <div class="w-full bg-red-600 h-7"></div>
 
     @include('partials.footer')
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("animate__fadeInUp");
+                    }
+                });
+            }, {
+                threshold: 0.1,
+            });
+
+            document.querySelectorAll(".fade-on-scroll").forEach((el) => {
+                el.classList.add("opacity-0", "animate__animated");
+                observer.observe(el);
+            });
+        });
+    </script>
+
 </body>
 </html>
 

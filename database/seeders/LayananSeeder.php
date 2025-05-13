@@ -16,7 +16,7 @@ class LayananSeeder extends Seeder
         'nama_layanan'   => 'TIM KESEHATAN',
         'deskripsi_layanan' => 'Mendukung memenuhi kebutuhan tim kesehatan pada kegiatan terhadap sebuah insiden atau kecelakaan bagi instansi internal.',
         'foto_layanan'   => 'layanan/delegai1.jpg',
-        'poster_layanan' => 'layanan/poster1.jpg',
+        'poster_layanan' => 'layanan/timeline-timkes.jpg',
         'status'         => 'aktif',
     ]);
 

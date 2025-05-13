@@ -19,3 +19,4 @@ class BlogSeeder extends Seeder
         ]);
     }
 }
+    
