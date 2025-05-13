@@ -37,6 +37,7 @@ Route::resource('/blogadmin', BlogController::class);
 //  Route::get('/blogadmin/{id}', [BlogController::class, 'showAdminBlog'])->name('blogadmin.show');
 Route::resource('anggota', AnggotaController::class)->except(['show']);
 Route::get('/anggota/search', [AnggotaController::class, 'search'])->name('anggota.search');
+Route::post('/anggota/import', [AnggotaController::class, 'importExcel'])->name('anggota.import');
 Route::resource('nilai', DataNilaiController::class);
 Route::resource('clustering', ClusteringController::class);
 Route::get('/cluster', [ClusteringController::class, 'cluster']);
@@ -49,6 +50,7 @@ Route::resource('/devisi', devisiController::class);
 Route::post('/jabatan_create', [devisiController::class, 'storeJabatan'])->name('jabatan.store');
 Route::post('/Periode_create', [devisiController::class, 'storePeriode'])->name('Periode.store');
 Route::resource('/Program_kerja', ProgramKerjaController::class);
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

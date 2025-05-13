@@ -50,7 +50,7 @@
     </form>
 </div>
 
-@endsection
+
 @push('scripts')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote/dist/summernote-lite.min.css" rel="stylesheet">
@@ -85,5 +85,5 @@
         @endif
     </script>
 @endpush
-</body>
+@endsection
 

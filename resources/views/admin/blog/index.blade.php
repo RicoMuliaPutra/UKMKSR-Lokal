@@ -1,3 +1,4 @@
+
 @extends('admin.layout.navbar')
 
 @section('content')
@@ -15,6 +16,7 @@
             class="px-4 py-2 text-sm text-white transition bg-green-600 rounded-full shadow-md hover:bg-green-700">
             + Tambah
         </a>
+
         </div>
 
         <div class="overflow-x-auto">
@@ -60,6 +62,7 @@
             </table>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -73,6 +76,5 @@
         });
         @endif
     </script>
-@endsection
-
+    @endsection
 

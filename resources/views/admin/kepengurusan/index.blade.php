@@ -1,36 +1,30 @@
-<!DOCTYPE html>
-<html lang="id">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anggota</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2" defer></script>
+    @extends('admin.layout.navbar')
+    @section('content')
+
+    <div class="container mx-auto">
+    <h1 class="mb-10 text-2xl font-bold">Struktur Kepengurusan</h1>
+    <div class="flex flex-col gap-4 mb-4 md:flex-row md:items-center md:justify-between">
+        <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:space-x-2">
+            <form action="" method="GET" class="flex flex-col w-full gap-2 sm:flex-row sm:items-center">
+                <input type="hidden" name="angkatan" value="">
+                <input type="text" name="query" placeholder="Cari Pengurus..."
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 sm:w-auto"
+                    value="">
+
+                <button type="submit"
+                    class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-5 py-2.5 w-full sm:w-auto">
+                    Cari
+                </button>
+            </form>
 
 
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-    </style>
-</head>
-
-<body class="text-gray-800 bg-gray-100">
-@extends('admin.layout.navbar')
-
-@section('content')
-<div class="max-w-6xl px-4 py-5 mx-auto">
-    <!-- Judul Halaman -->
-    <div class="mb-8 text-center">
-        <div class="py-4 text-xl font-bold text-white shadow-lg bg-gradient-to-r from-red-600 to-red-300 rounded-2xl">
-            Struktur Kepengurusan
+            <script>
+                document.getElementById('filter').addEventListener('change', function () {
+                    let filterValue = this.value;
+                    window.location.href = `?angkatan=${filterValue}`;
+                });
+            </script>
         </div>
     </div>
 
@@ -124,28 +118,33 @@
             </table>
         </div>
     </div>
-</div>
-</body></html>
+
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        @if(session('success'))
-        Swal.fire({
-            icon: 'success',
-            title: 'Berhasil!',
-            text: '{{ session("success") }}',
-            confirmButtonText: 'OK'
-        });
+        @if (session('success'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: '{{ session("success") }}',
+                confirmButtonText: 'OK'
+            });
         @endif
     </script>
-</div>
-@endsection
+    <script>
+        function showImage(imageUrl) {
+            Swal.fire({
+                imageUrl: imageUrl,
+                imageWidth: 'auto',
+                imageHeight: 'auto',
+                imageAlt: 'Detail Foto',
+                showConfirmButton: false,
+                backdrop: true
+            });
+        }
+    </script>
 
-
-
-
-
-
-
-
+    @endsection
 
 
