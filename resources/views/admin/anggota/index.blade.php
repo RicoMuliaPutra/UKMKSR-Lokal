@@ -147,17 +147,17 @@
                     html: `
                         <p>Pastikan urutan kolom di file Excel sesuai dengan daftar di bawah dan gunakan huruf besar/kecil yang sama persis (case-sensitive).</p>
                         <ol style="text-align:left">
-                            <li>nim</li>
-                            <li>nama</li>
-                            <li>tanggal_Lahir (YYYY-MM-DD)</li>
-                            <li>alamat</li>
-                            <li>alasan_join</li>
-                            <li>angkatan</li>
-                            <li>jurusan</li>
-                            <li>prodi</li>
-                            <li>status</li>
-                            <li>tahun_masuk_kuliah</li>
-                            <li>jenis_kelamin</li>
+                            <li>nim (exp: E41225***)</li>
+                            <li>nama (exp: Savira)</li>
+                            <li>tanggal_Lahir (exp: 2022-01-03)</li>
+                            <li>alamat (exp: Jember)</li>
+                            <li>alasan_join (exp: Belajar hal baru)</li>
+                            <li>angkatan (exp: 12)</li>
+                            <li>jurusan (exp: Teknologi Informasi)</li>
+                            <li>prodi (exp: Teknik Informatika)</li>
+                            <li>status (exp: Tidak/Inaktif/Tidak Aktif)</li>
+                            <li>tahun_masuk_kuliah (exp: 2021)</li>
+                            <li>jenis_kelamin (exp: laki-laki/perempuan)</li>
                         </ol>
                     `,
                     icon: 'info',

@@ -41,6 +41,7 @@ Route::post('/anggota/import', [AnggotaController::class, 'importExcel'])->name(
 Route::resource('nilai', DataNilaiController::class);
 Route::resource('clustering', ClusteringController::class);
 Route::get('/cluster', [ClusteringController::class, 'cluster']);
+Route::get('/cluster/print', [ClusteringController::class, 'printCluster']);
 Route::resource('/kegiatan', KegiatanController::class);
 Route::resource('/tentang', TentangController::class);
 Route::resource('/service', LayananPageController::class);

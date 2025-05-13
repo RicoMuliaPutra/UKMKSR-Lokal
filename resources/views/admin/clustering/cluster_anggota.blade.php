@@ -1,14 +1,40 @@
 
     @extends('admin.layout.navbar')
     @section('content')
-    <h1 class="text-2xl font-bold mb-2">Clustering</h1>
-    <div class="container py-1 mx-auto">
-    <div class="flex items-center justify-between mb-4">
-        <p>Hasil Clustering Data Anggota Aktif KSR</p>
-        <a href="{{route('clustering.index')}}"
-            class="flex items-center justify-center px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600">
-            Kembali
-        </a>
+
+    <h1 class="text-2xl font-bold mb-2">Hasil Clustering</h1>
+    <div class="container py-8 mx-auto">
+    <div class="flex flex-col gap-4 mb-4 md:flex-row md:items-center md:justify-between">
+        <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:space-x-2">
+                <select id="filter"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 sm:w-auto">
+                    <option value="">Semua Cluster</option>
+                    @foreach ($clusters as $cluster)
+                    <option value="{{ $cluster }}" {{ request('cluster') == (string)$cluster ? 'selected' : '' }}>
+                        Cluster {{ $cluster }}
+                    </option>
+                    @endforeach
+                </select>
+
+                <script>
+                    document.getElementById('filter').addEventListener('change', function () {
+                        let filterValue = this.value;
+                        window.location.href = `?cluster=${filterValue}`;
+                    });
+                </script>
+            </div>
+        <div class="flex space-x-2">
+            <!-- Print Button -->
+            <a href="/cluster/print" target="_blank" class="flex items-center justify-center px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600" onclick="openPrintTab()">
+                Print
+            </a>
+
+            <!-- Back Button -->
+            <a href="{{route('clustering.index')}}"
+                class="flex items-center justify-center px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600">
+                Kembali
+            </a>
+        </div>
     </div>
 
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -46,7 +72,7 @@
             </tbody>
         </table>
         <div class="mt-4">
-            {{ $anggotas->links() }}
+            {{ $anggotas->appends(['cluster' => request('cluster')])->links() }}
         </div>
         @else
         <table class="w-full text-sm text-left text-black rtl:text-right">
@@ -73,4 +99,13 @@
         @endif
     </div>
     </div>
+
+    <script>
+        function openPrintTab() {
+            var printWindow = window.open("{{ url('/cluster/print') }}", "_blank");
+            printWindow.onload = function() {
+                printWindow.print();
+            };
+        }
+    </script>
     @endsection
