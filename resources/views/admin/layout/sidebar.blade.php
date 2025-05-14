@@ -49,6 +49,14 @@
             <span class="ml-2 text-xs sidebar-text">Tentang</span>
         </a>
 
+        <a href="{{ route('pesan-layanan.index') }}" class="flex items-center p-1 rounded-md
+            {{ request()->is('pesan-layanan*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
+            <img src="/img/icon/file.png" alt="Permohonan Icon" class="w-7 h-7
+                {{ request()->is('pesan-layanan*') ? 'filter invert brightness-0' : '' }}">
+            <span class="ml-2 text-xs sidebar-text">Permohonan</span>
+        </a>
+
+
         <a href="{{ route('Kepengurusan.index') }}" class="flex items-center p-2 rounded-md
         {{ request()->is('Kepengurusan*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
             <img src="/img/icon/pengurus.png" alt="kepengurusan Icon" class="w-6 h-6

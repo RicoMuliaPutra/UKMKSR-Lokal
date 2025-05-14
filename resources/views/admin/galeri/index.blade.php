@@ -23,7 +23,6 @@
     @extends('admin.layout.navbar')
 
     @section('content')
-
     <body class="text-gray-800 bg-gray-100">
         <div class="px-4 py-5 mx-auto max-w-7xl">
             <div class="flex items-center justify-between mb-6">
@@ -86,8 +85,6 @@
             dropdown.classList.toggle("hidden");
         });
     </script>
-
-
 </body>
 
 </html>

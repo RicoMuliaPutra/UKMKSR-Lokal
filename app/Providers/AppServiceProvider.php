@@ -5,7 +5,9 @@ namespace App\Providers;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
+use Illuminate\Http\Request;
 use App\Models\Layanan;
+use App\Models\Galeri;
 use App\Models\blog;
 // use Illuminate\Pagination\Paginator;
 
@@ -26,13 +28,26 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer('welcome', function ($view) {
-            $layanans = Layanan::where('status', 'aktif')->get();
-            $blogs = Blog::latest()->take(3)->get();
+      Paginator::useTailwind();
 
-            $view->with('layanans', $layanans);
-            $view->with('blogs', $blogs);
-            Paginator::useTailwind();
-        });
+    View::composer('welcome', function ($view) {
+        $tipe = request()->input('tipe', 'semua');
+        $layanans = Layanan::where('status', 'aktif')->get();
+        $blogs = Blog::latest()->take(3)->get();
+        $query = Galeri::with('jenisGaleri')->where('status', 'aktif');
+        if ($tipe === 'foto') {
+            $query->whereNotNull('foto_galeri');
+        } elseif ($tipe === 'video') {
+            $query->whereNotNull('video_galeri');
+        }
+       $galeri = $query->paginate(6);
+        $view->with([
+            'layanans' => $layanans,
+            'blogs' => $blogs,
+            'tipe' => $tipe,
+            'galeri' => $galeri,
+        ]);
+    });
+
     }
 }

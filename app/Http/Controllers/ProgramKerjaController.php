@@ -13,8 +13,7 @@ use Illuminate\Http\Request;
 class ProgramKerjaController extends Controller
 {
     public function index() {
-        $jabatans = Jabatan::has('programKerja')
-            ->with(['programKerja', 'pengurus.anggota'])
+        $jabatans = Jabatan::has('programKerja')->with(['programKerja', 'pengurus.anggota'])
             ->get();
 
         return view('admin.program_kerja.index', compact('jabatans'));

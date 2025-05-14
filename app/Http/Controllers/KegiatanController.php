@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Kegiatan;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
 class KegiatanController extends Controller
@@ -135,7 +136,9 @@ class KegiatanController extends Controller
 
     public function viewPage()
     {
-        return view('LandingPage.kegiatan');
+        $kegiatans = Kegiatan::where('status', 'aktif')->latest()->paginate(6);
+        return view('LandingPage.kegiatan', compact('kegiatans'));
+
     }
 
     public function getKegiatan()
@@ -154,5 +157,9 @@ class KegiatanController extends Controller
         }
 
         return response()->json($events);
+    }
+
+    public function doras(){
+        return view ('LandingPage.kegiatan.doras');
     }
 }

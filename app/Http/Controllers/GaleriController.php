@@ -15,11 +15,10 @@ class GaleriController extends Controller
         $tipe = $request->input('tipe', 'semua');
         $query = Galeri::with('jenisGaleri')->where('status', 'aktif');
 
-        // Filter berdasarkan tipe (foto atau video)
         if ($tipe === 'foto') {
-            $query->whereNotNull('foto_galeri');  // Memfilter galeri yang memiliki foto
+            $query->whereNotNull('foto_galeri');
         } elseif ($tipe === 'video') {
-            $query->whereNotNull('video_galeri');  // Memfilter galeri yang memiliki video
+            $query->whereNotNull('video_galeri');
         }
 
         $galeri = $query->get();
@@ -72,4 +71,6 @@ class GaleriController extends Controller
         // Redirect ke halaman galeri dengan pesan sukses
         return redirect()->route('galeri.index')->with('success', 'Data galeri berhasil ditambahkan');
     }
+
+
 }

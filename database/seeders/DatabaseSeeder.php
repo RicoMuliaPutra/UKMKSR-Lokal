@@ -19,10 +19,17 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->create([
             'name' => 'HUMAS KSR',
             'email' => 'admin123@gmail.com',
-            'password' => Hash::make('admin123')
+            'password' => Hash::make('admin123'),
+            'role' => 'humas_ksr',
 
         ]);
 
+        \App\Models\User::factory()->create([
+            'name' => 'anggota',
+            'email' => 'anggotabandel@gmail.com',
+            'password' => Hash::make('password123'),
+            'role' => 'user',
+        ]);
         $this->call([
             BlogSeeder::class,
             layananSeeder::class,

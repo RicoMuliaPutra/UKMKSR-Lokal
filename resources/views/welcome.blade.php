@@ -160,10 +160,51 @@
 
 
 
-    <main class="flex-1 w-full p-6 bg-black">
-        <div class="">
-            <h2 class="text-2xl font-bold text-center text-white">GALERI</h2>
+   <main class="flex-1 w-full min-h-screen p-6 bg-black">
+    <div class="mb-8">
+        <h2 class="mb-4 text-3xl font-bold text-center text-white">GALERI</h2>
+
+        <section id="galeri" class="mt-4">
+            <div class="mb-6 border-b border-gray-500">
+            <nav class="flex justify-center space-x-6 text-sm font-semibold">
+                <a href="?tipe=semua#galeri"
+                class="pb-2 text-xl transition-all duration-200 {{ $tipe === 'semua' ? 'border-b-2 border-red-500 text-red-500' : 'border-transparent text-gray-300 hover:text-white hover:border-red-400' }}">
+                Semua
+                </a>
+                <a href="?tipe=foto#galeri"
+                class="pb-2 text-xl transition-all duration-200 {{ $tipe === 'foto' ? 'border-b-2 border-red-500 text-red-500' : 'border-transparent text-gray-300 hover:text-white hover:border-red-400' }}">
+                Foto
+                </a>
+                <a href="?tipe=video#galeri"
+                class="pb-2 text-xl transition-all duration-200 {{ $tipe === 'video' ? 'border-b-2 border-red-500 text-red-500' : 'border-transparent text-gray-300 hover:text-white hover:border-red-400' }}">
+                Video
+                </a>
+            </nav>
         </div>
+        </section>
+
+        <div class="grid gap-8 pb-8 mt-12 sm:grid-cols-2 lg:grid-cols-3 justify-items-center">
+            @foreach ($galeri as $item)
+            <div class="bg-gray-800 rounded-md w-full aspect-[2/1] overflow-hidden   shadow-lg">
+                @if ($item->foto_galeri)
+                <img src="{{ asset('storage/' . $item->foto_galeri) }}" class="object-cover w-full h-full" alt="Foto Galeri">
+                @elseif ($item->video_galeri)
+                <video controls class="object-cover w-full h-full">
+                    <source src="{{ asset('storage/' . $item->video_galeri) }}" type="video/mp4">
+                    Browser tidak mendukung tag video.
+                </video>
+                @endif
+            </div>
+            @endforeach
+        </div>
+
+        @if ($galeri->isEmpty())
+        <p class="mt-10 text-center text-gray-400">Tidak ada galeri yang tersedia.</p>
+        @endif
+    </div>
+            <div class="mt-6">
+                {{ $galeri->appends(request()->query())->fragment('galeri')->links() }}
+            </div>
     </main>
 
     <div class="w-full bg-red-600 h-7"></div>

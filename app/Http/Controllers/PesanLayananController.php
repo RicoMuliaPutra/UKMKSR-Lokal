@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\PesanLayanan;
+use App\Models\Layanan;
+
+
 
 
 class PesanLayananController extends Controller
 {
 
     public function index(){
-
+        $pesanan = PesanLayanan::with('layanan')->latest()->get();
+        $layanan = Layanan::all();
+        return view('admin.permohonan.index', compact('pesanan', 'layanan'));
     }
 
     public function create(){
