@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Anggota;
 use App\Models\Kegiatan;
 use App\Models\Layanan;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -27,7 +29,6 @@ class DashboardController extends Controller
                 ->whereIn('status', ['aktif', 'inaktif'])
                 ->count();
         });
-
         
         $angkatan_mulai = $angkatan_terakhir - 2;
         $jumlah_seluruh_anggota = Anggota::whereBetween('angkatan', [$angkatan_mulai, $angkatan_terakhir])->count();
@@ -36,6 +37,16 @@ class DashboardController extends Controller
 
         $jumlah_kegiatan = Kegiatan::where('status', 'aktif')->count();
         $jumlah_layanan = Layanan::where('status', 'aktif')->count();
+
+        // ulang tahun
+        $today = Carbon::today();
+        $twoWeeksLater = $today->copy()->addDays(14);
+
+        $ulang_tahun_anggota = Anggota::select('*')
+            ->whereRaw("DATE_FORMAT(tanggal_lahir, '%m-%d') >= ?", [$today->format('m-d')])
+            ->whereRaw("DATE_FORMAT(tanggal_lahir, '%m-%d') <= ?", [$twoWeeksLater->format('m-d')])
+            ->orderByRaw("DATE_FORMAT(tanggal_lahir, '%m-%d')")
+            ->get();
 
         return view('admin.dashboard', [
             'title' => 'Beranda',
@@ -46,7 +57,8 @@ class DashboardController extends Controller
             'jumlah_kegiatan' => $jumlah_kegiatan,
             'jumlah_layanan' => $jumlah_layanan,
             'data_grafik' => $data_grafik->toArray(),
-            'angkatan_grafik' => $angkatan_grafik
+            'angkatan_grafik' => $angkatan_grafik,
+            'ulang_tahun_anggota' => $ulang_tahun_anggota
         ]);
     }
 

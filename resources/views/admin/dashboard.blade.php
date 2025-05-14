@@ -58,15 +58,19 @@
                 <div class="overflow-y-auto max-h-64">
                     <table class="w-full text-sm text-left text-black rtl:text-right">
                         <tbody>
-                            @for ($i = 1; $i <= 7; $i++)
+                            @forelse ($ulang_tahun_anggota as $index => $anggota)
                             <tr class="border-b hover:bg-gray-50">
-                                <td class="px-4 py-2 border-r">1</td>
-                                <td class="px-4 py-2 border-r truncate max-w-[80px] overflow-hidden">Ilham Nugroho</td>
-                                <td class="px-4 py-2 border-r">13</td>
-                                <td class="px-4 py-2 border-r truncate max-w-[80px] overflow-hidden">Teknik Informatika</td>
-                                <td class="px-4 py-2 border-r">12-04-2003</td>
+                                <td class="px-4 py-2 border-r">{{ $index + 1 }}</td>
+                                <td class="px-4 py-2 border-r truncate max-w-[80px] overflow-hidden">{{ $anggota->nama }}</td>
+                                <td class="px-4 py-2 border-r">{{ $anggota->angkatan }}</td>
+                                <td class="px-4 py-2 border-r truncate max-w-[80px] overflow-hidden">{{ $anggota->prodi }}</td>
+                                <td class="px-4 py-2 border-r">{{ \Carbon\Carbon::parse($anggota->tanggal_lahir)->format('d-m-Y') }}</td>
                             </tr>
-                            @endfor
+                            @empty
+                            <tr>
+                                <td colspan="5" class="text-center py-4">Tidak ada ulang tahun dalam 2 minggu ke depan</td>
+                            </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
