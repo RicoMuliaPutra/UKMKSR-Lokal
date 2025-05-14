@@ -79,9 +79,26 @@ class pengurusController extends Controller
 
     public function tampilanblade()
     {
-        $pengurus = Pengurus::with('anggota', 'jabatan.divisi', 'periode', 'programKerjas')->get();
+        $dataPengurus = Pengurus::with('anggota', 'jabatan.divisi', 'periode', 'programKerjas')->get();
+        $daftarPeriode = PeriodeKepengurusan::orderBy('tahun_mulai', 'desc')->get();
 
-        return view('LandingPage.kepengurusan', compact('pengurus'));
+        return view('LandingPage.kepengurusan', compact('dataPengurus','daftarPeriode'));
+    }
+
+    public function dataPengurus(Request $request)
+    {
+        $filterPeriode = $request->query('periode');
+        $daftarPeriode = PeriodeKepengurusan::orderBy('tahun_mulai', 'desc')->get();
+
+        $query = Pengurus::with(['anggota', 'jabatan', 'periode']);
+
+        if (!empty($filterPeriode)) {
+            $query->where('periode_id', $filterPeriode);
+        }
+
+        $dataPengurus = $query->get();
+
+        return view('LandingPage.kepengurusan', compact('dataPengurus', 'daftarPeriode'));
     }
 
 

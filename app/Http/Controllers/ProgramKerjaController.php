@@ -13,12 +13,17 @@ use Illuminate\Http\Request;
 class ProgramKerjaController extends Controller
 {
     public function index() {
-        $jabatans = Jabatan::has('programKerja')
-            ->with(['programKerja', 'pengurus.anggota'])
+        $jabatans = Jabatan::has('programKerja')->with(['programKerja', 'pengurus.anggota'])
             ->get();
 
         return view('admin.program_kerja.index', compact('jabatans'));
     }
+
+    public function show($id) {
+        $jabatan = Jabatan::with(['programKerja', 'pengurus.anggota'])->findOrFail($id);
+        return view('admin.program_kerja.show', compact('jabatan'));
+    }
+
 
 
     public function create(){
@@ -42,4 +47,30 @@ class ProgramKerjaController extends Controller
     return redirect()->route('Program_kerja.index')->with('success', 'Program kerja berhasil ditambahkan.');
 
     }
+
+    public function destroy($id){
+    $program = ProgramKerja::findOrFail($id);
+    $program->delete();
+
+    return redirect()->route('Program_kerja.index')->with('success', 'Program kerja berhasil Dihapus.');
+}
+
+
+    public function viewpage(Request $request){
+    $periodeId = $request->input('periode');
+    $programQuery = ProgramKerja::with(['jabatan']);
+    if ($periodeId) {
+        $jabatanIds = Pengurus::where('periode_id', $periodeId)->pluck('jabatan_id')->unique();
+        $programQuery->whereIn('jabatan_id', $jabatanIds);
+    }
+
+    $dataProgram = $programQuery->get()->groupBy(function ($item) {
+        return $item->jabatan->nama_jabatan ?? 'Tidak Ada Jabatan';
+    });
+
+    $daftarPeriode = PeriodeKepengurusan::all();
+
+    return view('LandingPage.program_kerja', compact('dataProgram', 'daftarPeriode'));
+    }
+
 }

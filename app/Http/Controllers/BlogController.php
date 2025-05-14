@@ -101,16 +101,14 @@ class BlogController extends Controller
     }
 
     public function search(Request $request) {
-        $query = $request->input('query');
+    $query = $request->input('query');
 
-        $data = Blog::where('title', 'LIKE', "%$query%")->latest()->get()->map(function ($blog) {
-            $blog->description = strip_tags($blog->description);
-            $blog->description = Str::limit($blog->description, 150, '...');
-            return $blog;
-        });
+    $data = Blog::where('title', 'LIKE', "%$query%")
+                ->latest()
+                ->paginate(6);
 
-        return view('LandingPage.BlogPage', compact('data'));
-    }
+    return view('LandingPage.BlogPage', compact('data'));
+}
 
     public function show($id){
         $blog =Blog::findOrFail($id);

@@ -21,4 +21,5 @@ class Kegiatan extends Model
         'poster_kegiatan',
         'status',
     ];
+     protected $dates = ['start_kegiatan', 'end_kegiatan'];
 }

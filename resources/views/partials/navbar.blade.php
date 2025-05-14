@@ -14,7 +14,7 @@
                 <ul class="absolute left-0 hidden w-40 text-gray-700 bg-white shadow-lg group-hover:block">
                     <li><a href="{{route('sejarah')}}" class="block px-4 py-2 hover:bg-gray-200">Sejarah</a></li>
                     <li><a href="{{route('visimisi')}}" class="block px-4 py-2 hover:bg-gray-200">Visi Misi</a></li>
-                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Program Kerja</a></li>
+                    <li><a href="{{route('proker')}}" class="block px-4 py-2 hover:bg-gray-200">Program Kerja</a></li>
                     <li><a href="{{route('struktur')}}" class="block px-4 py-2 hover:bg-gray-200">Kepengurusan</a></li>
                     <li><a href="{{route('lambang')}}" class="block px-4 py-2 hover:bg-gray-200">Lambang PMI</a></li>
                     <li><a href="{{route('dataAnggota')}}" class="block px-4 py-2 hover:bg-gray-200">Anggota </a></li>
@@ -29,7 +29,7 @@
             <li class="relative group">
                 <a href="{{ route('aktifitas') }}" class="font-bold hover:text-gray-300">Kegiatan</a>
                 {{-- <ul class="absolute left-0 hidden w-40 text-gray-700 bg-white shadow-lg group-hover:block">
-                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Donor Darah</a></li>
+                    <li><a href="{{ route('doras') }}" class="block px-4 py-2 hover:bg-gray-200">Donor Darah</a></li>
                     <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Bakti Sosial</a></li>
                     <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Dies Natalis</a></li>
                     <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Diklatsar dan Pelantikan Anggota</a></li>
@@ -61,7 +61,7 @@
             <ul class="hidden pl-4 space-y-2 overflow-hidden transition-all duration-300 ease-in-out opacity-0 max-h-0 dropdown-content">
                 <li><a href="{{route('sejarah')}}" class="block hover:text-gray-300">Sejarah</a></li>
                 <li><a href="{{route('visimisi')}}" class="block hover:text-gray-300">Visi Misi</a></li>
-                <li><a href="#" class="block hover:text-gray-300">Program Kerja</a></li>
+                <li><a href="{{route('proker')}}" class="block hover:text-gray-300">Program Kerja</a></li>
                 <li><a href="{{route('struktur')}}" class="block hover:text-gray-300">Kepengurusan</a></li>
                 <li><a href="{{route('dataAnggota')}}" class="block hover:text-gray-300">Anggota</a></li>
                 <li><a href="{{route('lambang')}}" class="block hover:text-gray-300">Lambang PMI</a></li>
@@ -78,26 +78,23 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
             </button>
-            <ul class="hidden pl-4 space-y-2 overflow-hidden transition-all duration-300 ease-in-out opacity-0 max-h-0 dropdown-content">
+            {{-- <ul class="hidden pl-4 space-y-2 overflow-hidden transition-all duration-300 ease-in-out opacity-0 max-h-0 dropdown-content">
                 <li><a href="#" class="block hover:text-gray-300">Donor Darah</a></li>
                 <li><a href="#" class="block hover:text-gray-300">Bakti Sosial</a></li>
                 <li><a href="#" class="block hover:text-gray-300">Dies Natalis</a></li>
                 <li><a href="#" class="block hover:text-gray-300">Rencara Kerja Tindak Lanjut</a></li>
                 <li><a href="#" class="block hover:text-gray-300">Diklatsar dan Pelantikan Anggota</a></li>
         </li>
-            </ul>
+            </ul> --}}
         </li>
         <li><a href="{{route('bloging')}}" class="block hover:text-gray-300">BLOG</a></li>
         <button id="navAction" type="button" class="px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"  onclick="window.location='{{ url('login') }}'">
             Login
         </button>
-
-        <!-- Tentang Kami -->
         <li class="mt-5">
             <h3 class="text-lg font-bold">TENTANG KAMI</h3>
             <p class="text-sm text-gray-400">Organisasi kepalangmerahan di kampus pendidikan, Politeknik Negeri Jember</p>
         </li>
-        <!-- Sosial Media -->
         <li class="mt-5">
             <h3 class="text-lg font-bold">IKUTI KAMI</h3>
             <div class="flex mt-2 space-x-3">

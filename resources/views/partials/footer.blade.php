@@ -15,13 +15,13 @@
                 <p class="mb-4 font-bold text-white uppercase">Tautan Langsung</p>
                 <ul class="list-reset">
                     <li class="mt-2">
-                        <a href="" class="text-white no-underline hover:underline hover:text-pink-500">About Us</a>
+                        <a href="https://wa.me/6281233151566" class="text-white no-underline hover:underline hover:text-pink-500">About Us</a>
                     </li>
                     <li class="mt-2">
                         <a href="https://wa.me/6281233151566" class="text-white no-underline hover:underline hover:text-pink-500">Contact Us</a>
                     </li>
                     <li class="mt-2">
-                        <a href="#" class="text-white no-underline hover:underline hover:text-pink-500">Support</a>
+                        <a href="https://wa.me/6281233151566" class="text-white no-underline hover:underline hover:text-pink-500">Support</a>
                     </li>
                     <li class="mt-2">
                         <a href="#" class="text-white no-underline hover:underline hover:text-pink-500">Privasi Policy</a>

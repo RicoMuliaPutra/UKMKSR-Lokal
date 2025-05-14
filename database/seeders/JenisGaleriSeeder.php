@@ -9,13 +9,12 @@ class JenisGaleriSeeder extends Seeder
 {
     public function run()
     {
-        // Menambahkan data ke dalam tabel jenis_galeri
         DB::table('jenis_galeri')->insert([
             [
-                'nama_jenis_galeri' => 'foto', // Menyimpan jenis galeri untuk foto
+                'nama_jenis_galeri' => 'foto',
             ],
             [
-                'nama_jenis_galeri' => 'video', // Menyimpan jenis galeri untuk video
+                'nama_jenis_galeri' => 'video',
             ],
         ]);
     }

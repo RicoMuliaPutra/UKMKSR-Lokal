@@ -10,6 +10,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap" rel="stylesheet">
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     </head>
 <body class="flex flex-col min-h-screen bg-white">
     @include('partials.navbar')
@@ -18,7 +20,7 @@
             <div class="container mx-auto max-w-9xl">
 
                 <div class="mb-10 text-center">
-                    <h1 class="text-3xl font-bold leading-tight text-gray-800">Anggota</h1>
+                    <h1 class="text-3xl font-bold leading-tight text-gray-800 animate__animated animate__fadeInUp">Anggota</h1>
                     <div class="w-64 h-1 mx-auto mt-4 bg-red-600 rounded-t bg-gradient-to-r from-orange-500 opacity-60"></div>
                 </div>
 
@@ -54,47 +56,54 @@
                 </div>
 
 
-                <div class="relative mb-4 overflow-x-auto shadow-md sm:rounded-lg ">
-                    <table class="w-full text-sm text-left text-black rtl:text-right">
-                        <thead class="text-xs text-black uppercase bg-white border-b border-gray-200">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">No</th>
-                                <th scope="col" class="px-6 py-3">Nama</th>
-                                <th scope="col" class="px-6 py-3">Angkatan</th>
-                                <th scope="col" class="px-6 py-3">Jenis Kelamin</th>
-                                <th scope="col" class="px-6 py-3">Jurusan</th>
-                                <th scope="col" class="px-6 py-3">Prodi</th>
-                                <th scope="col" class="px-6 py-3">Status</th>
-                                <th scope="col" class="px-6 py-3">Tahun Masuk Kuliah</th>
-                                <th scope="col" class="px-6 py-3">Foto</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($dataAnggota as $key => $anggota)
-                            <tr class="border-b hover:bg-gray-50">
-                                <td class="px-4 py-2 text-center border-r">{{ $key + 1 }}</td>
-                                <td class="px-4 py-2 border-r">{{ $anggota->nama }}</td>
-                                <td class="px-4 py-2 border-r">{{ $anggota->angkatan }}</td>
-                                <td class="px-4 py-2 border-r">{{ $anggota->jenis_kelamin }}</td>
-                                <td class="px-4 py-2 border-r">{{ $anggota->jurusan }}</td>
-                                <td class="px-4 py-2 border-r">{{ $anggota->prodi }}</td>
-                                <td class="px-4 py-2 border-r">{{ $anggota->status }}</td>
-                                <td class="px-4 py-2 border-r">{{ $anggota->tahun_masuk_kuliah }}</td>
-                                <td class="px-4 py-2 text-center border-r">
-                                    @if ($anggota->foto)
-                                        <img src="{{ asset('storage/' . $anggota->foto) }}"
-                                             alt="Gambar Anggota"
-                                             class="object-cover w-20 h-20 rounded cursor-pointer"
-                                             onclick="showImage('{{ asset('storage/' . $anggota->foto) }}')">
-                                    @else
-                                        <span>-</span>
-                                    @endif
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                <div class="grid grid-cols-1 gap-6 py-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    @foreach ($dataAnggota as $anggota)
+                    <div class="flex flex-col items-center p-4 text-center transition duration-300 bg-white shadow rounded-xl hover:shadow-lg">
+                        <div class="w-24 h-24 mb-4">
+                            @if ($anggota->foto)
+                            <img src="{{ asset('storage/' . $anggota->foto) }}" alt="Foto {{ $anggota->nama }}"
+                                 class="object-cover w-full h-full rounded-full ring-2 ring-red-400">
+                            @else
+                            <div class="flex items-center justify-center w-full h-full text-gray-500 bg-gray-200 rounded-full">-</div>
+                            @endif
+                        </div>
+                        <h2 class="text-lg font-semibold text-gray-800">{{ $anggota->nama }}</h2>
+                        <p class="text-sm text-gray-500">{{ $anggota->prodi }} • {{ $anggota->jurusan }}</p>
+                        <p class="mt-1 text-sm text-gray-600">Angkatan: {{ $anggota->angkatan }} | {{ $anggota->jenis_kelamin }}</p>
+                        <p class="mt-1 text-sm text-gray-600">  {{ $anggota->tahun_masuk_kuliah }}</p>
+                        <span class="mt-3 inline-block px-3 py-1 text-xs font-medium rounded-full
+                                     {{ $anggota->status == 'Aktif' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700' }}">
+                            {{ $anggota->status }}
+                        </span>
+                    </div>
+                    @endforeach
                 </div>
+
+                {{-- <ul class="py-4 space-y-4">
+                    @foreach ($dataAnggota as $anggota)
+                    <li class="flex items-center p-4 transition bg-white rounded-lg shadow hover:bg-gray-50">
+                        <div class="flex-shrink-0">
+                            @if ($anggota->foto)
+                            <img class="object-cover rounded-full w-14 h-14" src="{{ asset('storage/' . $anggota->foto) }}" alt="Foto">
+                            @else
+                            <div class="flex items-center justify-center text-gray-500 bg-gray-200 rounded-full w-14 h-14">-</div>
+                            @endif
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold text-gray-800">{{ $anggota->nama }}</h3>
+                            <p class="text-sm text-gray-600">
+                                {{ $anggota->angkatan }} • {{ $anggota->jurusan }} • {{ $anggota->prodi }}
+                            </p>
+                            <p class="text-xs text-gray-500">Masuk: {{ $anggota->tahun_masuk_kuliah }} | {{ $anggota->status }}</p>
+                        </div>
+                    </li>
+                    @endforeach
+                </ul> --}}
+
+
+
+
+
             </div>
         </section>
     </main>
@@ -113,5 +122,23 @@
             });
         }
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const animatedEls = document.querySelectorAll('.animate-on-scroll');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.2
+            });
+
+            animatedEls.forEach(el => observer.observe(el));
+        });
+        </script>
 </body>
 </html>

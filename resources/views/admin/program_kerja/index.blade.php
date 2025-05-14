@@ -26,6 +26,7 @@
                         <th class="px-6 py-3">No.</th>
                         <th class="px-6 py-3">Nama Pengurus</th>
                         <th class="px-6 py-3">Jabatan</th>
+                        <th class="px-6 py-3">Periode</th>
                         <th class="px-6 py-3">Program</th>
                         <th class="px-6 py-3">Aksi</th>
                     </tr>
@@ -39,9 +40,12 @@
                                     <td class="px-6 py-4">{{ $no++ }}</td>
                                     <td class="px-6 py-4">{{ $pengurus->anggota->nama ?? '-' }}</td>
                                     <td class="px-6 py-4">{{ $jabatan->nama_jabatan }}</td>
+                                    <td class="px-6 py-4">{{ $pengurus->periode->nama_periode }}</td>
                                     <td class="px-6 py-4">{{ $pengurus->programKerjas->count() }} Program</td>
                                     <td class="px-6 py-4">
-                                        <a href="" class="text-blue-500 hover:underline">Detail</a>
+                                        <a href="{{ route('Program_kerja.show', $jabatan->id) }}" class="text-blue-500 hover:underline">
+                                            <i class="fas fa-info-circle"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             @endif
@@ -63,4 +67,5 @@
         });
         @endif
     </script>
+    
 @endsection

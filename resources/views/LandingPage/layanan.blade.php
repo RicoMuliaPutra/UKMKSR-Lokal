@@ -10,19 +10,22 @@
         <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap" rel="stylesheet">
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     </head>
 <body class="flex flex-col min-h-screen bg-white">
     @include('partials.navbar')
-    <section class="relative flex items-center justify-center w-full h-screen text-white">
-        <img class="absolute top-0 left-0 object-cover w-full h-full filter "
-             src="{{ asset('img/layananpage.png') }}"alt="layanan">
-        <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
-        <div class="relative z-10 text-center">
-            <h1 class="font-bold text-white text-7xl" style="font-family: 'Kanit', sans-serif;">LAYANAN</h1>
-            <hr class="w-1/2 mx-auto my-4 border-t-2 border-white opacity-80">
-            <p class="mt-4 text-lg text-white">Unit Kegiatan Mahasiswa Korps Sukarela Palang Merah Indonesia Unit Politeknik Negeri Jember</p>
-        </div>
-    </section>
+    <section class="relative flex items-center justify-center w-full h-screen text-white animate__animated animate__fadeIn">
+            <img class="absolute top-0 left-0 object-cover w-full h-full filter "
+                src="{{ asset('img/layananpage.png') }}"alt="layanan">
+            <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
+            <div class="relative z-10 text-center">
+            <h1 class="font-bold text-white text-7xl animate__animated animate__fadeInUp" style="font-family: 'Kanit', sans-serif;">LAYANAN</h1>
+                <hr class="w-1/2 mx-auto my-4 border-t-2 border-white opacity-80">
+                <p class="mt-4 text-lg text-white">Unit Kegiatan Mahasiswa Korps Sukarela Palang Merah Indonesia Unit Politeknik Negeri Jember</p>
+            </div>
+        </section>
     <div class="w-full bg-red-600 h-7"></div>
     <main class="container flex-1 mx-auto">
         <section class="p-5 bg-white rounded-lg">
@@ -42,7 +45,7 @@
                                 </div>
                             </div>
                             <div class="absolute p-8 transform -translate-x-1/2 bottom-4 left-1/2">
-                                <a href="#"
+                                <a href="{{ route('service.detail', $layanan->id_layanan) }}"
                                    class="px-6 py-3 font-bold text-center text-white transition border border-red-600 rounded-lg hover:bg-red-600 hover:text-white whitespace-nowrap">
                                     LEARN MORE
                                 </a>
