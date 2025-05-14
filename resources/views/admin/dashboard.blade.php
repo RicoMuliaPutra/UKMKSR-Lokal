@@ -1,6 +1,8 @@
 
     @extends('admin.layout.navbar')
     @section('content')
+    <h1 class="text-2xl font-bold mb-2">Beranda</h1>
+    <div class="container py-8 mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition h-48 flex flex-col justify-center">
             <h3 class="text-gray-500 mb-2 text-center">Seluruh Anggota {{$tahun_sekarang}}</h3>
@@ -25,14 +27,49 @@
         </div>
 
         <div class="flex flex-col gap-6">
-            <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition h-48 flex flex-col justify-center">
-                <h3 class="text-gray-500 mb-2 text-center">Kegiatan {{$tahun_sekarang}}</h3>
-                <p class="text-6xl font-bold text-gray-500 text-center" id="event-count"></p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition h-48 flex flex-col justify-center">
+                    <h3 class="text-gray-500 mb-2 text-center">Kegiatan {{$tahun_sekarang}}</h3>
+                    <p class="text-6xl font-bold text-gray-500 text-center" id="event-count"></p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition h-48 flex flex-col justify-center">
+                    <h3 class="text-gray-500 mb-2 text-center">Layanan {{$tahun_sekarang}}</h3>
+                    <p class="text-6xl font-bold text-gray-500 text-center" id="service-count"></p>
+                </div>
             </div>
 
-            <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition h-48 flex flex-col justify-center">
-                <h3 class="text-gray-500 mb-2 text-center">Layanan {{$tahun_sekarang}}</h3>
-                <p class="text-6xl font-bold text-gray-500 text-center" id="service-count"></p>
+            <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition h-96 flex flex-col justify-start">
+                <h3 class="text-gray-500 mb-2 text-center">Ulang Tahun Anggota</h3>
+                <!-- Table Head -->
+                <table class="w-full text-sm text-left text-black rtl:text-right">
+                    <thead class="text-xs text-white uppercase bg-red-500 border-b border-gray-200">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">No</th>
+                            <th scope="col" class="px-6 py-3">Nama</th>
+                            <th scope="col" class="px-6 py-3">Angkatan</th>
+                            <th scope="col" class="px-6 py-3">Prodi</th>
+                            <th scope="col" class="px-6 py-3">Tanggal Lahir</th>
+                        </tr>
+                    </thead>
+                </table>
+
+                <!-- Scrollable Table Body -->
+                <div class="overflow-y-auto max-h-64">
+                    <table class="w-full text-sm text-left text-black rtl:text-right">
+                        <tbody>
+                            @for ($i = 1; $i <= 7; $i++)
+                            <tr class="border-b hover:bg-gray-50">
+                                <td class="px-4 py-2 border-r">1</td>
+                                <td class="px-4 py-2 border-r truncate max-w-[80px] overflow-hidden">Ilham Nugroho</td>
+                                <td class="px-4 py-2 border-r">13</td>
+                                <td class="px-4 py-2 border-r truncate max-w-[80px] overflow-hidden">Teknik Informatika</td>
+                                <td class="px-4 py-2 border-r">12-04-2003</td>
+                            </tr>
+                            @endfor
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
