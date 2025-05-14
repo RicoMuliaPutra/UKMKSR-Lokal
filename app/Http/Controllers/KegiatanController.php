@@ -162,4 +162,15 @@ class KegiatanController extends Controller
     public function doras(){
         return view ('LandingPage.kegiatan.doras');
     }
+
+public function detailshow($id){
+    $kegiatan = Kegiatan::findOrFail($id);
+    $kegiatans = Kegiatan::where('status', 'aktif')->get();
+    return view('LandingPage.detail_kegiatan', compact('kegiatan', 'kegiatans'));
 }
+
+
+
+
+}
+

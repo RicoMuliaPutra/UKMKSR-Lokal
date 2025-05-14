@@ -106,9 +106,15 @@ Route::post('/pesan-layanan', [PesanLayananController::class, 'store'])->name('p
 Route::get('/DataAnggota', [AnggotaController::class, 'dataAnggota'])->name('dataAnggota');
 Route::get('/DataAnggota/search', [AnggotaController::class, 'cari'])->name('anggota.cari');
 Route::get('/Blog', [BlogController::class, 'Blogging'])->name('bloging');
-Route::get('/blog{id}', [BlogController::class, 'detail'])->name('blog.detail');
+Route::get('/blog/{id}', [BlogController::class, 'detail'])->name('blog.detail');
 Route::get('/blog/search', [BlogController::class, 'search'])->name('blog.search');
-Route::post('/kegiatan/toggle/{id}', [KegiatanController::class, 'toggle'])->name('kegiatan.toggle');
+// Route::post('/kegiatan/toggle/{id}', [KegiatanController::class, 'toggle'])->name('kegiatan.toggle');
+// Route::get('/aktivity/{id}', [KegiatanController::class, 'detail'])->name('kegiatan.detail');
+// Route::get('/kegiatan-detail/{id}', [KegiatanController::class, 'detailshow'])->name('kegiatanshow.detail');
+Route::get('/kegiatan/{id}', [KegiatanController::class, 'show'])->name('kegiatan.showw');
+
+
+
 
 Route::get('/doras', [KegiatanController::class, 'doras'])->name('doras');
 
