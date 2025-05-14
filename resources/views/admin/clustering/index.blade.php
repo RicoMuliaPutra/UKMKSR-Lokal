@@ -1,24 +1,5 @@
-<!DOCTYPE html>
-<html lang="id">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clustering</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-    </style>
-</head>
-<body class="bg-gray-100 text-gray-800">
     @extends('admin.layout.navbar')
-
     @section('content')
     <h1 class="text-2xl font-bold mb-2">Clustering</h1>
     <div class="container py-1 mx-auto">
@@ -50,7 +31,7 @@
                 @foreach ($anggotas as $key => $anggota)
                     <tr class="border-b hover:bg-gray-50">
                         <td class="px-4 py-2 border-r">{{ $anggota->anggota->nim }}</td>
-                        <td class="px-4 py-2 border-r">{{ $anggota->anggota->nama }}</td>
+                        <td class="px-4 py-2 border-r truncate max-w-[80px] overflow-hidden">{{ $anggota->anggota->nama }}</td>
                         <td class="px-4 py-2 border-r">{{ $anggota->anggota->angkatan }}</td>
                         <td class="px-4 py-2 border-r">{{ $anggota->anggota->jenis_kelamin }}</td>
                         <td class="px-4 py-2 border-r">{{ $anggota->anggota->prodi }}</td>
@@ -62,6 +43,9 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="mt-4">
+            {{ $anggotas->links() }}
+        </div>
         @else
         <table class="w-full text-sm text-left text-black rtl:text-right">
             <thead class="text-xs text-black uppercase bg-white border-b border-gray-200">
@@ -87,6 +71,3 @@
     </div>
     </div>
     @endsection
-</body>
-
-</html>

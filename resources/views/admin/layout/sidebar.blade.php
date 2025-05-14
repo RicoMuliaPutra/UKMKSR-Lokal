@@ -5,30 +5,29 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M12 12c2.5 0 4.5-2 4.5-4.5S14.5 3 12 3s-4.5 2-4.5 4.5S9.5 12 12 12zm0 2c-4 0-7 2-7 4v1h14v-1c0-2-3-4-7-4z" />
         </svg>
-        <h2 class="text-lg font-semibold">Humas Polije</h2>
+        <h2 class="text-lg font-semibold">Humas UKM KSR</h2>
         <p class="mb-6 text-sm text-gray-500">Admin Humas</p>
         <hr class="border-gray-300">
     </div>
 
     <!-- Menu Navigasi -->
     <nav class="flex-grow p-4 space-y-1.5">
-        <a href="/dashboard" class="flex items-center p-3 rounded-md
+        <a href="/dashboard" class="flex items-center p-2 rounded-md
             {{ request()->is('dashboard') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
-            <img src="/img/icon/home.png" alt="Beranda Icon" class="w-4 h-4
+            <img src="/img/icon/home.png" alt="Beranda Icon" class="w-6 h-6
                 {{ request()->is('dashboard') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs font-medium sidebar-text">Beranda</span>
         </a>
 
-        <a href="{{ route('anggota.index') }}" class="flex items-center p-3 rounded-md
+        <a href="{{ route('anggota.index') }}" class="flex items-center p-2 rounded-md
          {{ request()->is('anggota*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
-            <img src="/img/icon/multi.png" alt="Anggota Icon" class="w-5 h-5
+            <img src="/img/icon/multi.png" alt="Anggota Icon" class="w-6 h-6
          {{ request()->is('anggota*') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Anggota</span>
         </a>
-
-        <a href="{{ route('nilai.index') }}" class="flex items-center p-1 rounded-md
+        <a href="{{ route('nilai.index') }}" class="flex items-center p-2 rounded-md
             {{ request()->is('nilai*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
-            <img src="/img/icon/add.png" alt="Nilai Anggota Baru Icon" class="h-7 w-7
+            <img src="/img/icon/add.png" alt="Nilai Anggota Baru Icon" class="h-6 w-6
                 {{ request()->is('nilai*') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Data Nilai Anggota</span>
         </a>
@@ -91,9 +90,9 @@
                 {{ request()->is('blogadmin') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Blog</span>
         </a>
-        <a href="{{ route('galeri.index') }}" class="flex items-center p-1 rounded-md
+        <a href="{{ route('galeri.index') }}" class="flex items-center p-2 rounded-md
             {{ request()->is('galeri*') ? 'bg-red-500 text-white' : 'hover:bg-gray-100 text-gray-700' }}">
-            <img src="/img/icon/image-galery.png" alt="Galeri Icon" class="w-7 h-7
+            <img src="/img/icon/image-galery.png" alt="Galeri Icon" class="w-6 h-6
                 {{ request()->is('galeri*') ? 'filter invert brightness-0' : '' }}">
             <span class="ml-2 text-xs sidebar-text">Galeri</span>
         </a>

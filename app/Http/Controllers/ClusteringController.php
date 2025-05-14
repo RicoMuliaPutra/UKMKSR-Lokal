@@ -70,7 +70,7 @@ class ClusteringController extends Controller
         //
     }
 
-    public function cluster(){
+    public function cluster(Request $request){
         $anggota = DataNilai::getAnggotaForClusters();
         $response = Http::post('http://127.0.0.1:5000/cluster', $anggota);
     
@@ -91,10 +91,32 @@ class ClusteringController extends Controller
             dd('Data dari server tidak valid:', $response->body());
         }
     
-        $anggotas = DataNilai::whereNotNull('cluster')->orderby('cluster', 'asc' )->get();
+        $clusterFilter = $request->input('cluster');
+
+        $query = DataNilai::whereNotNull('cluster')->with('anggota')->orderBy('cluster', 'asc');
+
+        if ($clusterFilter !== null && $clusterFilter !== '') {
+            $query->where('cluster', $clusterFilter);
+        }
+
+        $anggotas = $query->paginate(10)->appends(['cluster' => $clusterFilter]);
+
+        $clusters = DataNilai::whereNotNull('cluster')
+            ->select('cluster')
+            ->distinct()
+            ->orderBy('cluster', 'asc')
+            ->pluck('cluster');
 
         $title = 'Cluster';
-    
-        return view('admin.clustering.cluster_anggota', compact('anggotas', 'title'));
+
+        return view('admin.clustering.cluster_anggota', compact('anggotas', 'title', 'clusters'));
+    }
+
+    public function printCluster(){
+
+        $anggotas = DataNilai::whereNotNull('cluster')->with('anggota')->orderBy('cluster', 'asc')->get()->groupBy('cluster');
+
+        return view('admin.clustering.print_cluster', compact('anggotas'));
+
     }
 }

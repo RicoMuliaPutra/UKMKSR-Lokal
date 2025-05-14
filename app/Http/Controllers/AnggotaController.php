@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Anggota;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
+use App\Imports\AnggotaImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class AnggotaController extends Controller
@@ -13,12 +15,19 @@ class AnggotaController extends Controller
 
     public function index(Request $request) {
         $angkatan = $request->query('angkatan');
+        
         $angkatanList = Anggota::select('angkatan')->distinct()->orderBy('angkatan', 'asc')->pluck('angkatan');
+        
         $query = Anggota::query();
+
+        $query->whereIn('status', ['aktif', 'inaktif']);
+        
         if (!empty($angkatan)) {
             $query->where('angkatan', $angkatan);
         }
-        $anggotas = $query->orderBy('angkatan', 'desc')->get();
+        
+        $anggotas = $query->orderBy('angkatan', 'desc')->paginate(10);
+        
         return view('admin.anggota.index', compact('anggotas', 'angkatanList'));
     }
 
@@ -174,4 +183,64 @@ class AnggotaController extends Controller
         return view('LandingPage.anggota', compact('dataAnggota', 'daftarAngkatan'));
     }
 
+    public function importExcel(Request $request)
+    {
+          // 1. Validasi file
+        $request->validate([
+            'file' => 'required|file|mimes:xlsx,xls,csv|max:2048',
+        ]);
+
+        // 2. Baca file
+        $data = Excel::toArray([], $request->file('file'));
+        $rows = array_slice($data[0], 1);
+        $errors = [];
+
+        foreach ($rows as $index => $row) {
+            $rowNumber = $index + 1;
+            $nim = $row[0] ?? null;
+            $nama = $row[1] ?? null;
+            $tanggal_lahir = $row[2] ?? null;
+
+            // Cek kelengkapan data
+            if (!$nim || !$nama || !$tanggal_lahir) {
+                $errors[] = "Baris ke-{$rowNumber} tidak lengkap.";
+                continue;
+            }
+
+            // Cek duplikasi NIM
+            if (Anggota::where('nim', $nim)->exists()) {
+                $errors[] = "NIM '{$nim}' sudah terdaftar (baris ke-{$rowNumber}).";
+                continue;
+            }
+
+            // Cek format tanggal
+            try {
+                $parsedDate = Carbon::parse($tanggal_lahir)->format('Y-m-d');
+            } catch (\Exception $e) {
+                $errors[] = "Format tanggal tidak valid di baris ke-{$rowNumber}: '{$tanggal_lahir}'. Gunakan format YYYY-MM-DD.";
+                continue;
+            }
+
+            // Simpan data jika valid
+            Anggota::create([
+                'nim' => $nim,
+                'nama' => $nama,
+                'tanggal_lahir' => $parsedDate,
+                'alamat' => $row[3] ?? '',
+                'alasan_join' => $row[4] ?? '',
+                'angkatan' => $row[5] ?? '',
+                'jurusan' => $row[6] ?? '',
+                'prodi' => $row[7] ?? '',
+                'status' => $row[8] ?? '',
+                'tahun_masuk_kuliah' => $row[9] ?? '',
+                'jenis_kelamin' => $row[10] ?? '',
+            ]);
+        }
+
+        if ($errors) {
+            return back()->withErrors($errors);
+        }
+
+        return back()->with('success', 'Data berhasil diimpor.');
+    }
 }

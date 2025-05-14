@@ -10,6 +10,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\ClusteringController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataNilaiController;
 use App\Http\Controllers\pengurusController;
 use App\Http\Controllers\devisiController;
@@ -22,11 +23,19 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+
 Route::middleware(['auth', 'humas_ksr'])->group(function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->name('dashboard');
 });
+
+// Route::get('/dashboard', function () {
+//     return view('admin.dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
+
 
 
 Route::middleware(['auth', 'humas_ksr'])->group(function () {
@@ -69,6 +78,27 @@ Route::middleware(['auth', 'humas_ksr'])->group(function () {
     Route::resource('/pesan-layanan', PesanLayananController::class);
 });
 
+Route::resource('/blogadmin', BlogController::class);
+//  Route::get('/blogadmin/{id}', [BlogController::class, 'showAdminBlog'])->name('blogadmin.show');
+Route::resource('anggota', AnggotaController::class)->except(['show']);
+Route::get('/anggota/search', [AnggotaController::class, 'search'])->name('anggota.search');
+Route::post('/anggota/import', [AnggotaController::class, 'importExcel'])->name('anggota.import');
+Route::resource('nilai', DataNilaiController::class);
+Route::resource('clustering', ClusteringController::class);
+Route::get('/cluster', [ClusteringController::class, 'cluster']);
+Route::get('/cluster/print', [ClusteringController::class, 'printCluster']);
+Route::resource('/kegiatan', KegiatanController::class);
+Route::resource('/tentang', TentangController::class);
+Route::resource('/service', LayananPageController::class);
+Route::post('/service/toggle/{id}', [LayananPageController::class, 'toggle'])->name('service.toggle');
+Route::resource('/Kepengurusan', pengurusController::class);
+Route::resource('/devisi', devisiController::class);
+Route::post('/jabatan_create', [devisiController::class, 'storeJabatan'])->name('jabatan.store');
+Route::post('/Periode_create', [devisiController::class, 'storePeriode'])->name('Periode.store');
+Route::resource('/Program_kerja', ProgramKerjaController::class);
+
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -99,15 +129,6 @@ Route::get('/blog/search', [BlogController::class, 'search'])->name('blog.search
 Route::post('/kegiatan/toggle/{id}', [KegiatanController::class, 'toggle'])->name('kegiatan.toggle');
 
 Route::get('/doras', [KegiatanController::class, 'doras'])->name('doras');
-
-
-
-
-
-
-
-
-
 
 
 

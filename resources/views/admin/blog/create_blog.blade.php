@@ -74,11 +74,31 @@
     </form>
 </div>
 
+<<<<<<< HEAD
 @endsection
 <script>
     $(document).ready(function() {
         $('#summernote').summernote({
             height: 150,
+=======
+
+@push('scripts')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote/dist/summernote-lite.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#summernote').summernote({
+                height: 200,
+                placeholder: 'Tulis deskripsi blog di sini...',
+                toolbar: [
+                    ['style', ['bold', 'italic', 'underline']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['insert', ['link', 'picture']],
+                    ['view', ['fullscreen', 'codeview']]
+                ]
+            });
+>>>>>>> c95d96e918cd0a611200ec1384bc91ce913d8088
         });
     });
 </script>
@@ -97,6 +117,10 @@
         @endif
     </script>
 @endpush
+<<<<<<< HEAD
 </body>
 </html>
+=======
+@endsection
+>>>>>>> c95d96e918cd0a611200ec1384bc91ce913d8088
 

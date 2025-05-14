@@ -1,23 +1,4 @@
-<!DOCTYPE html>
-<html lang="id">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anggota</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-    </style>
-</head>
-
-<body class="text-gray-800 bg-gray-100">
     @extends('admin.layout.navbar')
     @section('content')
 
@@ -46,6 +27,7 @@
         </div>
 
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        @if ($data_nilais && $data_nilais->count() > 0)
         <table class="w-full text-sm text-left text-black rtl:text-right">
             <thead class="text-xs text-black uppercase bg-white border-b border-gray-200">
                 <tr>
@@ -64,7 +46,7 @@
                 @foreach($data_nilais as $data_nilai)
                     <tr class="border-b hover:bg-gray-50">
                         <td class="px-4 py-2 text-center border-r">{{$data_nilai->anggota->nim}}</td>
-                        <td class="px-4 py-2 border-r">{{$data_nilai->anggota->nama}}</td>
+                        <td class="px-4 py-2 border-r truncate max-w-[80px] overflow-hidden">{{$data_nilai->anggota->nama}}</td>
                         <td class="px-4 py-2 border-r">{{$data_nilai->anggota->angkatan}}</td>
                         <td class="px-4 py-2 border-r">{{$data_nilai->anggota->prodi}}</td>
                         <td class="px-4 py-2 border-r">{{$data_nilai->nilai_kehadiran}}</td>
@@ -83,9 +65,34 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="mt-4">
+            {{ $data_nilais->links() }}
+        </div>
+        @else
+        <table class="w-full text-sm text-left text-black rtl:text-right">
+            <thead class="text-xs text-black uppercase bg-white border-b border-gray-200">
+                <tr>
+                    <th scope="col" class="px-6 py-3">NIM</th>
+                    <th scope="col" class="px-6 py-3">Nama</th>
+                    <th scope="col" class="px-6 py-3">Angkatan</th>
+                    <th scope="col" class="px-6 py-3">Prodi</th>
+                    <th scope="col" class="px-6 py-3">Nilai Kehadiran</th>
+                    <th scope="col" class="px-6 py-3">Nilai Kontribusi</th>
+                    <th scope="col" class="px-6 py-3">Nilai Kompetensi</th>
+                    <th scope="col" class="px-6 py-3">Nilai Etika</th>
+                    <th scope="col" class="px-6 py-3">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="border-b hover:bg-gray-50">
+                    <td class="border border-gray-300 px-4 py-2 text-center" colspan="9">Tidak Ada Data Nilai Anggota</td>
+                </tr>
+            </tbody>
+        </table>
+        @endif
     </div>
     </div>
-    @endsection
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         @if (session('success'))
@@ -111,8 +118,4 @@
         }
     </script>
 
-
-
-</body>
-
-</html>
+    @endsection
