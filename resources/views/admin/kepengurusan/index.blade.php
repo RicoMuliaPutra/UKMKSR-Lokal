@@ -6,7 +6,7 @@
     <h1 class="mb-10 text-2xl font-bold">Struktur Kepengurusan</h1>
     <div class="flex flex-col gap-4 mb-4 md:flex-row md:items-center md:justify-between">
         <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:space-x-2">
-            <form action="" method="GET" class="flex flex-col w-full gap-2 sm:flex-row sm:items-center">
+            {{-- <form action="" method="GET" class="flex flex-col w-full gap-2 sm:flex-row sm:items-center">
                 <input type="hidden" name="angkatan" value="">
                 <input type="text" name="query" placeholder="Cari Pengurus..."
                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 sm:w-auto"
@@ -16,7 +16,7 @@
                     class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-5 py-2.5 w-full sm:w-auto">
                     Cari
                 </button>
-            </form>
+            </form> --}}
 
 
             <script>

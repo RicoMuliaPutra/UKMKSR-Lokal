@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tentang;
-use App\Models\info;
-use App\Models\visimisi;
-use App\Models\sejarah;
+use App\Models\Info;
+use App\Models\VisiMisi;
+use App\Models\Sejarah;
 
 
 class TentangController extends Controller

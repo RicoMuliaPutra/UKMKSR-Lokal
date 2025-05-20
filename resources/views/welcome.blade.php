@@ -128,7 +128,7 @@
     <main class="flex-1 w-full bg-gray-50">
         <section class="relative flex flex-col items-center justify-center w-full text-white min-h-[55vh] px-4 md:px-10 py-10">
             <img class="absolute top-0 left-0 object-cover w-full h-full"
-                 src="{{ asset('img/bg4.jpg') }}" alt="Kegiatan 1">
+                 src="{{ asset('img/bg4.JPG') }}" alt="Kegiatan 1">
             <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
 
             <div class="relative z-10 mb-6 text-center">
