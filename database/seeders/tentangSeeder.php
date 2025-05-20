@@ -4,10 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\models\tentang;
-use App\models\sejarah;
-use App\models\info;
-use App\models\visimisi;
+use App\Models\Tentang;
+use App\Models\Sejarah;
+use App\Models\info;
+use App\Models\VisiMisi;
 
 
 

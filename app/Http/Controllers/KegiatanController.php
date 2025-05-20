@@ -172,5 +172,6 @@ public function detailshow($id){
 
 
 
+
 }
 

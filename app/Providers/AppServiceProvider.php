@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use App\Models\Layanan;
 use App\Models\Galeri;
-use App\Models\blog;
+use App\Models\Blog;
 // use Illuminate\Pagination\Paginator;
 
 

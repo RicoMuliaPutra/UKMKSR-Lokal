@@ -60,7 +60,7 @@
                                 <div class="mt-auto">
                                     <hr class="mb-4 ml-0 transition-all duration-500 ease-in-out transform translate-y-4 border-t-2 opacity-0 border-gray-80 w-2/2 group-hover:translate-y-0 group-hover:opacity-100" />
                                     <div class="transition-all duration-500 ease-in-out transform translate-y-6 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
-                                        <a href="{{route('kegiatanshow.detail', $kegiatan->id_kegiatan )}}" class="font-bold text-blue-800 hover:underline">
+                                        <a href="{{ route('kegiatanshow.detail', $kegiatan->id_kegiatan) }}" class="font-bold text-blue-800 hover:underline">
                                             SELENGKAPNYA
                                         </a>
                                     </div>

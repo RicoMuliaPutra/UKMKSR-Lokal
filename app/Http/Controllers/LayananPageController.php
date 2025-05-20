@@ -140,9 +140,9 @@ class LayananPageController extends Controller
     }
 
     public function detail($id) {
-        $layanan = Layanan::findOrFail($id); // Detail layanan yang dipilih
-        $layanans = Layanan::where('status', 'aktif')->get(); // Semua layanan aktif untuk dropdown
-        return view('LandingPage.show_layanan', compact('layanan', 'layanans')); // Kirim keduanya ke view
+        $layanan = Layanan::findOrFail($id);
+        $layanans = Layanan::where('status', 'aktif')->get();
+        return view('LandingPage.show_layanan', compact('layanan', 'layanans'));
     }
-    
+
 }

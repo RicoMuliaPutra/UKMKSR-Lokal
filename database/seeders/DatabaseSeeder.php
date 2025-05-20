@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Database\Seeders\BlogSeeder;
-use Database\Seeders\layananSeeder;
+use Database\Seeders\LayananSeeder;
 use Database\Seeders\KegiatanSeeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
         ]);
         $this->call([
             BlogSeeder::class,
-            layananSeeder::class,
+            LayananSeeder::class,
             KegiatanSeeder::class,
             tentangSeeder::class,
             anggotaSeeder::class,

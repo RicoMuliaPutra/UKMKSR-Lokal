@@ -76,6 +76,7 @@ Route::middleware(['auth', 'humas_ksr'])->group(function () {
     Route::post('/Periode_create', [devisiController::class, 'storePeriode'])->name('Periode.store');
     Route::resource('/Program_kerja', ProgramKerjaController::class);
     Route::resource('/pesan-layanan', PesanLayananController::class);
+    Route::post('/kegiatan/toggle/{id}', [KegiatanController::class, 'toggle'])->name('kegiatan.toggle');
 });
 
 
@@ -108,10 +109,8 @@ Route::get('/DataAnggota/search', [AnggotaController::class, 'cari'])->name('ang
 Route::get('/Blog', [BlogController::class, 'Blogging'])->name('bloging');
 Route::get('/blog/{id}', [BlogController::class, 'detail'])->name('blog.detail');
 Route::get('/blog/search', [BlogController::class, 'search'])->name('blog.search');
-// Route::post('/kegiatan/toggle/{id}', [KegiatanController::class, 'toggle'])->name('kegiatan.toggle');
-// Route::get('/aktivity/{id}', [KegiatanController::class, 'detail'])->name('kegiatan.detail');
-// Route::get('/kegiatan-detail/{id}', [KegiatanController::class, 'detailshow'])->name('kegiatanshow.detail');
-Route::get('/kegiatan/{id}', [KegiatanController::class, 'show'])->name('kegiatan.showw');
+Route::get('/kegiatan-detail/{id}', [KegiatanController::class, 'detailshow'])->name('kegiatanshow.detail');
+
 
 
 

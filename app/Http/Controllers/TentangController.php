@@ -61,12 +61,12 @@ class TentangController extends Controller
     }
 
     public function sejarah(){
-        $sejarah = sejarah::latest()->first();
+        $sejarah = Sejarah::latest()->first();
         return view ('LandingPage.sejarah', compact('sejarah'));
     }
 
     public function visimisi(){
-        $visimisi = visimisi::latest()->first();
+        $visimisi = Visimisi::latest()->first();
         return view ('LandingPage.visimisi', compact('visimisi'));
     }
 

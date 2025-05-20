@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\layanan;
+use App\Models\Layanan;
 
 
 class LayananSeeder extends Seeder

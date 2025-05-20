@@ -5,12 +5,12 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Divisi;
-use App\Models\jabatan;
+use App\Models\Jabatan;
 use App\Models\PengurusProgramKerja;
 use App\Models\PeriodeKepengurusan;
 use App\Models\Pengurus;
 use App\Models\ProgramKerja;
-use App\Models\anggota;
+use App\Models\Anggota;
 
 class kepengurasanSeeder extends Seeder
 {
