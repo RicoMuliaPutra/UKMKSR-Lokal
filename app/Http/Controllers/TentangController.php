@@ -13,8 +13,12 @@ class TentangController extends Controller
 {
     public function index()
     {
-        $data = Tentang::all();
-        return view('admin.tentang.index', compact('data'));
+        $tentang = Tentang::all();
+        $info = Info::all();
+        $sejarah = Sejarah::all();
+        $visimisi = VisiMisi::all();
+
+        return view('admin.tentang.index', compact('tentang', 'info', 'sejarah', 'visimisi'));
     }
 
     public function create()
@@ -55,21 +59,21 @@ class TentangController extends Controller
     }
 
     ///////////// Function landingPage //////////////
-    public function lambang() {
+    public function lambang()
+    {
         $lambang = tentang::latest()->first();
-        return view ('LandingPage.lambang', compact('lambang'));
+        return view('LandingPage.lambang', compact('lambang'));
     }
 
-    public function sejarah(){
+    public function sejarah()
+    {
         $sejarah = Sejarah::latest()->first();
-        return view ('LandingPage.sejarah', compact('sejarah'));
+        return view('LandingPage.sejarah', compact('sejarah'));
     }
 
-    public function visimisi(){
+    public function visimisi()
+    {
         $visimisi = Visimisi::latest()->first();
-        return view ('LandingPage.visimisi', compact('visimisi'));
+        return view('LandingPage.visimisi', compact('visimisi'));
     }
-
-
-
 }
