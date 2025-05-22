@@ -17,7 +17,7 @@ class DataNilaiController extends Controller
         $data_nilais = DataNilai::getDataNilai($search);
 
         return view('admin.data_nilai.index', [
-            'title'=>'Data Barang',
+            'title'=>'Data Nilai Anggota',
             'data_nilais'=> $data_nilais
         ]);
     }
@@ -66,7 +66,11 @@ class DataNilaiController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data_nilais = DataNilai::with('anggota')->findOrFail($id);
+        return view('admin.data_nilai.detail_data_nilai_anggota', [
+            'title'=>'Detail Data Nilai Anggota',
+            'data_nilais'=> $data_nilais
+        ]);
     }
 
     /**
@@ -74,7 +78,11 @@ class DataNilaiController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data_nilais = DataNilai::with('anggota')->findOrFail($id);
+        return view('admin.data_nilai.update_data_nilai_anggota', [
+            'title'=>'Edit Data Nilai Anggota',
+            'data_nilais'=> $data_nilais
+        ]);
     }
 
     /**
@@ -82,7 +90,24 @@ class DataNilaiController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'id' => 'required|exists:anggota,id',
+            'nilai_kehadiran' => 'required|numeric',
+            'nilai_kontribusi' => 'required|numeric',
+            'nilai_kompetensi' => 'required|numeric',
+            'nilai_etika' => 'required|numeric',
+        ]);
+
+        $data_nilais = DataNilai::findOrFail($id);
+
+        $data_nilais->anggota_id = $request->input('id');
+        $data_nilais->nilai_kehadiran = $request->input('nilai_kehadiran');
+        $data_nilais->nilai_kontribusi = $request->input('nilai_kontribusi');
+        $data_nilais->nilai_kompetensi = $request->input('nilai_kompetensi');
+        $data_nilais->nilai_etika = $request->input('nilai_etika');
+        $data_nilais->save();
+
+        return redirect()->route('nilai.index')->with('success', 'Data nilai berhasil diupdate.');
     }
 
     /**
@@ -90,6 +115,10 @@ class DataNilaiController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data_nilai = DataNilai::findOrFail($id);
+
+        $data_nilai->delete();
+
+        return redirect()->route('nilai.index')->with('success', 'Data nilai anggota berhasil dihapus');
     }
 }

@@ -44,7 +44,7 @@ Route::middleware(['auth', 'humas_ksr'])->group(function () {
     Route::post('galeri/store', [GaleriController::class, 'store'])->name('galeri.store');
     Route::get('galeri', [GaleriController::class, 'index'])->name('galeri.index');
     Route::resource('/blogadmin', BlogController::class);
-    Route::resource('anggota', AnggotaController::class)->except(['show']);
+    Route::resource('anggota', AnggotaController::class);
     Route::get('/anggota/search', [AnggotaController::class, 'search'])->name('anggota.search');
     Route::resource('nilai', DataNilaiController::class);
     Route::resource('clustering', ClusteringController::class);

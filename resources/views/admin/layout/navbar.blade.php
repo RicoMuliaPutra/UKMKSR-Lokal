@@ -53,13 +53,15 @@
         <div class="flex flex-grow">
 
             <!-- Sidebar (Hidden on Mobile, initially) -->
-            <aside id="sidebar" class="sticky z-40 flex flex-col w-64 h-screen overflow-hidden transition-all duration-300 bg-white shadow-md top-16 lg:block hidden">
+            {{-- <aside id="sidebar" class="sticky z-40 flex flex-col w-64 h-screen overflow-hidden transition-all duration-300 bg-white shadow-md top-16 lg:block hidden"> --}}
+            <aside id="sidebar" class="fixed top-16 left-0 z-40 w-64 h-[calc(100vh-4rem)] bg-white shadow-md hidden lg:block">
+
                 @include('admin.layout.sidebar')
             </aside>
             
             <!-- Main Content -->
-            <main class="flex-grow p-4 sm:p-6 md:p-8 overflow-auto">
-
+            {{-- <main class="flex-grow p-4 sm:p-6 md:p-8 overflow-auto"> --}}
+            <main class="flex-grow p-4 sm:p-6 md:p-8 overflow-auto lg:ml-64 mt-2">
                 @yield('content')
             </main>
         </div>
