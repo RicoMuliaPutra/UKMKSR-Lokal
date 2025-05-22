@@ -33,13 +33,11 @@ Route::middleware(['auth', 'humas_ksr'])->group(function () {
 // Route::get('/dashboard', function () {
 //     return view('admin.dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
-
-
 
 
 Route::middleware(['auth', 'humas_ksr'])->group(function () {
     Route::get('/akun', [NavigateController::class, 'akun'])->middleware(['auth', 'verified'])->name('akun');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
     Route::get('/kegiatan', [NavigateController::class, 'kegiatan'])->name('kegiatan');
     Route::get('galeri/tambah-foto', [GaleriController::class, 'tambahFoto'])->name('galeri.tambah.foto');
     Route::get('galeri/tambah-video', [GaleriController::class, 'tambahVideo'])->name('galeri.tambah.video');
@@ -63,6 +61,7 @@ Route::middleware(['auth', 'humas_ksr'])->group(function () {
     Route::post('/Periode_create', [devisiController::class, 'storePeriode'])->name('Periode.store');
     Route::resource('/Program_kerja', ProgramKerjaController::class);
     Route::resource('/pesan-layanan', PesanLayananController::class);
+    Route::post('/kegiatan/toggle/{id}', [KegiatanController::class, 'toggle'])->name('kegiatan.toggle');
 });
 
 
@@ -93,9 +92,13 @@ Route::post('/pesan-layanan', [PesanLayananController::class, 'store'])->name('p
 Route::get('/DataAnggota', [AnggotaController::class, 'dataAnggota'])->name('dataAnggota');
 Route::get('/DataAnggota/search', [AnggotaController::class, 'cari'])->name('anggota.cari');
 Route::get('/Blog', [BlogController::class, 'Blogging'])->name('bloging');
-Route::get('/blog{id}', [BlogController::class, 'detail'])->name('blog.detail');
+Route::get('/blog/{id}', [BlogController::class, 'detail'])->name('blog.detail');
 Route::get('/blog/search', [BlogController::class, 'search'])->name('blog.search');
-Route::post('/kegiatan/toggle/{id}', [KegiatanController::class, 'toggle'])->name('kegiatan.toggle');
+Route::get('/kegiatan-detail/{id}', [KegiatanController::class, 'detailshow'])->name('kegiatanshow.detail');
+
+
+
+
 
 Route::get('/doras', [KegiatanController::class, 'doras'])->name('doras');
 

@@ -49,7 +49,7 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 4h10M5 11h14M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                                     </svg>
-                                   {{ \Carbon\Carbon::parse($kegiatan->start_kegiatan)->format('d M Y') }} -
+                                    {{ \Carbon\Carbon::parse($kegiatan->start_kegiatan)->format('d M Y') }} -
                                     {{ \Carbon\Carbon::parse($kegiatan->end_kegiatan)->format('d M Y') }}
                                 </p>
                                 <div>
@@ -60,7 +60,7 @@
                                 <div class="mt-auto">
                                     <hr class="mb-4 ml-0 transition-all duration-500 ease-in-out transform translate-y-4 border-t-2 opacity-0 border-gray-80 w-2/2 group-hover:translate-y-0 group-hover:opacity-100" />
                                     <div class="transition-all duration-500 ease-in-out transform translate-y-6 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
-                                        <a href="#" class="font-bold text-blue-800 hover:underline">
+                                        <a href="{{ route('kegiatanshow.detail', $kegiatan->id_kegiatan) }}" class="font-bold text-blue-800 hover:underline">
                                             SELENGKAPNYA
                                         </a>
                                     </div>

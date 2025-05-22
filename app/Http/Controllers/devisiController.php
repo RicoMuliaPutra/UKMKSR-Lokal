@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\divisi;
+use App\Models\Divisi;
 use App\Models\Jabatan;
 use App\Models\PeriodeKepengurusan;
 

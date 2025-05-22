@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\layanan;
+use App\Models\Layanan;
 
 
 class LayananSeeder extends Seeder
@@ -24,7 +24,7 @@ class LayananSeeder extends Seeder
         'nama_layanan'   => 'FASILITATOR',
         'deskripsi_layanan'  => 'Mendukung memenuhi kebutuhan pemateri pada kegiatan atau assesment yang berkaitan dengan materi kepalang merahan',
         'foto_layanan'   => 'layanan/fasil1.jpg',
-        'poster_layanan' => 'layanan/poster.jpg',
+        'poster_layanan' => 'layanan/fasil-timeline.jpg',
         'status'         => 'aktif',
     ]);
 }
