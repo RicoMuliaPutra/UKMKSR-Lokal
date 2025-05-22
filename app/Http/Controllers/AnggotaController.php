@@ -7,6 +7,7 @@ use App\Models\Anggota;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use App\Imports\AnggotaImport;
+use App\Models\DataNilai;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -48,7 +49,7 @@ class AnggotaController extends Controller
             'tahun_masuk_kuliah' => 'required',
             'status' => 'required',
             'jenis_kelamin' => 'required',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
             'alamat' => 'required|string',
         ]);
 
@@ -131,25 +132,32 @@ class AnggotaController extends Controller
     }
 
     public function show($id){
+
+        $data_anggota = Anggota::findOrFail($id);
+        return view('admin.anggota.detail_anggota', [
+            'title'         => 'Detail',
+            'data_anggota' => $data_anggota,
+        ]);
     }
 
     public function search(Request $request){
-    $query = $request->input('query');
-    $angkatan = $request->input('angkatan');
-    $angkatanList = Anggota::select('angkatan')->distinct()->orderBy('angkatan', 'asc')->pluck('angkatan');
-    $anggotas = Anggota::query()
-        ->when($query, function ($q) use ($query) {
-            $q->where('nama', 'like', "%$query%")
-              ->orWhere('nim', 'like', "%$query%");
-        })
-        ->when($angkatan, function ($q) use ($angkatan) {
-            $q->where('angkatan', $angkatan);
-        })
-        ->orderBy('angkatan', 'desc')
-        ->get();
+   
+        $query = $request->input('query');
+        $angkatan = $request->input('angkatan');
+        $angkatanList = Anggota::select('angkatan')->distinct()->orderBy('angkatan', 'asc')->pluck('angkatan');
+        $anggotas = Anggota::query()
+            ->when($query, function ($q) use ($query) {
+                $q->where('nama', 'like', "%$query%")
+                ->orWhere('nim', 'like', "%$query%")->paginate(10);
+            })
+            ->when($angkatan, function ($q) use ($angkatan) {
+                $q->where('angkatan', $angkatan)->paginate(10);
+            })
+            ->orderBy('angkatan', 'desc')
+            ->paginate(10);
 
-    return view('admin.anggota.index', compact('anggotas', 'angkatanList'));
-}
+        return view('admin.anggota.index', compact('anggotas', 'angkatanList'));
+    }
 
     public function dataAnggota(Request $request){
         $filterAngkatan = $request->query('angkatan');

@@ -142,7 +142,10 @@
                     class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     accept="image/*">
             </div>
-            <div class="flex justify-end">
+            <div class="flex justify-end space-x-2">
+                <a href="{{ route('anggota.index') }}" class="px-6 py-3 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400">
+                    Kembali
+                </a>
                 <button type="submit" class="px-6 py-3 text-white bg-green-500 rounded-md hover:bg-green-600">
                     Simpan
                 </button>

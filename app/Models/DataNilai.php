@@ -9,6 +9,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class DataNilai extends Model
 {
     protected $table = 'nilai_anggota';
+    protected $primaryKey = 'anggota_id';
+
+    public $incrementing = false;
+    protected $keyType = 'int';
+
     use HasFactory;
     public $fillable = [
         "anggota_id",
