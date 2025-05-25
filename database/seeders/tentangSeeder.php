@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Tentang;
 use App\Models\Sejarah;
-use App\Models\info;
+use App\Models\Info;
 use App\Models\VisiMisi;
 
 
