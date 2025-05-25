@@ -7,7 +7,7 @@ use App\Models\Tentang;
 use App\Models\Info;
 use App\Models\VisiMisi;
 use App\Models\Sejarah;
-
+//yailah
 
 class TentangController extends Controller
 {
