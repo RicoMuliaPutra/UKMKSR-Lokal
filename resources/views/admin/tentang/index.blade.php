@@ -201,7 +201,7 @@
                     @forelse ($visimisi as $key => $item)
                     <tr class="hover:bg-gray-100 transition">
                         <td class="px-6 py-3">{{ $key+1 }}</td>
-                        <td class="px-6 py-3">{{ $item->deskripsi_visi_misi_ksr }}</td>
+                        <td class="px-6 py-3">{!! $item->deskripsi_visi_misi_ksr !!}</td>
                         <td class="px-6 py-3">
                             {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}
                         </td>
