@@ -54,7 +54,7 @@
 
             <!-- Sidebar (Hidden on Mobile, initially) -->
             {{-- <aside id="sidebar" class="sticky z-40 flex flex-col w-64 h-screen overflow-hidden transition-all duration-300 bg-white shadow-md top-16 lg:block hidden"> --}}
-            <aside id="sidebar" class="fixed top-16 left-0 z-40 w-64 h-[calc(100vh-4rem)] bg-white shadow-md hidden lg:block">
+<aside id="sidebar" class="fixed top-16 left-0 z-40 w-64 h-[calc(100vh-4rem)] overflow-y-auto overflow-x-hidden bg-white shadow-md hidden lg:block">
 
                 @include('admin.layout.sidebar')
             </aside>
