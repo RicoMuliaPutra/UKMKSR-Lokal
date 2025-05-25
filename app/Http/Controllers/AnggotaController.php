@@ -16,11 +16,8 @@ class AnggotaController extends Controller
 
     public function index(Request $request) {
         $angkatan = $request->query('angkatan');
-        
         $angkatanList = Anggota::select('angkatan')->distinct()->orderBy('angkatan', 'asc')->pluck('angkatan');
-        
         $query = Anggota::query();
-
         $query->whereIn('status', ['aktif', 'inaktif']);
         
         if (!empty($angkatan)) {
