@@ -72,7 +72,7 @@ class ClusteringController extends Controller
 
     public function cluster(Request $request){
         $anggota = DataNilai::getAnggotaForClusters();
-        $response = Http::post('http://127.0.0.1:5000/cluster', $anggota);
+        $response = Http::post('http://flask:5000/cluster', $anggota);
     
         if ($response->failed()) {
             dd('Error connecting to Python server', $response->body());
