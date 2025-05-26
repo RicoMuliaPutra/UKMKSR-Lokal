@@ -15,7 +15,7 @@ class DashboardTest extends TestCase
 {
     use DatabaseTransactions; 
 
-   public function test_dashboard_can_be_accessed_by_authenticated_user()
+    public function test_dashboard_can_be_accessed_by_authenticated_user()
     {
         $user = User::factory()->create([
             'role' => 'humas_ksr', 

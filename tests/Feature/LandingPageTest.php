@@ -6,15 +6,18 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class ClusteringTest extends TestCase
+class LandingPageTest extends TestCase
 {
     /**
      * A basic feature test example.
      */
-    public function test_example(): void
+
+    public function test_user_dapat_melihat_beranda(): void
     {
         $response = $this->get('/');
 
         $response->assertStatus(200);
+
+        $response->assertViewIs('welcome');
     }
 }
