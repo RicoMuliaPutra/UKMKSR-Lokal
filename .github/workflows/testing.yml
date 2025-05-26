@@ -36,8 +36,10 @@ jobs:
           extensions: mbstring, pdo_mysql, zip, gd
           coverage: none
 
-      - name: Copy CI Environment File
-        run: cp .env.ci .env
+      # - name: Copy CI Environment File
+      #   run: cp .env.ci .env
+      - name: Create .env file
+        run: echo "${{ secrets.CI_ENV_CONTENT }}" > .env
 
       - name: Install Composer Dependencies
         run: composer install --prefer-dist --no-progress
