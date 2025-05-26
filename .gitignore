@@ -21,4 +21,4 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
-/cluster_ksr/.venv
+/cluster/.venv
